@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/inter";
+
+import Header from "../components/Header.astro";
+
+const {
+  title = "Dr. Cirimpei Tatiana - Radioterapie",
+  description = "Radioterapie modernă, informații pentru pacienți și trimitere către programare.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body class="min-h-screen antialiased">
+    <Header />
+    <slot />
+  </body>
+  
+</html>

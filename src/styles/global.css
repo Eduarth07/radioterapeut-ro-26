@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* 1) Variabile “semantice” (runtime) — pot fi schimbate ușor și pentru dark mode */
+:root{
+  --rt-surface: #ffffff;
+  --rt-surface-2: #f8fafc;
+  --rt-ink: #0f172a;
+  --rt-muted: #475569;
+  --rt-border: #e2e8f0;
+
+  /* Brand (CTA) */
+  --rt-brand-500: #2563eb;
+  --rt-brand-600: #1d4ed8;
+  --rt-brand-700: #1e40af;
+
+  /* Accent (optional) */
+  --rt-accent-500: #14b8a6;
+}
+
+/* (opțional, pregătit pentru mai târziu) */
+html.dark{
+  color-scheme: dark;
+
+  --rt-surface: #0b1220;
+  --rt-surface-2: #0f1b2d;
+  --rt-ink: #e5e7eb;
+  --rt-muted: #a1a1aa;
+  --rt-border: #24324a;
+}
+
+html{ color-scheme: light; }
+
+/* 2) Theme variables (Tailwind v4) — astea generează clasele utilitare (bg-*, text-*, etc.) */
+@theme{
+  --color-surface: var(--rt-surface);
+  --color-surface-2: var(--rt-surface-2);
+  --color-ink: var(--rt-ink);
+  --color-muted: var(--rt-muted);
+  --color-border: var(--rt-border);
+
+  --color-brand-500: var(--rt-brand-500);
+  --color-brand-600: var(--rt-brand-600);
+  --color-brand-700: var(--rt-brand-700);
+
+  --color-accent-500: var(--rt-accent-500);
+
+  /* mici “building blocks” pentru un look modern, consistent */
+  --radius-card: 1rem;
+  --shadow-card: 0 18px 60px -30px rgba(15, 23, 42, .35);
+
+  /* dacă vrei clasă separată pentru font (altfel rămâi pe font-sans default) */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* 3) Base styles */
+@layer base{
+  body{
+    @apply bg-surface text-ink font-sans antialiased;
+  }
+
+  /* focus vizibil, foarte important pentru accesibilitate */
+  :focus-visible{
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+}
