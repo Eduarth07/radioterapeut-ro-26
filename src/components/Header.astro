@@ -2,19 +2,30 @@
 import { navLinks } from "../data/navLinks";
 ---
 
-<nav aria-label="Navigație principală">
-  <div class="mx-auto max-w-7xl xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-4">
+<nav
+  aria-label="Navigație principală"
+  class="sticky top-0 z-50 bg-white backdrop-blur-md"
+>
+  <div class="mx-auto max-w-7xl xl:max-w-screen-2xl px-2 sm:px-6 lg:px-8 relative flex justify-between py-4">
     <!-- LEFT -->
     <div class="relative z-10 flex items-center gap-16">
       <!-- Brand -->
-      <a aria-label="Home" href="/" class="flex items-center gap-3">
         <!-- Logo simplu (în snippet e SVG; aici e echivalent vizual, curat) -->
-        <div class="h-10 w-10 rounded-full bg-cyan-500"></div>
-        <div class="leading-tight">
-          <div class="text-base font-semibold text-gray-900">Dr. Cirimpei Tatiana</div>
-          <div class="text-sm text-gray-600">Radioterapie</div>
-        </div>
-      </a>
+        <a aria-label="Home" href="/" class="flex items-center gap-3">
+            <img
+              src="/logo_white.png"
+              alt="Radioterapeut.ro"
+              width="44"
+              height="44"
+              class="h-11 w-11 rounded-full"
+              decoding="async"
+              loading="eager"
+            />
+          <div class="leading-tight">
+            <div class="text-base font-semibold text-gray-900">Dr. Cirimpei Tatiana</div>
+            <div class="text-sm text-gray-600">Radioterapie</div>
+          </div>
+        </a>
 
       <!-- Desktop links -->
       <div id="rt-nav-desktop" class="hidden lg:flex lg:gap-10">
@@ -24,7 +35,7 @@ import { navLinks } from "../data/navLinks";
             data-rt-nav-item
             class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
             >
-            <span class="relative z-10">{item.label}</span>
+            <span class="relative z-10 text-base">{item.label}</span>
             </a>
         ))}
       </div>
@@ -56,14 +67,14 @@ import { navLinks } from "../data/navLinks";
       <!-- Desktop buttons only -->
       <div class="flex items-center gap-6 max-lg:hidden">
         <a
-          class="inline-flex justify-center rounded-lg border py-2 px-3 text-sm transition-colors border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80"
+          class="inline-flex justify-center rounded-lg border py-2 px-3 text-base transition-colors border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100 active:text-gray-700/80"
           href="/contact"
         >
           Contact
         </a>
 
         <a
-          class="inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80"
+          class="inline-flex justify-center rounded-lg py-2 px-3 text-base transition-colors bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-800 active:text-white/80"
           href="/programare"
         >
           Programează-te
@@ -73,13 +84,14 @@ import { navLinks } from "../data/navLinks";
   </div>
 
   <!-- Mobile menu (hidden on desktop) -->
-  <div id="rt-mobile-menu" class="hidden lg:hidden px-4 sm:px-6">
-    <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+  <div id="rt-mobile-menu" class="hidden lg:hidden sm:px-6">
+    <div class="border-x border-gray-200 bg-white p-4 shadow-sm">
       <div class="flex flex-col gap-1">
         {navLinks.map((item) => (
           <a
             href={item.href}
-            class="rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            data-rt-mobile-link
+            class="rounded-lg px-3 py-2 text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"
           >
             {item.label}
           </a>
@@ -88,13 +100,13 @@ import { navLinks } from "../data/navLinks";
 
       <div class="mt-4 flex gap-3">
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg border py-2 px-3 text-sm transition-colors border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100"
+          class="inline-flex w-1/2 justify-center rounded-lg border py-2 px-3 text-base transition-colors border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100"
           href="/contact"
         >
           Contact
         </a>
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-sm font-semibold transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80"
+          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80"
           href="/programare"
         >
           Programează-te
@@ -110,10 +122,42 @@ import { navLinks } from "../data/navLinks";
   const menu = document.getElementById("rt-mobile-menu");
 
   if (btn && menu) {
+    // Toggle open/close
     btn.addEventListener("click", () => {
       const isOpen = btn.getAttribute("aria-expanded") === "true";
       btn.setAttribute("aria-expanded", String(!isOpen));
       menu.classList.toggle("hidden");
+    });
+
+    // Închide la click pe link din meniu
+    menu.querySelectorAll("[data-rt-mobile-link]").forEach((a) => {
+      a.addEventListener("click", () => {
+        btn.setAttribute("aria-expanded", "false");
+        menu.classList.add("hidden");
+      });
+    });
+
+    // Închide la Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.classList.contains("hidden")) {
+        btn.setAttribute("aria-expanded", "false");
+        menu.classList.add("hidden");
+        btn.focus();
+      }
+    });
+
+    // Închide la click în afara meniului
+    document.addEventListener("click", (e) => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (!isOpen) return;
+
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+
+      if (btn.contains(target) || menu.contains(target)) return;
+
+      btn.setAttribute("aria-expanded", "false");
+      menu.classList.add("hidden");
     });
   }
 

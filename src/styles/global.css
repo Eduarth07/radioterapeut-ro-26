@@ -65,3 +65,42 @@ html{ color-scheme: light; }
     outline-offset: 2px;
   }
 }
+
+@layer utilities {
+  /* clasa exact ca în model */
+  .aspect-366\/729 {
+    aspect-ratio: 366 / 729;
+  }
+
+  /* animațiile din model */
+  @keyframes rt-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rt-spin-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: rt-spin 4s linear infinite;
+  }
+
+  .animate-spin-reverse-slower {
+    animation: rt-spin-reverse 6s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow,
+  .animate-spin-reverse-slower {
+    animation: none !important;
+  }
+  }
+  .animate-spin-slow,
+  .animate-spin-reverse-slower {
+    will-change: transform;
+  }
+
+}
