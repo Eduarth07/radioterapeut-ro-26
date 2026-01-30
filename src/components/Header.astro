@@ -4,7 +4,7 @@ import { navLinks } from "../data/navLinks";
 
 <nav
   aria-label="Navigație principală"
-  class="sticky top-0 z-50 bg-white backdrop-blur-md"
+  class="sticky top-0 z-50 backdrop-blur-md bg-(--rt-surface)"
 >
   <div class="mx-auto max-w-7xl xl:max-w-screen-2xl px-2 sm:px-6 lg:px-8 relative flex justify-between py-4">
     <!-- LEFT -->
@@ -17,13 +17,22 @@ import { navLinks } from "../data/navLinks";
               alt="Radioterapeut.ro"
               width="44"
               height="44"
-              class="h-11 w-11 rounded-full"
+              class="h-11 w-11 rounded-full rt-theme-img-light"
+              decoding="async"
+              loading="eager"
+            />
+            <img
+              src="/logo_dark.png"
+              alt="Radioterapeut.ro"
+              width="44"
+              height="44"
+              class="h-11 w-11 rounded-full rt-theme-img-dark"
               decoding="async"
               loading="eager"
             />
           <div class="leading-tight">
-            <div class="text-base font-semibold text-gray-900">Dr. Cirimpei Tatiana</div>
-            <div class="text-sm text-gray-600">Radioterapie</div>
+            <div class="text-base font-semibold text-(--rt-ink)">Dr. Cirimpei Tatiana</div>
+            <div class="text-sm text-(--rt-muted)">Radioterapie</div>
           </div>
         </a>
 
@@ -33,7 +42,7 @@ import { navLinks } from "../data/navLinks";
             <a
             href={item.href}
             data-rt-nav-item
-            class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
+            class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-(--rt-muted) transition-colors duration-150 hover:text-gray-900 dark:hover:text-white"
             >
             <span class="relative z-10 text-base">{item.label}</span>
             </a>
@@ -47,7 +56,7 @@ import { navLinks } from "../data/navLinks";
       <div class="lg:hidden">
         <button
           id="rt-menu-btn"
-          class="cursor-pointer relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60"
+          class="cursor-pointer relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:stroke-white dark:hover:bg-gray-600 dark:hover:stroke-gray-100"
           aria-label="Toggle site navigation"
           type="button"
           aria-expanded="false"
@@ -66,17 +75,42 @@ import { navLinks } from "../data/navLinks";
 
       <!-- Desktop buttons only -->
       <div class="flex items-center gap-6 max-lg:hidden">
+          <!-- Theme toggle -->
+          <button
+            id="rt-theme-toggle"
+            type="button"
+            class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-(--rt-muted) hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60"
+            aria-label="Comută tema (dark/light)"
+            aria-pressed="false"
+          >
+            <!-- Moon -->
+            <svg id="rt-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+              <path d="M560-80q-82 0-155-31.5t-127.5-86Q223-252 191.5-325T160-480q0-83 31.5-155.5t86-127Q332-817 405-848.5T560-880q54 0 105 14t95 40q-91 53-145.5 143.5T560-480q0 112 54.5 202.5T760-134q-44 26-95 40T560-80Zm0-80h21q10 0 19-2-57-66-88.5-147.5T480-480q0-89 31.5-170.5T600-798q-9-2-19-2h-21q-133 0-226.5 93.5T240-480q0 133 93.5 226.5T560-160Zm-80-320Z"/>
+            </svg>
+
+            <!-- Sun -->
+            <svg id="rt-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="hidden h-6 w-6" fill="currentColor" aria-hidden="true">
+              <path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/>
+            </svg>
+          </button>
         <a
-          class="inline-flex justify-center rounded-lg border py-2 px-3 text-base transition-colors border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100 active:text-gray-700/80"
+          class="inline-flex justify-center rounded-lg border py-2 px-3 text-base transition-colors border-(--rt-border) text-(--rt-muted) hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 active:text-(--rt-muted)/80"
           href="/contact"
         >
           Contact
         </a>
 
         <a
-          class="inline-flex justify-center rounded-lg py-2 px-3 text-base transition-colors bg-gray-800 text-white hover:bg-gray-700 active:bg-gray-800 active:text-white/80"
+          class="inline-flex justify-center rounded-lg py-2 px-3 text-base transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 dark:hover:bg-gray-700 active:text-white/80 border-(--rt-border) hover:border-gray-400 border"
           href="/programare"
-        >
+        >            <img
+              src="/call.svg"
+              alt=""
+              aria-hidden="true"
+              class="shrink-0 mr-2 h-6 w-6"
+              loading="lazy"
+              decoding="async"
+            />
           Programează-te
         </a>
       </div>
@@ -85,13 +119,13 @@ import { navLinks } from "../data/navLinks";
 
   <!-- Mobile menu (hidden on desktop) -->
   <div id="rt-mobile-menu" class="hidden lg:hidden sm:px-6">
-    <div class="border-x border-gray-200 bg-white p-4 shadow-sm">
+    <div class="border-x border-(--rt-border) bg-(--rt-surface) p-4 shadow-sm">
       <div class="flex flex-col gap-1">
         {navLinks.map((item) => (
           <a
             href={item.href}
             data-rt-mobile-link
-            class="rounded-lg px-3 py-2 text-base text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            class="rounded-lg px-3 py-2 text-base text-(--rt-muted) hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             {item.label}
           </a>
@@ -100,13 +134,13 @@ import { navLinks } from "../data/navLinks";
 
       <div class="mt-4 flex gap-3">
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg border py-2 px-3 text-base transition-colors border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100"
+          class="inline-flex w-1/2 justify-center rounded-lg border py-2 px-3 text-base transition-colors border-(--rt-border) text-(--rt-muted) hover:border-gray-400 dark:text-white hover:bg-gray-100 active:bg-gray-100 dark:hover:bg-gray-700"
           href="/contact"
         >
           Contact
         </a>
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold transition-colors bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80"
+          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold transition-colors bg-gray-800  text-white hover:bg-gray-900 active:bg-gray-800 dark:hover:bg-gray-700 active:text-white/80 border-(--rt-border) hover:border-gray-400 border"
           href="/programare"
         >
           Programează-te
@@ -116,7 +150,11 @@ import { navLinks } from "../data/navLinks";
   </div>
 
  <script>
-    // @ts-nocheck
+  // @ts-nocheck
+  const themeBtn = document.getElementById("rt-theme-toggle");
+  const iconMoon = document.getElementById("rt-icon-moon");
+  const iconSun  = document.getElementById("rt-icon-sun");
+  const key = "rt-theme";
   // ===== Mobile menu =====
   const btn = document.getElementById("rt-menu-btn");
   const menu = document.getElementById("rt-mobile-menu");
@@ -174,7 +212,7 @@ import { navLinks } from "../data/navLinks";
     const items = desktopNav ? desktopNav.querySelectorAll("[data-rt-nav-item]") : [];
 
     const pill = document.createElement("span");
-    pill.className = "absolute inset-0 rounded-lg bg-gray-100 pointer-events-none";
+    pill.className = "absolute inset-0 rounded-lg bg-gray-100 dark:bg-gray-700 pointer-events-none";
     pill.style.opacity = "0";
     pill.style.transform = "none";
     pill.style.transformOrigin = "50% 50% 0px";
@@ -239,5 +277,41 @@ import { navLinks } from "../data/navLinks";
       });
     }
   }
+
+ function setIcons(isDark) {
+    if (!iconMoon || !iconSun || !themeBtn) return;
+    iconMoon.classList.toggle("hidden", isDark);
+    iconSun.classList.toggle("hidden", !isDark);
+    themeBtn.setAttribute("aria-pressed", String(isDark));
+  }
+
+  function setTheme(isDark, persist = true) {
+    document.documentElement.classList.toggle("dark", isDark);
+    setIcons(isDark);
+    if (persist) {
+      try { localStorage.setItem(key, isDark ? "dark" : "light"); } catch {}
+    }
+  }
+
+  // init icons (după ce head script a setat clasa)
+  setIcons(document.documentElement.classList.contains("dark"));
+
+  // click toggle
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(!isDark, true);
+    });
+  }
+
+  // dacă userul NU a ales manual, urmărește schimbarea sistemului
+  try {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    mq.addEventListener("change", (e) => {
+      const stored = localStorage.getItem(key);
+      if (stored) return; // respectăm alegerea userului
+      setTheme(e.matches, false);
+    });
+  } catch {}
 </script>
 </nav>

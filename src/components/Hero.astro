@@ -3,8 +3,11 @@
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
         
       <!-- LEFT (nu atingem) -->
-      <div class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
+      <div class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 lg:translate-y-10 xl:col-span-6">
+
+
         <h1 class="text-4xl font-medium tracking-tight text-gray-900">Dr. Cirimpei Tatiana</h1>
+        <h1 class="text-2xl font-medium tracking-tight text-gray-800">Medic radioterapeut</h1>
         <p class="mt-6 text-lg text-gray-600">
           Consultații medicale și tratamente de radioterapie personalizate, realizate conform celor mai noi ghiduri și protocoale internaționale, susținute de expertiză acumulată în Franța și competență în tehnici avansate precum radioterapia stereotactică.
         </p>
@@ -15,11 +18,19 @@
             class="inline-flex justify-center p-3 text-base rounded-lg transition-colors bg-gray-800 text-white hover:bg-gray-900"
             href="#"
           >
+          <img
+              src="/form.svg"
+              alt=""
+              aria-hidden="true"
+              class="shrink-0 mr-2 h-6 w-6"
+              loading="lazy"
+              decoding="async"
+            />
            <span>Formular de contact</span>
           </a>
 
           <a
-            class="inline-flex justify-center rounded-lg border p-3 text-base transition-colors border-gray-300 text-gray-700 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80"
+            class="inline-flex justify-center rounded-lg border p-3 text-base transition-colors border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80"
             href="#"
           >
             <span>Servicii medicale</span>
@@ -70,46 +81,75 @@
 
         <div class="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
           <div class="relative aspect-366/729 mx-auto max-w-[366px]">
-            <div class="absolute inset-y-[calc(1/729*100%)] right-[calc(5/729*100%)] left-[calc(7/729*100%)] rounded-[calc(58/366*100%)/calc(58/729*100%)] shadow-2xl"></div>
 
             <!-- Imaginea ta (screen) – decupată exact în “zona ecranului” -->
             <div
               class="absolute top-[calc(23/729*100%)] left-[calc(23/366*100%)] h-[calc(686/729*100%)] w-[calc(318/366*100%)] overflow-hidden"
             >
               <img
-                src="/hero3.png"
+                src="/hero3-Photoroom.png"
                 alt=""
                 decoding="async"
                 loading="lazy"
                 class="h-full w-full object-cover"
               />
             </div>
-
-            <!-- Frame-ul tău SVG peste (înlocuiește telefonul din model) -->
-            <img
-              src="/svgviewer-output.svg"
-              alt=""
-              decoding="async"
-              loading="lazy"
-              class="pointer-events-none absolute inset-0 h-full w-full"
-            />
           </div>
         </div>
       </div>
 
       <!-- As featured in (identic; poți lăsa așa până ai assets) -->
-      <div class="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-        <p class="text-center text-sm font-semibold text-gray-900 lg:text-left">Standarde și afilieri profesionale</p>
-        <ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start">
-          <li class="flex"><img alt="Estro" loading="lazy" width="83" height="32" decoding="async" class="h-8" src="/estro.svg" /></li>
-          <li class="flex"><img alt="TechCrunch" loading="lazy" width="181" height="32" decoding="async" class="h-8" src="/techcrunch.svg" /></li>
-          <li class="flex"><img alt="Wired" loading="lazy" width="121" height="32" decoding="async" class="h-8" src="/wired.svg" /></li>
-          <li class="flex hidden xl:block"><img alt="CNN" loading="lazy" width="68" height="32" decoding="async" class="h-8" src="/cnn.svg" /></li>
-          <li class="flex"><img alt="BBC" loading="lazy" width="83" height="32" decoding="async" class="h-8" src="/bbc.svg" /></li>
-          <li class="flex"><img alt="CBS" loading="lazy" width="101" height="32" decoding="async" class="h-8" src="/cbs.svg" /></li>
-          <li class="flex"><img alt="Fast Company" loading="lazy" width="124" height="32" decoding="async" class="h-8" src="/fast-company.svg" /></li>
-          <li class="flex hidden xl:block"><img alt="HuffPost" loading="lazy" width="142" height="32" decoding="async" class="h-8" src="/huffpost.svg" /></li>
-        </ul>
+      <div class="relative lg:col-span-7 xl:col-span-6 lg:translate-y-12">
+        <p class="text-center text-sm font-semibold text-gray-900 lg:text-left">Afilieri profesionale</p>
+          <ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start items-center">
+            <li class="flex">
+              <a href="https://www.estro.org/" target="_blank" rel="noopener noreferrer" title="European Society for Radiotherapy and Oncology" class="cursor-default">
+                <img alt="Estro" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/estro.svg" />
+              </a>
+            </li>
+
+            <li class="flex">
+              <a href="https://www.eso.net/" target="_blank" rel="noopener noreferrer" title="European School of Oncology" class="cursor-default">
+                <img alt="Eso" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/eso3.svg" />
+              </a>
+            </li>
+
+            <li class="flex hidden xl:block">
+              <a href="https://srrom.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Română de Radioterapie și Oncologie Medicală" class="cursor-default">
+                <img alt="Srrom" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/srrom2.svg" />
+              </a>
+            </li>
+
+            <li class="flex">
+              <a href="https://snomr.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Națională de Oncologie Medicală din România" class="cursor-default">
+                <img alt="Snomr" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/snomr2_clean.svg" />
+              </a>
+            </li>
+
+            <li class="flex">
+              <a href="https://www.isrsy.org/" target="_blank" rel="noopener noreferrer" title="International Stereotactic Radiosurgery Society" class="cursor-default">
+                <img alt="Isrs" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/isrs2.svg" />
+              </a>
+            </li>
+
+            <li class="flex">
+              <a href="https://www.medisprof.ro/" target="_blank" rel="noopener noreferrer" title="Medisprof Cancer Center" class="cursor-default">
+                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/medisprof.png" />
+              </a>
+            </li>
+
+            <li class="flex hidden xl:block">
+              <a href="https://decizieoncologica.ro/" target="_blank" rel="noopener noreferrer" title="Decizie Oncologică" class="cursor-default">
+                <img alt="Decizie Oncologică" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/decizieonco.svg" />
+              </a>
+            </li>
+
+            <li class="flex hidden xl:block">
+              <a href="https://medic.chat/" target="_blank" rel="noopener noreferrer" title="Medic Chat" class="cursor-default">
+                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/medicchat.png" />
+              </a>
+            </li>
+          </ul>
       </div>
     </div>
   </div>

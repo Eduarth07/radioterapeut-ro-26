@@ -18,18 +18,29 @@
   --rt-accent-500: #14b8a6;
 }
 
+@variant dark (&:where(.dark, .dark *));
 /* (opțional, pregătit pentru mai târziu) */
 html.dark{
   color-scheme: dark;
 
+  /* DARK (override) */
   --rt-surface: #0b1220;
   --rt-surface-2: #0f1b2d;
   --rt-ink: #e5e7eb;
   --rt-muted: #a1a1aa;
   --rt-border: #24324a;
-}
 
-html{ color-scheme: light; }
+}
+.rt-theme-img-dark { display: none; }
+html.dark .rt-theme-img-light { display: none; }
+html.dark .rt-theme-img-dark { display: block; }
+
+html{   /* LIGHT (default) */
+  --rt-surface: #ffffff;
+  --rt-surface-2: #f3f4f6;
+  --rt-ink: #111827;
+  --rt-muted: #4b5563;
+  --rt-border: #e5e7eb; }
 
 /* 2) Theme variables (Tailwind v4) — astea generează clasele utilitare (bg-*, text-*, etc.) */
 @theme{

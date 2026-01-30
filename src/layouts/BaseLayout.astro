@@ -29,6 +29,19 @@ const {
 
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
+
+    <script>
+      (() => {
+        try {
+          const key = "rt-theme";
+          const stored = localStorage.getItem(key); // "dark" | "light" | null
+          const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const isDark = stored ? stored === "dark" : systemDark;
+          document.documentElement.classList.toggle("dark", isDark);
+        } catch {}
+      })();
+    </script>
+
   </head>
 
   <body class="min-h-screen antialiased">
