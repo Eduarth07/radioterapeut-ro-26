@@ -4,14 +4,14 @@ import { navLinks } from "../data/navLinks";
 
 <nav
   aria-label="Navigație principală"
-  class="sticky top-0 z-50 backdrop-blur-md bg-(--rt-surface)"
+  class="sticky top-0 z-50 border-b border-(--rt-border) bg-(--rt-surface)/90 backdrop-blur-md"
 >
-  <div class="mx-auto max-w-7xl xl:max-w-screen-2xl px-2 sm:px-6 lg:px-8 relative flex justify-between py-4">
+  <div class="mx-auto max-w-7xl xl:max-w-screen-2xl px-3 sm:px-6 lg:px-8 relative flex justify-between py-3 md:py-4">
     <!-- LEFT -->
-    <div class="relative z-10 flex items-center gap-16">
+    <div class="relative z-10 flex items-center gap-6 lg:gap-14">
       <!-- Brand -->
         <!-- Logo simplu (în snippet e SVG; aici e echivalent vizual, curat) -->
-        <a aria-label="Home" href="/" class="flex items-center gap-3">
+        <a aria-label="Acasă" href="/" class="flex items-center gap-3">
             <img
               src="/logo_white.png"
               alt="Radioterapeut.ro"
@@ -30,30 +30,45 @@ import { navLinks } from "../data/navLinks";
               decoding="async"
               loading="eager"
             />
-          <div class="leading-tight">
+          <div class="hidden leading-tight sm:block">
             <div class="text-base font-semibold text-(--rt-ink)">Dr. Cirimpei Tatiana</div>
             <div class="text-sm text-(--rt-muted)">Radioterapie</div>
           </div>
         </a>
 
       <!-- Desktop links -->
-      <div id="rt-nav-desktop" class="hidden lg:flex lg:gap-10">
+      <div id="rt-nav-desktop" class="hidden lg:flex lg:gap-8 xl:gap-10">
         {navLinks.map((item) => (
             <a
             href={item.href}
             data-rt-nav-item
             class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-(--rt-muted) transition-colors duration-150 hover:text-gray-900 dark:hover:text-white"
             >
-            <span class="relative z-10 text-base">{item.label}</span>
+            <span class="relative z-10 text-[0.98rem]">{item.label}</span>
             </a>
         ))}
       </div>
     </div>
 
     <!-- RIGHT -->
-    <div class="flex items-center gap-6">
-      <!-- Mobile: hamburger only -->
-      <div class="lg:hidden">
+    <div class="flex items-center gap-4 sm:gap-6">
+      <!-- Mobile actions: theme toggle + hamburger -->
+      <div class="flex items-center gap-2 lg:hidden">
+        <button
+          id="rt-theme-toggle-mobile"
+          type="button"
+          class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-(--rt-muted) hover:bg-gray-100 hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:hover:bg-gray-700"
+          aria-label="Comută tema (dark/light)"
+          aria-pressed="false"
+        >
+          <svg id="rt-icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="h-6 w-6" fill="currentColor" aria-hidden="true">
+            <path d="M560-80q-82 0-155-31.5t-127.5-86Q223-252 191.5-325T160-480q0-83 31.5-155.5t86-127Q332-817 405-848.5T560-880q54 0 105 14t95 40q-91 53-145.5 143.5T560-480q0 112 54.5 202.5T760-134q-44 26-95 40T560-80Zm0-80h21q10 0 19-2-57-66-88.5-147.5T480-480q0-89 31.5-170.5T600-798q-9-2-19-2h-21q-133 0-226.5 93.5T240-480q0 133 93.5 226.5T560-160Zm-80-320Z"/>
+          </svg>
+          <svg id="rt-icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="hidden h-6 w-6" fill="currentColor" aria-hidden="true">
+            <path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/>
+          </svg>
+        </button>
+
         <button
           id="rt-menu-btn"
           class="cursor-pointer relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:stroke-white dark:hover:bg-gray-600 dark:hover:stroke-gray-100"
@@ -151,9 +166,19 @@ import { navLinks } from "../data/navLinks";
 
  <script>
   // @ts-nocheck
-  const themeBtn = document.getElementById("rt-theme-toggle");
-  const iconMoon = document.getElementById("rt-icon-moon");
-  const iconSun  = document.getElementById("rt-icon-sun");
+  const themeBtns = [
+    document.getElementById("rt-theme-toggle"),
+    document.getElementById("rt-theme-toggle-mobile"),
+  ].filter(Boolean);
+  const moonIcons = [
+    document.getElementById("rt-icon-moon"),
+    document.getElementById("rt-icon-moon-mobile"),
+  ].filter(Boolean);
+  const sunIcons = [
+    document.getElementById("rt-icon-sun"),
+    document.getElementById("rt-icon-sun-mobile"),
+  ].filter(Boolean);
+
   const key = "rt-theme";
   // ===== Mobile menu =====
   const btn = document.getElementById("rt-menu-btn");
@@ -163,8 +188,10 @@ import { navLinks } from "../data/navLinks";
     // Toggle open/close
     btn.addEventListener("click", () => {
       const isOpen = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!isOpen));
-      menu.classList.toggle("hidden");
+      const nextIsOpen = !isOpen;
+      btn.setAttribute("aria-expanded", String(nextIsOpen));
+      menu.classList.toggle("hidden", !nextIsOpen);
+      document.body.classList.toggle("overflow-hidden", nextIsOpen);
     });
 
     // Închide la click pe link din meniu
@@ -172,6 +199,7 @@ import { navLinks } from "../data/navLinks";
       a.addEventListener("click", () => {
         btn.setAttribute("aria-expanded", "false");
         menu.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
       });
     });
 
@@ -180,6 +208,7 @@ import { navLinks } from "../data/navLinks";
       if (e.key === "Escape" && !menu.classList.contains("hidden")) {
         btn.setAttribute("aria-expanded", "false");
         menu.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
         btn.focus();
       }
     });
@@ -196,6 +225,16 @@ import { navLinks } from "../data/navLinks";
 
       btn.setAttribute("aria-expanded", "false");
       menu.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+    });
+
+    // dacă userul redimensionează spre desktop, resetăm starea meniului mobil
+    window.addEventListener("resize", () => {
+      const isDesktopNow = window.matchMedia("(min-width: 1024px)").matches;
+      if (!isDesktopNow) return;
+      btn.setAttribute("aria-expanded", "false");
+      menu.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
     });
   }
 
@@ -279,10 +318,11 @@ import { navLinks } from "../data/navLinks";
   }
 
  function setIcons(isDark) {
-    if (!iconMoon || !iconSun || !themeBtn) return;
-    iconMoon.classList.toggle("hidden", isDark);
-    iconSun.classList.toggle("hidden", !isDark);
-    themeBtn.setAttribute("aria-pressed", String(isDark));
+    if (!moonIcons.length || !sunIcons.length || !themeBtns.length) return;
+
+    moonIcons.forEach((icon) => icon.classList.toggle("hidden", isDark));
+    sunIcons.forEach((icon) => icon.classList.toggle("hidden", !isDark));
+    themeBtns.forEach((btn) => btn.setAttribute("aria-pressed", String(isDark)));
   }
 
   function setTheme(isDark, persist = true) {
@@ -297,12 +337,12 @@ import { navLinks } from "../data/navLinks";
   setIcons(document.documentElement.classList.contains("dark"));
 
   // click toggle
-  if (themeBtn) {
+   themeBtns.forEach((themeBtn) => {
     themeBtn.addEventListener("click", () => {
       const isDark = document.documentElement.classList.contains("dark");
       setTheme(!isDark, true);
     });
-  }
+ });
 
   // dacă userul NU a ales manual, urmărește schimbarea sistemului
   try {

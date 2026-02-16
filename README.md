@@ -1,46 +1,44 @@
-# Astro Starter Kit: Basics
+# radioterapeut-ro-26
 
-```sh
-npm create astro@latest -- --template basics
-```
+Scopul proiectului: refacerea treptată a website-ului actual într-o variantă modernă, optimizată, cu design inspirat din componentele `pocket.tailwindui.com`, adaptate pentru nevoile reale ale site-ului.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-## 🚀 Project Structure
+- Astro 5
+- Tailwind CSS v4
+- Font: Inter Variable
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
+## Structură curentă
 
 All commands are run from the root of the project, from a terminal:
+- `src/layouts/BaseLayout.astro` – document shell (head + meta + theme bootstrap)
+- `src/pages/index.astro` – compunerea paginii principale
+- `src/components/Header.astro` – navbar + mobile menu + dark/light toggle
+- `src/components/Hero.astro` – secțiune hero
+- `src/components/Servicii.astro` – secțiune servicii cu toggle oncologic/non-oncologic
+- `src/components/Despre.astro` – secțiune „Despre mine”
+- `src/styles/global.css` – tokens semantici + dark mode + utilitare custom
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Comenzi utile
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
+
+## Status etapă
 
 ## 👀 Want to learn more?
+Implementate în homepage:
+- ✅ Navbar
+- ✅ Hero
+- ✅ Servicii
+- ✅ Despre (în lucru, versiune inițială)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Următoarele etape:
+1. Stabilizare fundație tehnică (layout, assets, documentație)
+2. Polish vizual + consistență între secțiuni
+3. Pagini dedicate (`/articole`, `/contact`, `/programare`)
+4. SEO + optimizare performanță
