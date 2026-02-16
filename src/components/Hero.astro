@@ -43,7 +43,7 @@
       <!-- RIGHT (păstrăm cercurile, schimbăm frame + imagine) -->
       <div class="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
         <div
-          class="absolute top-4 left-1/2 h-[900px] w-[900px] xl:h-[900px] xl:w-[900px] 3xl:h-[1026px] 3xl:w-[1026px] lg:translate-y-10 3xl:translate-y-0 -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0"
+          class="absolute top-4 left-1/2 h-[900px] w-[900px] xl:h-[900px] xl:w-[900px] 3xl:h-[1026px] 3xl:w-[1026px] lg:translate-y-8 3xl:translate-y-0 -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0"
         >
           <svg viewBox="0 0 1026 1026" fill="none" aria-hidden="true" class="absolute inset-0 h-full w-full animate-spin-slow">
             <path
@@ -92,8 +92,9 @@
                 src="/hero3-Photoroom.png"
                 alt=""
                 decoding="async"
-                loading="lazy"
-                class="h-full w-full object-cover dark:brightness-[0.98] dark:contrast-[1.05] dark:saturate-[1.05]"
+                loading="eager"
+                fetchpriority="high"
+                class="h-full w-full object-cover dark:brightness-[0.80] dark:contrast-[1.1] dark:saturate-[0.92] transition-[filter] duration-300"
               />
             </div>
           </div>
@@ -136,7 +137,7 @@
 
             <li class="flex">
               <a href="https://www.medisprof.ro/" target="_blank" rel="noopener noreferrer" title="Medisprof Cancer Center" class="cursor-default">
-                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-200 dark:contrast-150" src="/medisprof.png" />
+                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/medisprof.png" />
               </a>
             </li>
 
@@ -148,7 +149,7 @@
 
             <li class="flex hidden xl:block">
               <a href="https://medic.chat/" target="_blank" rel="noopener noreferrer" title="Medic Chat" class="cursor-default">
-                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-200 dark:contrast-150" src="/medicchat.png" />
+                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-70" src="/medicchat.png" />
               </a>
             </li>
           </ul>
