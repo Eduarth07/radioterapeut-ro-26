@@ -40,7 +40,9 @@ html{   /* LIGHT (default) */
   --rt-surface-2: #f3f4f6;
   --rt-ink: #111827;
   --rt-muted: #4b5563;
-  --rt-border: #e5e7eb; }
+  --rt-border: #e5e7eb; 
+
+}
 
 /* 2) Theme variables (Tailwind v4) — astea generează clasele utilitare (bg-*, text-*, etc.) */
 @theme{
@@ -56,12 +58,21 @@ html{   /* LIGHT (default) */
 
   --color-accent-500: var(--rt-accent-500);
 
+  --color-1: #1F1F1F;
+  --color-2: #CCC;
+  --color-3: #BF9079;
+  --color-4: #C3927B;
+  --color-5: #83C4F2;
+
+
+
   /* mici “building blocks” pentru un look modern, consistent */
   --radius-card: 1rem;
   --shadow-card: 0 18px 60px -30px rgba(15, 23, 42, .35);
 
   /* dacă vrei clasă separată pentru font (altfel rămâi pe font-sans default) */
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --breakpoint-3xl: 120rem;
 }
 
 /* 3) Base styles */
@@ -113,5 +124,5 @@ html{   /* LIGHT (default) */
   .animate-spin-reverse-slower {
     will-change: transform;
   }
-
+  
 }

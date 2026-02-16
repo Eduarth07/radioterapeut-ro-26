@@ -1,0 +1,186 @@
+---
+const memberships =
+  'Membru activ al Societății Internaționale de Radiochirurgie Stereotactică (ISRS), Societății Europene de Radioterapie și Oncologie (ESTRO), Societății Române de Radioterapie și Oncologie Medicală (SRROM), Societății Naționale de Oncologie Medicală din România (SNOMR), Școlii Europeane de Oncologie (ESO).';
+
+const experience = [
+  {
+    title: "Medic specialist - Dep. Radioterapie",
+    org: "Medisprof Cancer Center, Cluj-Napoca",
+    href: "https://medisprof.ro/",
+  },
+  {
+    title: "Medic rezident - Secția de Radioterapie",
+    org: 'Institutul oncologic "Prof. Dr. Ion Chiricuta", Cluj-Napoca',
+    href: "https://iocn.ro/",
+  },
+  {
+    title: "Medic rezident - Dep. Radioterapie",
+    note: "(Stagiu de pregătire în Franța)",
+    org: "Institutul de Cancer Sainte-Catherine, Avignon, Franța",
+    href: "https://www.icap84.org/",
+  },
+  {
+    title: "Stagiar - Dep. Radiologie intervențională, Radiologie și imagistică",
+    note: "(Stagiu de pregătire în Germania - ERASMUS)",
+    org: "Vinzenz von Paul Kiniken gGmbH Marienhospital, Stuttgart, Germania",
+    href: "https://www.marienhospital-stuttgart.de/ueber-uns/vinzenz-von-paul-kliniken/",
+  },
+];
+
+const volunteering = [
+  {
+    title: "Medic rezident - Dep. Radioterapie",
+    org: "Medisprof Cancer Center, Cluj-Napoca",
+    href: "https://medisprof.ro/",
+  },
+  {
+    title: "Paramedic voluntar - SMURD",
+    org: "Inspectoratul pentru Situații de Urgență „Avram Iancu”, Cluj-Napoca",
+    href: "https://smurd-cluj.ro/",
+  },
+  {
+    title: 'Voluntar - Proiectul "Sport pentru Autism" și în Proiectul „Breaking the Silence”',
+    org: "Organizația Studenților Mediciniști, Cluj-Napoca",
+    href: "https://www.osmcluj.ro/",
+  },
+];
+
+const skills = [
+  { title: "Certificare în domeniul radioterapiei stereotactice", org: "CONFER, Iași" },
+  { title: "Competențe de prim ajutor avansat", org: "SMURD, Cluj-Napoca" },
+  { title: "Limbi străine vorbite", org: "Engleză, Rusă, Franceză, Germană" },
+];
+---
+
+<section
+  id="despre"
+  aria-label="Despre mine"
+  class="relative scroll-mt-16 py-16 sm:py-20 lg:py-24"
+>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto text-center">
+      <h2 id="servicii-title" class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white dark:text-white lg:pb-2">
+        Despre mine
+      </h2>
+    </div>
+
+    <!-- Row 1: imagine stânga (desktop) + text -->
+    <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:items-stretch">
+      <!-- Image (desktop only, ca în site-ul vechi) -->
+      <div class="hidden lg:col-span-4 lg:block">
+        <div class="max-h-[540px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
+          <img
+            src="/about-1-light.webp"
+            alt="Poza 1 Cirimpei Tatiana"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="lg:col-span-8">
+        <h3 class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white">
+          Cirimpei Tatiana
+        </h3>
+        <p class="mt-1 text-xl font-medium text-gray-700 dark:text-gray-200">
+          Medic radioterapeut
+        </p>
+
+        <p class="mt-4 text-base leading-relaxed text-gray-600 dark:text-gray-300">
+          {memberships}
+        </p>
+
+        <div class="mt-8">
+          <h4 class="text-xl font-medium text-gray-900 dark:text-white">
+            Experiență profesională
+          </h4>
+
+          <div class="mt-4 space-y-4 border-l border-gray-200 pl-4 dark:border-white/10">
+            {experience.map((item) => (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block border-l-4 border-transparent pl-3 transition-colors hover:border-cyan-500"
+              >
+                <div class="text-base text-gray-900 transition-colors group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300">
+                  {item.title}
+                </div>
+
+                {item.note && (
+                  <div class="text-sm text-gray-500 dark:text-gray-400">
+                    <em>{item.note}</em>
+                  </div>
+                )}
+
+                <div class="text-base text-gray-700 dark:text-gray-200">
+                  <em>{item.org}</em>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: text (voluntariat + competențe) + imagine (dreapta pe desktop, sus pe mobile) -->
+    <div class="mt-14 grid gap-10 lg:grid-cols-12 lg:items-start">
+      <!-- Image: order-first on mobile, last on desktop (ca în vechi) -->
+      <div class="order-first lg:order-last lg:col-span-6">
+        <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
+          <img
+            src="/about-2-light.webp"
+            alt="Poza 2 Cirimpei Tatiana"
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-contain object-right"
+          />
+        </div>
+      </div>
+
+      <!-- Lists -->
+      <div class="lg:col-span-6">
+        <h4 class="text-xl font-medium text-gray-900 dark:text-white">
+          Voluntariat
+        </h4>
+
+        <div class="mt-4 space-y-4 border-l border-gray-200 pl-4 dark:border-white/10">
+          {volunteering.map((item) => (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block border-l-4 border-transparent pl-3 transition-colors hover:border-cyan-500"
+            >
+              <div class="text-base text-gray-900 transition-colors group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300">
+                {item.title}
+              </div>
+              <div class="text-base text-gray-700 dark:text-gray-200">
+                <em>{item.org}</em>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <h4 class="mt-10 text-xl font-medium text-gray-900 dark:text-white">
+          Certificări și competențe
+        </h4>
+
+        <div class="mt-4 space-y-4 border-l border-gray-200 pl-4 dark:border-white/10">
+          {skills.map((item) => (
+            <div class="border-l-4 border-transparent pl-3">
+              <div class="text-base text-gray-900 dark:text-white">{item.title}</div>
+              <div class="text-base text-gray-700 dark:text-gray-200">
+                <em>{item.org}</em>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

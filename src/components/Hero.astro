@@ -1,21 +1,23 @@
-<div class="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
+<div class="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36
+            lg:[@media(max-height:820px)]:pt-14
+            lg:[@media(max-height:820px)]:pb-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
         
       <!-- LEFT (nu atingem) -->
-      <div class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 lg:translate-y-10 xl:col-span-6">
+      <div class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 lg:translate-y-14 xl:col-span-6">
 
 
-        <h1 class="text-4xl font-medium tracking-tight text-gray-900">Dr. Cirimpei Tatiana</h1>
-        <h1 class="text-2xl font-medium tracking-tight text-gray-800">Medic radioterapeut</h1>
-        <p class="mt-6 text-lg text-gray-600">
+        <h1 class="text-4xl font-medium tracking-tight text-gray-900 dark:text-white">Dr. Cirimpei Tatiana</h1>
+        <h1 class="text-2xl font-medium tracking-tight text-gray-800 dark:text-gray-400">Medic radioterapeut</h1>
+        <p class="mt-6 text-base xl:text-lg text-(--rt-muted)">
           Consultații medicale și tratamente de radioterapie personalizate, realizate conform celor mai noi ghiduri și protocoale internaționale, susținute de expertiză acumulată în Franța și competență în tehnici avansate precum radioterapia stereotactică.
         </p>
 
         <div class="mt-8 flex flex-wrap gap-x-6 gap-y-4">
           <a
             aria-label="Download on the App Store"
-            class="inline-flex justify-center p-3 text-base rounded-lg transition-colors bg-gray-800 text-white hover:bg-gray-900"
+            class="inline-flex justify-center p-3 text-base rounded-lg bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 dark:hover:bg-gray-700 active:text-white/80 border-(--rt-border) hover:border-gray-400 border"
             href="#"
           >
           <img
@@ -30,8 +32,8 @@
           </a>
 
           <a
-            class="inline-flex justify-center rounded-lg border p-3 text-base transition-colors border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400 active:bg-gray-100 active:text-gray-700/80"
-            href="#"
+            class="inline-flex justify-center rounded-lg border p-3 text-base border-(--rt-border) text-(--rt-muted) hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 active:text-(--rt-muted)/80"
+            href="#servicii"
           >
             <span>Servicii medicale</span>
           </a>
@@ -41,19 +43,19 @@
       <!-- RIGHT (păstrăm cercurile, schimbăm frame + imagine) -->
       <div class="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
         <div
-          class="absolute top-4 left-1/2 h-[1026px] w-[1026px] -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0"
+          class="absolute top-4 left-1/2 h-[900px] w-[900px] xl:h-[900px] xl:w-[900px] 3xl:h-[1026px] 3xl:w-[1026px] lg:translate-y-10 3xl:translate-y-0 -translate-x-1/3 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/70 sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0"
         >
           <svg viewBox="0 0 1026 1026" fill="none" aria-hidden="true" class="absolute inset-0 h-full w-full animate-spin-slow">
             <path
               d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z"
-              stroke="#D4D4D4"
-              stroke-opacity="0.7"
+                stroke="currentColor"
+                class="text-gray-300/70 dark:text-white/40"
             ></path>
             <path d="M513 1025C230.23 1025 1 795.77 1 513" stroke="url(#hero-gradient-1)" stroke-linecap="round"></path>
             <defs>
               <linearGradient id="hero-gradient-1" x1="1" y1="513" x2="1" y2="1025" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#06b6d4"></stop>
-                <stop offset="1" stop-color="#06b6d4" stop-opacity="0"></stop>
+                <stop stop-color="currentColor" class="text-cyan-500 dark:text-cyan-300" />
+                <stop offset="1" stop-color="currentColor" stop-opacity="0" class="text-cyan-500 dark:text-sky-400" />
               </linearGradient>
             </defs>
           </svg>
@@ -66,20 +68,20 @@
           >
             <path
               d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z"
-              stroke="#D4D4D4"
-              stroke-opacity="0.7"
+                stroke="currentColor"
+                class="text-gray-300/70 dark:text-white/40"
             ></path>
             <path d="M913 513c0 220.914-179.086 400-400 400" stroke="url(#hero-gradient-2)" stroke-linecap="round"></path>
             <defs>
               <linearGradient id="hero-gradient-2" x1="913" y1="513" x2="913" y2="913" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#06b6d4"></stop>
-                <stop offset="1" stop-color="#06b6d4" stop-opacity="0"></stop>
+                <stop stop-color="currentColor" class="text-cyan-500 dark:text-cyan-300" />
+                <stop offset="1" stop-color="currentColor" stop-opacity="0" class="text-cyan-500 dark:text-sky-400" />
               </linearGradient>
             </defs>
           </svg>
         </div>
 
-        <div class="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
+<div class="-mx-4 h-[448px] mask-[linear-gradient(to_bottom,white_60%,transparent)] px-9 sm:mx-0 lg:absolute lg:-inset-x-10 lg:-top-10 lg:-bottom-20 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
           <div class="relative aspect-366/729 mx-auto max-w-[366px]">
 
             <!-- Imaginea ta (screen) – decupată exact în “zona ecranului” -->
@@ -91,7 +93,7 @@
                 alt=""
                 decoding="async"
                 loading="lazy"
-                class="h-full w-full object-cover"
+                class="h-full w-full object-cover dark:brightness-[0.98] dark:contrast-[1.05] dark:saturate-[1.05]"
               />
             </div>
           </div>
@@ -99,54 +101,54 @@
       </div>
 
       <!-- As featured in (identic; poți lăsa așa până ai assets) -->
-      <div class="relative lg:col-span-7 xl:col-span-6 lg:translate-y-12">
-        <p class="text-center text-sm font-semibold text-gray-900 lg:text-left">Afilieri profesionale</p>
+      <div class="relative lg:col-span-7 xl:col-span-6 lg:translate-y-18">
+        <p class="text-center text-base font-semibold text-(--rt-muted) lg:text-left">Afilieri profesionale</p>
           <ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start items-center">
             <li class="flex">
               <a href="https://www.estro.org/" target="_blank" rel="noopener noreferrer" title="European Society for Radiotherapy and Oncology" class="cursor-default">
-                <img alt="Estro" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/estro.svg" />
+                <img alt="Estro" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-50" src="/estro.svg" />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.eso.net/" target="_blank" rel="noopener noreferrer" title="European School of Oncology" class="cursor-default">
-                <img alt="Eso" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/eso3.svg" />
+                <img alt="Eso" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/eso3.svg" />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://srrom.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Română de Radioterapie și Oncologie Medicală" class="cursor-default">
-                <img alt="Srrom" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/srrom2.svg" />
+                <img alt="Srrom" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-0" src="/srrom2.svg" />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://snomr.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Națională de Oncologie Medicală din România" class="cursor-default">
-                <img alt="Snomr" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/snomr2_clean.svg" />
+                <img alt="Snomr" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/snomr2_clean.svg" />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.isrsy.org/" target="_blank" rel="noopener noreferrer" title="International Stereotactic Radiosurgery Society" class="cursor-default">
-                <img alt="Isrs" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/isrs2.svg" />
+                <img alt="Isrs" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/isrs2.svg" />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.medisprof.ro/" target="_blank" rel="noopener noreferrer" title="Medisprof Cancer Center" class="cursor-default">
-                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/medisprof.png" />
+                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-200 dark:contrast-150" src="/medisprof.png" />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://decizieoncologica.ro/" target="_blank" rel="noopener noreferrer" title="Decizie Oncologică" class="cursor-default">
-                <img alt="Decizie Oncologică" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/decizieonco.svg" />
+                <img alt="Decizie Oncologică" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/decizieonco.svg" />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://medic.chat/" target="_blank" rel="noopener noreferrer" title="Medic Chat" class="cursor-default">
-                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125" src="/medicchat.png" />
+                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-200 dark:contrast-150" src="/medicchat.png" />
               </a>
             </li>
           </ul>
