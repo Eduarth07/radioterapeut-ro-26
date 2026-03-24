@@ -15,35 +15,41 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
   <Header />
 
   <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-    <section class="mb-10 lg:mb-12">
-      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Resurse pentru pacienți</p>
-      <h1 class="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-5xl">
-        Articole despre radioterapie, explicate clar
+    <section class="mb-10 lg:mb-8 border-b border-(--rt-border) pb-7">
+      <h1 class="mt-4 text-4xl font-medium tracking-tight text-gray-900 dark:text-white">
+        Articole și informații utile despre radioterapie
       </h1>
-      <p class="mt-4 max-w-3xl text-base leading-relaxed text-muted sm:text-lg">
-        Informații validate medical, prezentate simplu și uman, pentru pacienți și familiile lor.
+      <p class="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+        Articolele de mai jos sunt gândite să vă ajute să înțelegeți mai bine tratamentul cu radioterapie și să vă susțină pe parcursul acestei etape – indiferent dacă sunteți pacient sau aparținător.
       </p>
     </section>
 
+    <p class="mt-5 mb-2 text-base leading-relaxed text-black sm:text-lg">
+      Ultimul articol publicat
+    </p>
     <section class="mb-14 overflow-hidden rounded-2xl border border-(--rt-border) bg-surface-2 shadow-sm">
       <div class="grid gap-0 md:grid-cols-2">
         <div class="relative min-h-[290px] md:min-h-[420px]">
+          <a  href={`/articole/${featuredArticle.slug}`}>
           <img
             src={featuredArticle.coverImage}
             alt={featuredArticle.coverAlt}
             loading="eager"
             decoding="async"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover cursor-pointer"
           />
+          </a>
         </div>
 
         <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
-          <span class="mb-4 text-xs font-semibold tracking-[0.2em] text-brand-600 uppercase">
+          <span class="mb-4 text-xs font-semibold tracking-[0.2em] text-cyan-700 dark:text-cyan-500 uppercase cursor-pointer">
             {featuredArticle.category}
           </span>
-          <h2 class="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          <a  href={`/articole/${featuredArticle.slug}`}> 
+          <h2 class="text-3xl font-semibold tracking-tight text-ink" >
             {featuredArticle.title}
           </h2>
+          </a>
           <p class="mt-5 max-w-xl text-base leading-relaxed text-muted">
             {featuredArticle.excerpt}
           </p>
@@ -55,7 +61,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
             </div>
             <a
               href={`/articole/${featuredArticle.slug}`}
-              class="ml-auto inline-flex rounded-lg border border-brand-600 px-4 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-600 hover:text-white"
+              class="ml-auto inline-flex justify-center rounded-lg border p-3 text-base border-(--rt-border) text-(--rt-muted) hover:border-gray-400 hover:bg-blue-100 hover:text-black active:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 active:text-(--rt-muted)/80"
             >
               Citește articolul complet
             </a>
@@ -66,13 +72,13 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
 
     <section aria-labelledby="articole-noi" class="pb-8">
       <div class="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-(--rt-border) pb-4">
-        <h2 id="articole-noi" class="text-2xl font-semibold tracking-tight text-ink">Ultimele articole</h2>
+        <h2 id="articole-noi" class="text-2xl font-semibold tracking-tight text-ink">Toate articolele</h2>
       </div>
 
       <div id="articles-grid" class="grid grid-cols-1 gap-10 md:grid-cols-2">
         {latestArticles.map((article) => (
           <article data-article-card class="flex gap-6">
-            <a href={`/articole/${article.slug}`} class="h-full w-32 shrink-0 overflow-hidden rounded-xl bg-surface-2 sm:w-36">
+            <a href={`/articole/${article.slug}`} class="h-full w-32 shrink-0 overflow-hidden rounded-xl bg-surface-2 sm:w-52">
               <img
                 src={article.coverImage}
                 alt={article.coverAlt}
@@ -83,8 +89,8 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
             </a>
 
             <div class="flex min-h-[190px] flex-1 flex-col">
-              <p class="mb-2 text-[10px] font-bold tracking-[0.18em] text-brand-600 uppercase">{article.category}</p>
-              <h3 class="text-2xl leading-tight font-semibold text-ink">
+              <p class="mb-2 text-[10px] font-bold tracking-[0.18em] text-cyan-700 dark:text-cyan-500 uppercase">{article.category}</p>
+              <h3 class="text-xl leading-tight font-semibold text-ink">
                 <a href={`/articole/${article.slug}`} class="transition-colors hover:text-brand-600">{article.title}</a>
               </h3>
               <p class="mt-3 text-sm leading-relaxed text-muted">{article.excerpt}</p>
@@ -103,7 +109,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
         <button
           id="load-more-articles"
           type="button"
-          class="rounded-lg border border-brand-600 px-8 py-3 text-xs font-bold tracking-[0.18em] text-brand-700 uppercase transition hover:bg-brand-600 hover:text-white"
+          class="rounded-lg border border-cyan-600 px-8 py-3 text-xs font-bold tracking-[0.18em] text-cyan-700 uppercase transition hover:bg-cyan-600 hover:text-white cursor-pointer"
         >
           Încarcă mai multe articole
         </button>

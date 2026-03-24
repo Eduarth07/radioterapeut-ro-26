@@ -15,7 +15,7 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: "importanta-radioterapie",
-    category: "Radioterapie",
+    category: "Educație medicală",
     title: "Importanța radioterapiei în tratamentul cancerului",
     excerpt:
       "Radioterapia este o metodă esențială, precisă și modernă, cu rol major în distrugerea celulelor tumorale și protejarea țesuturilor sănătoase.",
@@ -39,16 +39,16 @@ export const articles: Article[] = [
       </ul>
 
       <h3>Ce simte pacientul în timpul tratamentului?</h3>
-      <p>Tratamentul în sine este nedureros. Pacientul stă întins pe o masă, iar aparatul se mișcă în jurul lui fără a-l atinge. Nu se simte radiația, nu se vede, nu se miroase. Tot procesul este ghidat și monitorizat permanent de o echipă medicală dedicată.</p>
+      <p>Tratamentul în sine este nedureros. Pacientul stă întins pe o masă, iar aparatul se mișcă în jurul lui fără a-l atinge. Nu se simte radiația, nu se vede, nu se miroase. Tot procesul este ghidat și monitorizat permanent de o echipă medicală dedicată, formată din medici, fizicieni și asistenți specializați..</p>
 
       <blockquote>
-        Radioterapia nu este doar o tehnică medicală – este o șansă reală de vindecare sau de îmbunătățire a vieții.
+        Radioterapia nu este doar o tehnică medicală – este o șansă reală de vindecare sau de îmbunătățire a vieții. Dacă tu sau cineva apropiat se confruntă cu această boală, te încurajez să iei legătura cu mine. O discuție deschisă și o evaluare atentă pot deschide un drum nou spre tratament și echilibru.
       </blockquote>
 
       <h3>Ce tipuri de cancer se pot trata cu radioterapie?</h3>
-      <p>Radioterapia este eficientă în tratarea multor forme de cancer, inclusiv cancerul de sân, pulmonar, de prostată, ginecologic sau colorectal. Fiecare caz este unic, iar planul terapeutic trebuie personalizat după consultația de specialitate.</p>
-      <p>Un astfel de plan ia în considerare localizarea tumorii, stadiul bolii, vârsta pacientului și starea generală de sănătate. Tocmai de aceea, evaluarea inițială este extrem de importantă și nu trebuie amânată.</p>
-      <p>Radioterapia nu este doar o opțiune, ci una dintre cele mai importante arme moderne în tratamentul cancerului. Aplicată la timp și corect, poate schimba radical evoluția bolii și oferi șanse reale de vindecare.</p>
+      <p>Radioterapia este eficientă în tratarea multor forme de cancer, inclusiv cancerul de sân, cancerul pulmonar, de prostată, ginecologic sau colorectal. Fiecare caz este însă unic. De aceea, este esențial ca înainte de începerea tratamentului să aibă loc o consultație de specialitate. În cadrul acesteia, se analizează dosarul medical, se discută opțiunile terapeutice și se stabilește un plan personalizat, adaptat fiecărui pacient.</p>
+      <p>Un astfel de plan ia în considerare atât localizarea tumorii, cât și stadiul bolii, vârsta pacientului și starea sa generală de sănătate. Tocmai de aceea, evaluarea inițială este extrem de importantă și nu trebuie amânată. Uneori, câteva zile pot face diferența.</p>
+      <p>Radioterapia nu este doar o opțiune, ci una dintre cele mai importante arme pe care le avem astăzi în tratamentul cancerului. Atunci când este indicată corect și realizată cu precizie, poate schimba radical evoluția bolii și oferi șanse reale de vindecare. Tocmai de aceea este esențial ca fiecare pacient să fie evaluat cu atenție și să primească o recomandare adaptată situației sale. Dacă ai primit un diagnostic oncologic sau ești în căutarea celei mai bune abordări terapeutice, te încurajez să îți programezi o consultație. Radioterapia, aplicată la timp și corect, poate fi exact ceea ce îți redă speranța și controlul asupra propriei vieți.</p>
     `,
   },
   {
@@ -135,49 +135,71 @@ export const articles: Article[] = [
     title: "Radioterapia pe înțelesul tuturor – ce este și cum decurge",
     excerpt:
       "Un ghid amplu și accesibil: când se recomandă radioterapia, cum se desfășoară, ce efecte secundare pot apărea și cum le gestionăm.",
-    readTime: "14 min",
-    date: "18 februarie 2026",
-    coverImage: "/tl.webp",
+    readTime: "15 min",
+    date: "28 iulie 2025",
+    coverImage: "/blog-05.png",
     coverAlt: "Discuție despre planul terapeutic",
     author: "Dr. Tatiana Cirimpei",
     tags: ["Pacient", "Tratament", "Consultație"],
     contentHtml: `
       <h3>Introducere – De la incertitudine la încredere</h3>
-      <p>În momentul diagnosticului, cuvântul „radioterapie” poate produce teamă. Totuși, tratamentele oncologice moderne oferă rezultate remarcabile, iar radioterapia de înaltă precizie are un rol esențial în controlul și vindecarea bolii.</p>
+      <p>În momentul în care primești diagnosticul de cancer, fiecare nou cuvânt medical poate suna amenințător. „Radioterapia” este unul dintre acele cuvinte. Mulți pacienți îmi povestesc că prima lor reacție a fost o teamă, alimentată de informații fragmentare găsite pe internet sau de povești de la cunoștințe.</p>
+      <p>Totuși, în spatele acestor emoții există astăzi vești cu adevărat bune. Tratamentele oncologice moderne aduc rezultate remarcabile: de la chirurgia minim invazivă la terapiile țintite, imunoterapia și, bineînțeles, radioterapia de înaltă precizie. Mulți pacienți se recuperează complet sau își țin boala sub control pe termen lung, continuându‑și viața activă alături de familie și prieteni.</p>
+      <p>În această transformare, radioterapia joacă un rol esențial. Fiind un tratament local, precis și sigur, ea contribuie decisiv la vindecare sau la menținerea bolii sub control, fie singură, fie în combinație cu alte terapii.</p>
+      <p>Pentru că necunoscutul naște teamă, scopul acestui articol este să îți ofere explicații accesibile și exemple concrete, astfel încât să iei decizii informate și să îți recapeți sentimentul de control asupra propriului plan de tratament.</p>
 
       <h3>Ce este, de fapt, radioterapia?</h3>
-      <p>Radioterapia folosește fascicule de radiații ionizante direcționate către țesuturile cu celule canceroase. Este un tratament local, precis, care urmărește țintirea tumorii și protejarea organelor sănătoase.</p>
-      <p>Tehnologiile moderne permit verificări imagistice înaintea fiecărei ședințe și, în anumite cazuri, adaptarea planului în timp real pentru acuratețe maximă.</p>
+      <p>Imaginează-ți o lupă care concentrează lumina soarelui pe o singură frunză uscată dintr-un copac. Lumina este peste tot, dar abia focalizarea ei o transformă într-o energie capabilă să schimbe ceva. Radioterapia funcționează după un principiu similar: folosim fascicule de radiații ionizante – de obicei raze X de energie înaltă – dirijate către țesuturile care conțin celule canceroase. Aceste fascicule distrug capacitatea celulelor maligne de a se multiplica, permițând organismului să le elimine treptat. Spre deosebire de chimioterapie, care circulă în tot corpul, radioterapia este un tratament local: lovește țintit, acolo unde avem nevoie, protejând maximum de țesut sănătos din jur.</p>
+      <p>În ultimul deceniu, evoluțiile tehnologice au avut un impact major asupra tratamentelor de radioterapie. Radioterapia modernă permite o iradiere mult mai precisă și mai rapidă, reducând semnificativ timpul petrecut de pacient pe masa de tratament. Înaintea fiecărei ședințe se pot realiza imagini de control pentru a verifica poziționarea, iar în unele cazuri planul poate fi ajustat zilnic, astfel încât doza să fie livrată cu acuratețe maximă, protejând mai bine organele sănătoase și țintind eficient zona afectată. Precizia ajunge la fracțiuni de milimetru, ceea ce se traduce în doze mai mari către tumoare și mai mici către organele sănătoase.</p>
 
       <h3>Când și de ce se recomandă radioterapia</h3>
       <ul>
-        <li><strong>Adjuvant:</strong> după operație, pentru celule reziduale microscopice.</li>
-        <li><strong>Neoadjuvant:</strong> înainte de operație, pentru reducerea tumorii.</li>
-        <li><strong>Tratament principal:</strong> curativ în anumite indicații.</li>
-        <li><strong>Paliativ:</strong> pentru controlul durerii și simptomelor.</li>
+        <li><strong>După operație (adjuvant)</strong>  – distruge eventuale celule rămase invizibile la microscop.</li>
+        <li><strong>Înainte de operație (neoadjuvant)</strong>  – micșorează tumora și face intervenția chirurgicală mai puțin invazivă.</li>
+        <li><strong>Tratament principal</strong> – la anumite tipuri de cancer (de exemplu, prostata) poate fi terapie curativă în sine.</li>
+        <li><strong>Paliativ sau de ameliorare</strong> – reduce durerea sau sângerarea în metastaze osoase, cerebrale ori pelvine.</li>
       </ul>
+      <p>Mesaj-cheie: Radioterapia nu este „ultima soluție”, ci una dintre primele arme moderne pe care le avem.</p>
 
       <h3>Cum decurge tratamentul, pas cu pas</h3>
-      <p>Tratamentul începe cu consultația inițială, urmată de simulare CT și planificare dosimetrică. Fiecare ședință include verificare pozițională, corecții fine și administrarea propriu-zisă a dozei.</p>
-      <p>Procedura este nedureroasă, iar după ședință pacientul își poate relua activitățile obișnuite.</p>
+      <p>Totul începe cu consultația inițială, unde evaluăm istoricul medical, analizele imagistice și tratamentele efectuate până acum. Sunt adresate mai multe întrebări, tocmai pentru a înțelege nu doar boala, ci și stilul tău de viață, preferințele și eventualele temeri. Urmează planificarea: realizăm o simulare imagistică utilizând un CT-simulator, în poziția exactă în care vei sta la fiecare ședință. Uneori confecționăm o mască termoplastică (pentru cap și gât) sau folosim sisteme de vacuum și perne personalizate, menite să păstreze corpul nemișcat. Pe CT-ul de simulare, medicul deliniaza volumul de tratat si organele din jur care trebuie protejate, iar fizicianul medical, împreună cu un software de ultimă generație, calculează distribuția ideală a dozei.</p>
+      <p>Faza de verificare presupune un control riguros de calitate al planului, astfel încât doza să fie livrată exact cum a fost calculată. La fiecare ședință, se face imageria de control a poziției(CBCT) că și măsură de siguranță. Orice diferență mai mare de un milimetru este corectată pe loc, prin mici mișcări ale mesei de tratament. Procedura în sine - propriu-zisă durează aproximativ zece-treizeci de minute, in funcție de zona tratată și tipul de tratament folosit.</p>
+      <p><strong>Nu vei simți nimic în timpul iradierii:</strong> nu există căldură, arsuri instantanee sau șocuri electrice. Iar imediat ce te ridici de pe masă, poți să îți reiei activitățile zilnice.</p>
 
       <h3>Efecte secundare și modalități de gestionare</h3>
-      <p>Cele mai frecvente reacții sunt oboseala și modificări cutanate ușoare, în general tranzitorii. Planul de îngrijire include recomandări clare de stil de viață, alimentație și monitorizare.</p>
-      <p><strong>Important:</strong> în radioterapia externă pacientul nu devine radioactiv.</p>
+      <p>Orice tratament eficient poate aduce reacții nedorite, însă cele mai multe sunt ușoare și tranzitorii.</p>
+      <p><strong>Oboseala</strong> este cea mai frecventă; apare progresiv pe parcursul săptămânilor și se ameliorează de regulă la câteva săptămâni după terminarea curei. Te încurajez să îți asculți corpul și să faci pauze scurte în timpul zilei, fără a renunța complet la mișcare, pentru că exercițiul fizic blând combate mai bine oboseala decât repausul absolut.</p>
+      <p><strong>Pielea</strong> de pe zona iradiată poate deveni ușor roșiatică, asemănătoare unui bronz discret. Se recomanda evitarea frecării, a băilor fierbinți și utilizarea cremelor înainte de tratament. Pentru regiunile abdominale sau pelvine, pot exista modificări tranzitorii ale tranzitului digestiv sau urinare mai frecventă; anticipăm aceste efecte și discutăm încă de la început un set de reguli dietetice și medicamente de suport.</p>
+      <p><strong>Greața</strong> poate apărea în cazul iradierii abdomenului, dar este bine controlată cu medicamente antiemetice moderne. În cazul iradierii capului și gâtului, pot apărea dificultăți la înghițire sau uscăciune a gurii, însă există soluții eficiente pentru aceste simptome.</p>
+      <p><strong>Alte efecte</strong> pot include căderea părului în zona tratată, modificări ale gustului sau senzație de amorțeală. Acestea sunt de obicei temporare și se ameliorează după încheierea tratamentului.</p>
+      <p><strong>Ceea ce NU se întâmplă:</strong> Nu devii radioactiv! Și nu, nu transmiți „razele” altora, iar durerea severă în timpul ședinței este practic imposibilă. Echipa medicala, compusă din medici, tehnicieni și fizicieni, este pregătită pe tot parcursul să intervină rapid dacă apare orice disconfort.</p>
 
       <h3>Întrebări frecvente</h3>
-      <p><strong>Pot îmbrățișa apropiații după ședință?</strong> Da, este sigur.</p>
-      <p><strong>Îmi cade părul?</strong> Doar dacă zona iradiată include scalpul.</p>
-      <p><strong>Pot continua serviciul?</strong> În multe cazuri, da, cu ajustări în funcție de toleranță.</p>
-
-      <h3>Cuvânt de încheiere</h3>
-      <p>Radioterapia combină precizia tehnologică cu îngrijirea personalizată. Informația corectă și colaborarea cu echipa medicală transformă teama în încredere și acțiune.</p>
+      <p><strong><i>Cât de „puternice” sunt radiațiile și îmi pot face rău pe termen lung?</i></strong><br> 
+      Raspuns: Doza administrată la fiecare ședință este strict calculată – suficientă pentru a distruge celulele canceroase, dar cu mult sub pragurile de siguranță pentru țesuturile sănătoase. Ca ordine de mărime, expunerea zilnică este comparabilă cu cea a unei examinări CT, însă concentrată local și fracționată astfel încât organismul să poată repara rapid celulele normale. Planul este monitorizat constant, iar aparatul se oprește automat dacă detectează orice abatere.</p>
+      <p><strong><i>Pot îmbrățișa apropiații după fiecare ședință?</i></strong><br>
+      Raspuns: Da, radioterapia externă nu lasă radiații reziduale în corpul tău. Contactul fizic este perfect sigur.</p>
+      <p><strong><i>Îmi va cădea părul?</i></strong><br>
+      Raspuns: Doar dacă porțiunea iradiată include scalpul. Pentru sâni, pelvis sau plămân, părul rămâne intact.</p>
+      <p><strong><i>Cât va dura schema mea?</i></strong><br>
+      Raspuns: În funcție de obiectiv, există protocoale de o singură ședință (în stereotaxie) până la planuri clasice de cinci-șapte săptămâni. Durata finală se decide individual în funcție de mai multe particularități.</p>
+      <p><strong><i>Pot continua serviciul?</i></strong><br>
+      Raspuns: În peste 70 % din cazuri, pacienții merg la muncă pe tot parcursul tratamentului, cu recomandarea de a-și ajusta programul dacă oboseala devine supărătoare.</p>
+      <p><strong><i>Trebuie să țin regim alimentar strict?</i></strong><br>
+      Raspuns: Nu există o „dietă universală pentru radioterapie”, dar hidratarea adecvată și un meniu bogat în proteine și vitamine accelerează vindecarea țesuturilor.</p>
+      <p><strong><i>Mai pot face sport?</i></strong><br>
+      Raspuns: Da, însă optează pentru activități moderate: plimbări, exerciții de respirație, yoga ușoară. Eforturile extreme se amână până după terminarea curei.</p>
+ 
+      <h3> De ce să nu-ți mai fie frică </h3>
+      <p> Tehnologia de astăzi are încorporate sisteme inteligente de siguranță: detectoare care opresc fasciculul la cea mai mică mișcare neașteptată, verificări zilnice ale parametrilor mașinii și audituri externe semestriale. Pe scurt, doza calculată în plan rămâne doza pe care o primești, fără surprize. Mai mult, studiile clinice arată că radiațiile externe nu cresc riscul altor boli atunci când sunt administrate corect; beneficiile depășesc net orice risc potențial.</p>
+      <h3>Cuvânt de încheiere - Împreună, pas cu pas</h3>
+      <p>Mă numesc <strong>Tatiana Cirimpei</strong> și, dincolo de a fi medic, sunt partenerul dumneavoastră de încredere în această călătorie. Am ales radioterapia tocmai pentru că îmbină precizia științei cu empatia relației umane. Cred cu tărie că fiecare pacient are dreptul la explicații clare și la decizii medicale care respectă nu doar boala, ci și valorile și planurile sale de viață. Dacă ai ajuns la finalul acestui articol, înseamnă că ești gata să treci de la incertitudine la acțiune.</p>
 
       <blockquote>
-        Nu lăsa întrebările fără răspuns: o consultație clară poate fi primul pas real spre vindecare.
+        <i>Nu lăsa întrebările fără răspuns: scrie-mi oricând dorești sau programează o consultație. În cele mai multe cazuri, claritatea câștigată într-o discuție față în față este începutul vindecării. Radioterapia nu este doar o tehnică medicală – este o șansă reală de vindecare sau de îmbunătățire a vieții.</i>
       </blockquote>
     `,
   },
 ];
 
-export const featuredArticleSlug = "importanta-radioterapie";
+export const featuredArticleSlug = "radioterapia-pe-intelesul-tuturor";
