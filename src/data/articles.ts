@@ -139,7 +139,7 @@ export const articles: Article[] = [
     date: "28 iulie 2025",
     coverImage: "/blog-05.png",
     coverAlt: "Discuție despre planul terapeutic",
-    author: "Dr. Tatiana Cirimpei",
+    author: "Dr. Cirimpei Tatiana",
     tags: ["Pacient", "Tratament", "Consultație"],
     contentHtml: `
       <h3>Introducere – De la incertitudine la încredere</h3>
@@ -150,7 +150,7 @@ export const articles: Article[] = [
 
       <h3>Ce este, de fapt, radioterapia?</h3>
       <p>Imaginează-ți o lupă care concentrează lumina soarelui pe o singură frunză uscată dintr-un copac. Lumina este peste tot, dar abia focalizarea ei o transformă într-o energie capabilă să schimbe ceva. Radioterapia funcționează după un principiu similar: folosim fascicule de radiații ionizante – de obicei raze X de energie înaltă – dirijate către țesuturile care conțin celule canceroase. Aceste fascicule distrug capacitatea celulelor maligne de a se multiplica, permițând organismului să le elimine treptat. Spre deosebire de chimioterapie, care circulă în tot corpul, radioterapia este un tratament local: lovește țintit, acolo unde avem nevoie, protejând maximum de țesut sănătos din jur.</p>
-      <p>În ultimul deceniu, evoluțiile tehnologice au avut un impact major asupra tratamentelor de radioterapie. Radioterapia modernă permite o iradiere mult mai precisă și mai rapidă, reducând semnificativ timpul petrecut de pacient pe masa de tratament. Înaintea fiecărei ședințe se pot realiza imagini de control pentru a verifica poziționarea, iar în unele cazuri planul poate fi ajustat zilnic, astfel încât doza să fie livrată cu acuratețe maximă, protejând mai bine organele sănătoase și țintind eficient zona afectată. Precizia ajunge la fracțiuni de milimetru, ceea ce se traduce în doze mai mari către tumoare și mai mici către organele sănătoase.</p>
+      <p>În ultimul deceniu, evoluțiile tehnologice au avut un impact major asupra tratamentelor de radioterapie. Radioterapia modernă permite o iradiere mult mai precisă și mai rapidă, reducând semnificativ timpul petrecut de pacient pe masa de tratament. Înaintea fiecărei ședințe se pot realiza imagini de control pentru a verifica poziționarea, iar în unele cazuri planul poate fi ajustat zilnic, astfel încât doza să fie livrată cu acuratețe maximă, protejând mai bine organele sănătoase și țintind eficient zona afectată. Precizia ajunge la fracțiuni de milimetru, ceea ce se traduce în doze mai mari către tumoră și mai mici către organele sănătoase.</p>
 
       <h3>Când și de ce se recomandă radioterapia</h3>
       <ul>
@@ -200,6 +200,7 @@ export const articles: Article[] = [
       </blockquote>
     `,
   },
+  
 ];
 
 export const featuredArticleSlug = "radioterapia-pe-intelesul-tuturor";
