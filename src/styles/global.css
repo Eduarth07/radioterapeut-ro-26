@@ -129,10 +129,47 @@ html{   /* LIGHT (default) */
 
 @layer components {
   .rt-btn-ghost {
-    @apply inline-flex items-center justify-center rounded-lg border border-(--rt-border) px-4 py-2 text-sm font-semibold text-(--rt-muted) hover:border-gray-400 dark:hover:border-cyan-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-cyan-600 dark:hover:text-white dark:border-cyan-800;
+        @apply inline-flex items-center justify-center rounded-lg border border-(--rt-border) px-4 py-2 text-sm font-semibold text-(--rt-muted) transition-colors hover:border-gray-400 hover:bg-gray-100 hover:text-(--rt-ink) focus-visible:ring-2 focus-visible:ring-cyan-500/60 dark:border-cyan-800 dark:text-gray-200 dark:hover:border-cyan-600 dark:hover:bg-cyan-600 dark:hover:text-white;
   }
 
   .rt-btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg border border-(--rt-border) px-4 py-2 text-sm font-semibold hover:border-gray-400 dark:hover:border-cyan-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-cyan-600 dark:hover:text-white dark:border-cyan-800;
+    @apply inline-flex items-center justify-center rounded-lg border border-gray-800 bg-gray-800 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-gray-900 hover:bg-gray-900 focus-visible:ring-2 focus-visible:ring-gray-500/60 dark:border-cyan-600 dark:bg-cyan-600 dark:text-white dark:hover:border-cyan-500 dark:hover:bg-cyan-500 dark:focus-visible:ring-cyan-500/60;
+  }
+    .article-content .article-media {
+    width: 100%;
+    margin: 1rem auto 1.5rem;
+  }
+
+  .article-content .article-media-sm {
+    max-width: 350px;
+  }
+
+  .article-content .article-media-md {
+    max-width: 400px;
+  }
+
+  .article-content .article-media-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .article-content .article-media-clear {
+    clear: both;
+  }
+
+  @media (min-width: 1024px) {
+    .article-content .article-media-right {
+      float: right;
+      margin: 0.25rem 0 1rem 1.5rem;
+    }
+
+    .article-content .article-media-left {
+      float: left;
+      margin: 0.25rem 1.5rem 1rem 0;
+    }
   }
 }

@@ -6,6 +6,7 @@ import { articles, featuredArticleSlug } from "../data/articles";
 
 const featuredArticle = articles.find((article) => article.slug === featuredArticleSlug) ?? articles[0];
 const latestArticles = articles.filter((article) => article.slug !== featuredArticle.slug);
+const categories = Array.from(new Set(articles.map((article) => article.category)));
 ---
 
 <BaseLayout
@@ -15,16 +16,37 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
   <Header />
 
   <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-    <section class="mb-10 border-b border-(--rt-border) dark:border-cyan-700 pb-7 lg:mb-8">
-      <h1 class="mt-4 text-4xl font-medium tracking-tight text-gray-900 dark:text-gray-200">
+    <section class="mb-10 border-b border-(--rt-border) dark:border-cyan-700 pb-4 lg:mb-8">
+      <h1 class="mt-2 text-4xl font-medium tracking-tight text-gray-900 dark:text-gray-200">
         Articole și informații utile despre radioterapie
       </h1>
       <p class="mt-5 text-base leading-relaxed dark:text-gray-300 sm:text-lg">
         Articolele de mai jos sunt gândite să vă ajute să înțelegeți mai bine tratamentul cu radioterapie și să vă susțină pe parcursul acestei etape – indiferent dacă sunteți pacient sau aparținător.
       </p>
+
+      <div aria-label="Categorii articole" class="mt-6 flex flex-wrap items-center gap-2">
+        <a
+          href="/articole"
+          data-category-chip
+          data-category-value=""
+          class="rt-btn-ghost px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase"
+        >
+          Toate categoriile
+        </a>
+        {categories.map((category) => (
+          <a
+            href={`/articole?categorie=${encodeURIComponent(category)}`}
+            data-category-chip
+            data-category-value={category}
+            class="rt-btn-ghost px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase"
+          >
+            {category}
+          </a>
+        ))}
+      </div>
     </section>
 
-    <p class="mt-5 mb-2 text-base leading-relaxed text-ink sm:text-lg">
+    <p class="mt-4 mb-2 text-base leading-relaxed text-ink sm:text-lg">
       Ultimul articol publicat
     </p>
     <section id="featured-article-section" data-featured-category={featuredArticle.category} class="mb-14 overflow-hidden rounded-2xl border border-(--rt-border) dark:bg-black  bg-surface-2 shadow-sm shadow-slate-200/45 dark:shadow-cyan-900">
@@ -92,7 +114,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
                 alt={article.coverAlt}
                 loading="lazy"
                 decoding="async"
-                class="h-full min-h-[190px] w-full object-cover"
+                class="h-full min-h-[190px] w-full bg-surface-2 object-contain object-center"
               />
             </a>
 
@@ -134,6 +156,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
   const featuredSection = document.getElementById("featured-article-section");
   const activeCategoryState = document.getElementById("active-category-state");
   const activeCategoryLabel = document.getElementById("active-category-label");
+  const categoryChips = Array.from(document.querySelectorAll("[data-category-chip]"));
   const initialVisible = 4;
   const step = 4;
   const selectedCategory = new URLSearchParams(window.location.search).get("categorie");
@@ -154,6 +177,17 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
     activeCategoryState.classList.toggle("inline-flex", hasFilter);
     activeCategoryLabel.textContent = selectedCategory ?? "";
   }
+
+    categoryChips.forEach((chip) => {
+    const category = chip.getAttribute("data-category-value") ?? "";
+    const normalizedCategory = category.toLocaleLowerCase("ro-RO").trim();
+    const isActive = normalizedSelectedCategory
+      ? normalizedCategory === normalizedSelectedCategory
+      : normalizedCategory === "";
+
+    chip.classList.toggle("rt-btn-primary", isActive);
+    chip.classList.toggle("rt-btn-ghost", !isActive);
+  });
 
   if (featuredSection) {
     const featuredCategory = featuredSection.getAttribute("data-featured-category");
