@@ -27,7 +27,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
     <p class="mt-5 mb-2 text-base leading-relaxed text-ink sm:text-lg">
       Ultimul articol publicat
     </p>
-    <section class="mb-14 overflow-hidden rounded-2xl border border-(--rt-border) dark:bg-black  bg-surface-2 shadow-sm shadow-slate-200/45 dark:shadow-cyan-900">
+    <section id="featured-article-section" data-featured-category={featuredArticle.category} class="mb-14 overflow-hidden rounded-2xl border border-(--rt-border) dark:bg-black  bg-surface-2 shadow-sm shadow-slate-200/45 dark:shadow-cyan-900">
       <div class="grid gap-0 md:grid-cols-2">
         <div class="relative min-h-[290px] md:min-h-[420px]">
           <a  href={`/articole/${featuredArticle.slug}`}>
@@ -42,9 +42,12 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
         </div>
 
         <div class="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
-          <span class="mb-4 text-xs font-semibold tracking-[0.2em] text-cyan-600 dark:text-cyan-500 uppercase cursor-pointer">
+          <a
+            href={`/articole?categorie=${encodeURIComponent(featuredArticle.category)}`}
+            class="mb-4 inline-flex w-fit text-xs font-semibold tracking-[0.2em] text-cyan-700 transition-colors hover:text-cyan-800 dark:text-cyan-500 dark:hover:text-cyan-300 uppercase"
+          >
             {featuredArticle.category}
-          </span>
+            </a>
           <a  href={`/articole/${featuredArticle.slug}`}> 
           <h2 class="text-3xl font-semibold tracking-tight text-ink" >
             {featuredArticle.title}
@@ -73,11 +76,16 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
     <section aria-labelledby="articole-noi" class="pb-8">
       <div class="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-(--rt-border) dark:border-cyan-700 pb-4">
         <h2 id="articole-noi" class="text-2xl font-semibold tracking-tight text-ink dark:text-gray-200">Toate articolele</h2>
+                <div id="active-category-state" class="hidden items-center gap-2 text-sm text-muted">
+          <span>Filtru categorie:</span>
+          <span id="active-category-label" class="rounded-full bg-surface-2 px-3 py-1 text-xs font-semibold text-ink"></span>
+          <a href="/articole" class="text-xs font-semibold text-cyan-700 hover:text-cyan-800 dark:text-cyan-500 dark:hover:text-cyan-300">Resetează</a>
+        </div>
       </div>
 
       <div id="articles-grid" class="grid grid-cols-1 gap-10 md:grid-cols-2">
         {latestArticles.map((article) => (
-          <article data-article-card class="flex gap-6">
+           <article data-article-card data-article-category={article.category} class="flex gap-6">
             <a href={`/articole/${article.slug}`} class="h-full w-32 shrink-0 overflow-hidden rounded-xl bg-surface-2 sm:w-52 shadow-sm ">
               <img
                 src={article.coverImage}
@@ -89,7 +97,7 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
             </a>
 
             <div class="flex min-h-[190px] flex-1 flex-col">
-              <p class="mb-2 text-[10px] font-bold tracking-[0.18em] text-cyan-600 dark:text-cyan-500 uppercase">{article.category}</p>
+              <a href={`/articole?categorie=${encodeURIComponent(article.category)}`} class="mb-2 inline-flex w-fit text-[10px] font-bold tracking-[0.18em] text-cyan-700 transition-colors hover:text-cyan-800 dark:text-cyan-500 dark:hover:text-cyan-300 uppercase">{article.category}</a>
               <h3 class="text-xl leading-tight font-semibold text-ink">
                 <a href={`/articole/${article.slug}`} class="hover:underline dark:hover:text-cyan-300">{article.title}</a>
               </h3>
@@ -123,25 +131,54 @@ const latestArticles = articles.filter((article) => article.slug !== featuredArt
 <script>
   const cards = Array.from(document.querySelectorAll("[data-article-card]"));
   const button = document.getElementById("load-more-articles");
+  const featuredSection = document.getElementById("featured-article-section");
+  const activeCategoryState = document.getElementById("active-category-state");
+  const activeCategoryLabel = document.getElementById("active-category-label");
   const initialVisible = 4;
   const step = 4;
+  const selectedCategory = new URLSearchParams(window.location.search).get("categorie");
+  const normalizedSelectedCategory = selectedCategory ? selectedCategory.toLocaleLowerCase("ro-RO").trim() : "";
 
   let visible = initialVisible;
 
+    const filteredCards = normalizedSelectedCategory
+    ? cards.filter((card) => {
+        const category = card.getAttribute("data-article-category");
+        return category?.toLocaleLowerCase("ro-RO").trim() === normalizedSelectedCategory;
+      })
+    : cards;
+
+  if (activeCategoryState && activeCategoryLabel) {
+    const hasFilter = Boolean(selectedCategory);
+    activeCategoryState.classList.toggle("hidden", !hasFilter);
+    activeCategoryState.classList.toggle("inline-flex", hasFilter);
+    activeCategoryLabel.textContent = selectedCategory ?? "";
+  }
+
+  if (featuredSection) {
+    const featuredCategory = featuredSection.getAttribute("data-featured-category");
+    const showFeatured =
+      !normalizedSelectedCategory ||
+      featuredCategory?.toLocaleLowerCase("ro-RO").trim() === normalizedSelectedCategory;
+    featuredSection.classList.toggle("hidden", !showFeatured);
+  }
+
   const render = () => {
     cards.forEach((card, index) => {
-      card.classList.toggle("hidden", index >= visible);
+     const inFilteredList = filteredCards.includes(card);
+      const filteredIndex = filteredCards.indexOf(card);
+      card.classList.toggle("hidden", !inFilteredList || filteredIndex >= visible);
     });
 
     if (!button) return;
 
-    const hasMore = visible < cards.length;
+    const hasMore = visible < filteredCards.length;
     button.classList.toggle("hidden", !hasMore);
   };
 
   if (button) {
     button.addEventListener("click", () => {
-      visible = Math.min(visible + step, cards.length);
+      visible = Math.min(visible + step, filteredCards.length);
       render();
     });
   }
