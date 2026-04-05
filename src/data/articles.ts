@@ -6,6 +6,8 @@ export type Article = {
   readTime: string;
   date: string;
   coverImage: string;
+  bigImage?: string;
+  articleImage?: string;
   coverAlt: string;
   author: string;
   tags: string[];
@@ -21,7 +23,8 @@ export const articles: Article[] = [
     "Radioterapia este o metodă esențială, precisă și modernă, cu rol major în distrugerea celulelor tumorale și protejarea țesuturilor sănătoase.",
   readTime: "8 min",
   date: "10 ianuarie 2026",
-  coverImage: "/blog-detail1.webp",
+  coverImage: "/blog-01.webp",
+  articleImage: "/blog-detail1.webp",
   coverAlt: "Imagine reprezentativă radioterapie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Pacient", "Tratament", "Consultație"],
@@ -66,8 +69,9 @@ export const articles: Article[] = [
     "Clarificăm cele mai comune mituri despre radioterapie, astfel încât pacienții să înceapă tratamentul cu încredere și informații corecte.",
   readTime: "7 min",
   date: "24 ianuarie 2026",
-  coverImage: "/blog-02.webp",
-  coverAlt: "Discuție medic-pacient",
+  coverImage: "/thumb_blog-02.png",
+  articleImage: "/blog-02.webp",
+  coverAlt: "Mituri si adevaruri despre radioterapie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Pacient", "Tratament", "Mituri"],
   contentHtml: `
@@ -103,7 +107,8 @@ export const articles: Article[] = [
     "Pregătirea corectă reduce efectele secundare și îmbunătățește eficiența tratamentului. Iată pașii practici, explicați clar.",
   readTime: "12 min",
   date: "5 februarie 2026",
-  coverImage: "/blog-detail3.webp",
+  coverImage: "/thumb_blog-detail3.png",
+  articleImage: "/blog-detail3.webp",
   coverAlt: "Pregătirea pacientului pentru radioterapie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Pacient", "Tratament", "Pregătire"],
@@ -205,7 +210,9 @@ export const articles: Article[] = [
       "Un ghid amplu și accesibil: când se recomandă radioterapia, cum se desfășoară, ce efecte secundare pot apărea și cum le gestionăm.",
     readTime: "15 min",
     date: "28 iulie 2025",
-    coverImage: "/blog-05.png",
+    coverImage: "/thumb_blog-04.png",
+    articleImage: "/blog-04.png",
+    bigImage: "/blog-04.png",
     coverAlt: "Discuție despre planul terapeutic",
     author: "Dr. Cirimpei Tatiana",
     tags: ["Pacient", "Tratament", "Consultație"],
@@ -271,12 +278,13 @@ export const articles: Article[] = [
   {
   slug: "consultatii-radioterapie",
   category: "Servicii medicale",
-  title: "Consultații de specialitate în radioterapie",
+  title: "Consultațiile medicale de radioterapie",
   excerpt:
     "Consultații medicale de specialitate și urmărire, cu explicații clare, evaluare atentă și plan adaptat fiecărui pacient.",
   readTime: "4 min",
   date: "29 martie 2026",
-  coverImage: "/blog-consultatii.png",
+  coverImage: "/thumb_blog-consultatii.png",
+  articleImage: "/blog-consultatii.png",
   coverAlt: "Consultație de specialitate în radioterapie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Consultație", "Radioterapie", "Second opinion"],
@@ -335,7 +343,8 @@ export const articles: Article[] = [
     "Radioterapia modernă permite tratamente precise, conforme ghidurilor actuale, cu protejarea țesuturilor sănătoase și planuri adaptate fiecărui caz.",
   readTime: "5 min",
   date: "29 martie 2026",
-  coverImage: "/blog-radioterapie-moderna.png",
+  coverImage: "/thumb_blog-radioterapie-moderna.png",
+  articleImage: "/blog-radioterapie-moderna.png",
   coverAlt: "Radioterapie modernă și planificare precisă",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Radioterapie", "IMRT", "VMAT", "SBRT"],
@@ -392,7 +401,8 @@ export const articles: Article[] = [
     "Reacțiile adverse apărute în timpul sau după radioterapie necesită evaluare atentă, recomandări practice și ajustări rapide pentru confort și siguranță.",
   readTime: "4 min",
   date: "29 martie 2026",
-  coverImage: "/blog-reactii-adverse.png",
+  coverImage: "/thumb_blog-reactii-adverse.png",
+  articleImage: "/blog-reactii-adverse.png",
   coverAlt: "Monitorizarea reacțiilor adverse în radioterapie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Radioterapie", "Reacții adverse", "Monitorizare"],
@@ -447,7 +457,8 @@ export const articles: Article[] = [
     "În anumite situații, radioterapia în doze mici poate fi utilizată ca metodă antiinflamatorie pentru reducerea durerii provocate de pintenii calcaneeni.",
   readTime: "4 min",
   date: "29 martie 2026",
-  coverImage: "/blog-pinteni-calcaneeni.png",
+  coverImage: "/thumb_blog-pinteni-calcaneeni.png",
+  articleImage: "/blog-pinteni-calcaneeni.png",
   coverAlt: "Evaluarea durerii de călcâi și radioterapie antiinflamatorie",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Servicii medicale", "Pinteni calcaneeni", "Radioterapie"],
@@ -494,12 +505,13 @@ export const articles: Article[] = [
 {
   slug: "afectiuni-benigne-selectate",
   category: "Servicii medicale",
-  title: "Afecțiuni benigne selectate – evaluarea indicației pentru radioterapie",
+  title: "Afecțiuni benigne tratate cu radioterapie",
   excerpt:
     "În anumite afecțiuni benigne selectate, radioterapia poate fi luată în considerare după evaluare individuală, în funcție de indicație și de beneficiul clinic așteptat.",
   readTime: "4 min",
   date: "29 martie 2026",
-  coverImage: "/blog-afectiuni-benigne.webp",
+  coverImage: "/blog-afectiuni-benigne.png",
+  articleImage: "/blog-afectiuni-benigne.png",
   coverAlt: "Evaluarea indicațiilor de radioterapie în afecțiuni benigne selectate",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Servicii medicale", "Afecțiuni benigne", "Radioterapie"],
@@ -545,4 +557,10 @@ export const articles: Article[] = [
 },
 ];
 
-export const featuredArticleSlug = "radioterapia-pe-intelesul-tuturor";
+export const featuredArticleSlugByCategory: Record<string, string> = {
+  "Educație medicală": "importanta-radioterapie",
+  "Informații utile": "pregatire-radioterapie",
+  "Servicii medicale": "consultatii-radioterapie",
+};
+
+export const defaultFeaturedArticleSlug = "radioterapia-pe-intelesul-tuturor";

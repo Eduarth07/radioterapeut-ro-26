@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "@fontsource-variable/inter";
+import ScrollToTopButton from "../components/ScrollToTopButton.astro";
 
 const {
   title = "Dr. Cirimpei Tatiana - Radioterapie",
@@ -36,5 +37,6 @@ const {
   </head>
   <body class="min-h-screen antialiased">
     <slot />
+    <ScrollToTopButton />
   </body>
 </html>

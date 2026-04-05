@@ -32,7 +32,7 @@ import { navLinks } from "../data/navLinks";
             />
           <div class="leading-tight sm:block">
             <div class="text-base font-semibold text-(--rt-ink)">Dr. Cirimpei Tatiana</div>
-            <div class="text-sm text-(--rt-muted)">Radioterapie</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">Radioterapie</div>
           </div>
         </a>
 
@@ -42,7 +42,7 @@ import { navLinks } from "../data/navLinks";
             <a
             href={item.href}
             data-rt-nav-item
-            class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-(--rt-muted) transition-colors duration-150 hover:text-gray-900 dark:hover:text-white"
+            class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-600 dark:text-gray-300 transition-colors duration-150 hover:text-gray-900 dark:hover:text-white"
             >
             <span class="relative z-10 text-[0.98rem]">{item.label}</span>
             </a>
@@ -57,7 +57,7 @@ import { navLinks } from "../data/navLinks";
         <button
           id="rt-theme-toggle-mobile"
           type="button"
-          class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-(--rt-muted) hover:bg-gray-100 hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:hover:bg-gray-700"
+          class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:hover:bg-gray-700"
           aria-label="Comută tema (dark/light)"
           aria-pressed="false"
         >
@@ -94,7 +94,7 @@ import { navLinks } from "../data/navLinks";
           <button
             id="rt-theme-toggle"
             type="button"
-            class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-(--rt-muted) hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60"
+            class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60"
             aria-label="Comută tema (dark/light)"
             aria-pressed="false"
           >
@@ -109,25 +109,26 @@ import { navLinks } from "../data/navLinks";
             </svg>
           </button>
         <a
-          class="inline-flex justify-center rounded-lg border py-2 px-3 text-base border-(--rt-border) text-(--rt-muted) hover:border-gray-400 hover:bg-gray-100 active:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-700 active:text-(--rt-muted)/80"
-          href="/contact"
+          class="inline-flex justify-center py-2 px-3 text-base btn-secundar"
+          href="/#contact"
         >
           Contact
         </a>
 
-        <a
-          class="inline-flex justify-center rounded-lg py-2 px-3 text-base bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 dark:hover:bg-gray-700 active:text-white/80 border-(--rt-border) hover:border-gray-400 border"
-          href="/#programare"
-        >            <img
-              src="/call.svg"
-              alt=""
-              aria-hidden="true"
-              class="shrink-0 mr-2 h-6 w-6"
-              loading="lazy"
-              decoding="async"
-            />
-          Programează-te
-        </a>
+<a
+  href="/#programare"
+  class="inline-flex items-center justify-center px-5 py-2 text-base btn-primar"
+>
+  <img
+    src="/call.svg"
+    alt=""
+    aria-hidden="true"
+    class="mr-2 h-5 w-5 shrink-0"
+    loading="lazy"
+    decoding="async"
+  />
+  Programează-te
+</a>
       </div>
     </div>
   </div>
@@ -140,7 +141,7 @@ import { navLinks } from "../data/navLinks";
           <a
             href={item.href}
             data-rt-mobile-link
-            class="rounded-lg px-3 py-2 text-base text-(--rt-muted) hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+            class="rounded-lg px-3 py-2 text-base text-gray-600 dark:text-gray-300 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             {item.label}
           </a>
@@ -149,14 +150,14 @@ import { navLinks } from "../data/navLinks";
 
       <div class="mt-4 flex gap-3">
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg border py-2 px-3 text-base transition-colors border-(--rt-border) text-(--rt-muted) hover:border-gray-400 dark:text-white hover:bg-gray-100 active:bg-gray-100 dark:hover:bg-gray-700"
-          href="/contact"
+          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base btn-secundar"
+          href="/#contact"
         >
           Contact
         </a>
         <a
-          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold transition-colors bg-gray-800  text-white hover:bg-gray-900 active:bg-gray-800 dark:hover:bg-gray-700 active:text-white/80 border-(--rt-border) hover:border-gray-400 border"
-          href="/programare"
+          class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold btn-primar"
+          href="/#programare"
         >
           Programează-te
         </a>

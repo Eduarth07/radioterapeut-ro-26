@@ -1,0 +1,50 @@
+<button
+  id="scroll-to-top"
+  type="button"
+  aria-label="Înapoi sus"
+  class="cursor-pointer fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-(--rt-border) bg-white/90 text-gray-700 shadow-lg backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:border-cyan-800 dark:bg-gray-950/90 dark:text-gray-200 dark:hover:text-cyan-400 "
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    class="h-5 w-5"
+    aria-hidden="true"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M10 3.75a.75.75 0 01.53.22l4.25 4.25a.75.75 0 11-1.06 1.06L10.75 6.31V15.5a.75.75 0 01-1.5 0V6.31L6.28 9.28a.75.75 0 11-1.06-1.06l4.25-4.25A.75.75 0 0110 3.75z"
+      clip-rule="evenodd"
+    />
+  </svg>
+</button>
+
+<script>
+  const scrollButton = document.getElementById("scroll-to-top");
+
+  const toggleScrollButton = () => {
+    if (!scrollButton) return;
+
+    const shouldShow = window.scrollY > 300;
+    scrollButton.classList.toggle("opacity-0", !shouldShow);
+    scrollButton.classList.toggle("pointer-events-none", !shouldShow);
+    scrollButton.classList.toggle("translate-y-2", !shouldShow);
+    scrollButton.classList.toggle("opacity-100", shouldShow);
+    scrollButton.classList.toggle("translate-y-0", shouldShow);
+  };
+
+  if (scrollButton) {
+    scrollButton.classList.add("opacity-0", "pointer-events-none", "translate-y-2");
+
+    window.addEventListener("scroll", toggleScrollButton, { passive: true });
+
+    scrollButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+
+    toggleScrollButton();
+  }
+</script>

@@ -139,7 +139,33 @@ html{   /* LIGHT (default) */
     width: 100%;
     margin: 1rem auto 1.5rem;
   }
+  .btn-secundar {
+    @apply rounded-lg border border-transparent text-gray-600 shadow-sm shadow-gray-400/60;
+    @apply hover:border-gray-200 hover:bg-gray-100;
+    @apply active:bg-gray-100;
+    @apply dark:border-gray-500 dark:text-gray-200 dark:shadow-none;
+    @apply dark:hover:bg-gray-700 dark:hover:text-white dark:hover:border-gray-500 dark:active:bg-gray-700/80;
+  }
 
+  .btn-primar {
+    @apply rounded-lg border border-gray-600 bg-gradient-to-b from-gray-700 to-gray-900 font-medium text-white shadow-sm;
+    @apply hover:border-gray-500 hover:from-gray-600 hover:to-gray-800 hover:shadow-md;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2;
+    @apply active:scale-[0.98];
+  }
+  .btn-info-dark {
+    @apply rounded-lg border border-gray-700 bg-gradient-to-b from-gray-700 to-gray-900 text-sm font-semibold text-white shadow-sm ;
+    @apply hover:from-gray-600 hover:to-gray-800 hover:border-gray-500;
+    @apply active:from-gray-700 active:to-gray-900 active:text-white/80;
+    @apply dark:border-white/10 dark:bg-white/10 dark:bg-none dark:hover:bg-white/20 dark:active:bg-white/25;
+  }
+
+  .btn-info-cyan {
+    @apply relative overflow-hidden rounded-lg bg-gradient-to-b from-cyan-500 to-cyan-600 text-sm font-semibold text-white;
+    @apply hover:from-cyan-500 hover:to-cyan-600 active:from-cyan-600 active:to-cyan-700 active:text-white/80;
+    @apply before:absolute before:inset-0 before:rounded-[inherit] hover:before:bg-white/10 active:before:bg-transparent;
+    @apply dark:from-cyan-700 dark:to-cyan-800 dark:hover:from-cyan-700 dark:hover:to-cyan-800 dark:active:from-cyan-800 dark:active:to-cyan-900  ;
+  }
   .article-content .article-media-sm {
     max-width: 350px;
   }
