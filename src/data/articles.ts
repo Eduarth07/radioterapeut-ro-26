@@ -280,7 +280,7 @@ export const articles: Article[] = [
   category: "Servicii medicale",
   title: "Consultațiile medicale de radioterapie",
   excerpt:
-    "Consultații medicale de specialitate și urmărire, cu explicații clare, evaluare atentă și plan adaptat fiecărui pacient.",
+    "De la prima evaluare la monitorizarea post-tratament, aflați ce presupune fiecare etapă a consultului medical și cum vă pregătiți pentru un plan terapeutic corect.",
   readTime: "4 min",
   date: "29 martie 2026",
   coverImage: "/thumb_blog-consultatii.png",
@@ -289,58 +289,50 @@ export const articles: Article[] = [
   author: "Dr. Cirimpei Tatiana",
   tags: ["Consultație", "Radioterapie", "Second opinion"],
   contentHtml: `
-    <p>Fiecare pacient are nevoie de o evaluare atentă, de explicații clare și de un plan medical adaptat situației sale. În radioterapie, consultația de specialitate nu înseamnă doar analizarea unui diagnostic, ci și înțelegerea contextului complet al bolii, a tratamentelor efectuate anterior și a pașilor care urmează.</p>
+<p>În confruntarea cu un diagnostic oncologic, claritatea este primul pas către reușită. Consultația de radioterapie nu este o simplă analiză de dosar, ci momentul în care medicul specialist integrează toate datele clinice pentru a construi o strategie de tratament precisă. Scopul nostru este ca fiecare pacient să înțeleagă exact etapele terapiei, beneficiile tehnologiilor moderne și modul în care organismul va fi protejat pe parcursul vindecării.</p>
 
-    <p>Scopul consultațiilor este de a oferi orientare medicală corectă, răspunsuri clare și recomandări personalizate, astfel încât fiecare pacient să poată lua decizii informate și să beneficieze de cea mai potrivită conduită terapeutică.</p>
+    <p>O abordare corectă presupune timp dedicat fiecărui caz, explicații pe înțelesul tuturor și un parteneriat bazat pe încredere între medic și pacient.</p>
 
-    <h3>Consultații medicale inițiale</h3>
-    <p>Consultația inițială este primul pas în evaluarea oncologică din perspectiva radioterapiei. În cadrul acesteia sunt analizate documentele medicale, investigațiile imagistice, rezultatele histopatologice și tratamentele efectuate anterior. Pe baza acestor informații se stabilește dacă radioterapia este indicată, în ce scop poate fi recomandată și care sunt următorii pași.</p>
+    <h3>1. Consultația inițială</h3>
+    <p>Aceasta este etapa fundamentală în care se pune baza întregului tratament. Medicul radioterapeut analizează amănunțit documentele medicale, cu accent pe rezultatul biopsiei (examenul histopatologic) și pe investigațiile imagistice recente, precum CT, RMN sau PET-CT.</p>
+    
+    
 
-    <p>Este o etapă esențială pentru clarificarea opțiunilor de tratament și pentru construirea unui plan adaptat fiecărui pacient.</p>
-
-    <h3>Monitorizare pe durata tratamentului</h3>
-    <p>Pe parcursul radioterapiei, monitorizarea regulată este importantă pentru evaluarea toleranței la tratament, identificarea eventualelor reacții adverse și adaptarea recomandărilor medicale în funcție de evoluția clinică.</p>
-
-    <p>Aceste consultații ajută la menținerea unui tratament sigur, bine tolerat și cât mai eficient, oferind pacientului sprijin constant pe toată durata terapiei.</p>
-
-    <h3>Consultații de urmărire post-radioterapie</h3>
-    <p>După finalizarea tratamentului, consultațiile de urmărire permit evaluarea evoluției pacientului, a răspunsului terapeutic și a eventualelor efecte secundare tardive. În același timp, acestea oferă cadrul potrivit pentru recomandări suplimentare, îndrumare și monitorizare medicală atentă.</p>
-
-    <p>Urmărirea post-terapeutică reprezintă o parte importantă a îngrijirii oncologice și contribuie la continuitatea tratamentului și la siguranța pacientului.</p>
-
-    <h3>Telemedicină</h3>
-    <p>În anumite situații, consultațiile pot fi realizate și prin telemedicină, atunci când acest format este potrivit din punct de vedere medical. Acest tip de evaluare poate fi util mai ales pentru pacienții care locuiesc la distanță, pentru discuții de orientare medicală sau pentru interpretarea documentelor și recomandărilor deja existente.</p>
-
-    <p>Telemedicina nu înlocuiește întotdeauna consultația față în față, dar poate reprezenta o soluție utilă și eficientă în anumite contexte.</p>
-
-    <h3>Second opinion (a doua opinie medicală)</h3>
-    <p>A doua opinie medicală este utilă atunci când pacientul dorește o evaluare suplimentară a diagnosticului, a indicației de tratament sau a planului terapeutic propus. Aceasta poate aduce mai multă claritate, confirmare și încredere înainte de începerea sau continuarea tratamentului.</p>
-
-    <p>Solicitarea unei a doua opinii este un demers firesc și responsabil, mai ales în cazurile oncologice care presupun decizii importante și personalizate.</p>
-
-    <blockquote>
-      <p>Consultația de specialitate în radioterapie înseamnă mai mult decât o simplă evaluare medicală: înseamnă timp acordat fiecărui caz, explicații clare și o abordare atentă, adaptată nevoilor reale ale pacientului.</p>
-    </blockquote>
-
-    <h3>Când este util să solicitați o consultație?</h3>
+    <p><b>În cadrul acestei prime vizite, se stabilesc aspecte esențiale:</b></p>
     <ul>
-      <li>după stabilirea unui diagnostic oncologic;</li>
-      <li>atunci când doriți să aflați dacă radioterapia este indicată;</li>
-      <li>înainte de începerea tratamentului, pentru clarificarea etapelor;</li>
-      <li>în timpul radioterapiei, dacă apar întrebări sau reacții adverse;</li>
-      <li>după finalizarea tratamentului, pentru monitorizare;</li>
-      <li>atunci când doriți o a doua opinie medicală.</li>
+      <li><b>Confirmarea indicației:</b> Se decide dacă radioterapia este necesară în acest stadiu și cum se corelează ea cu chirurgia sau chimioterapia.</li>
+      <li><b>Stabilirea scopului:</b> Indiferent dacă obiectivul este eliminarea completă a bolii sau controlul simptomelor și reducerea durerii, planul este explicat în detaliu.</li>
+      <li><b>Alegerea tehnicii:</b> Se prezintă metodele de iradiere (precum VMAT sau IMRT) care oferă cea mai mare precizie pentru localizarea respectivă.</li>
     </ul>
 
-    <p>Dacă aveți nevoie de evaluare, îndrumare sau clarificarea opțiunilor de tratament, o consultație de specialitate poate fi primul pas spre un plan medical corect, clar și adaptat situației dumneavoastră.</p>
-  `,
+    <p><i>Tot în această etapă pot fi evaluate și anumite afecțiuni non-oncologice rezistente la tratamentele clasice, cum sunt durerile cronice de călcâi sau cicatricile persistente, unde radioterapia în doze mici poate aduce o ameliorare semnificativă.</i></p>
+
+    <h3>2. Supravegherea medicală pe parcursul ședințelor</h3>
+    <p>Radioterapia este un proces continuu, iar prezența medicului este constantă. Pe durata săptămânilor de tratament, pacientul beneficiază de consultații periodice de control. Acestea au rolul de a monitoriza reacția organismului la tratament și de a oferi soluții imediate (recomandări nutriționale sau de îngrijire locală) pentru a asigura un confort maxim și o bună toleranță.</p>
+
+    <h3>3. Monitorizarea după finalizarea tratamentului</h3>
+    <p>Grija medicală nu se încheie la ultima ședință de iradiere. Deoarece efectele radioterapiei continuă să lucreze în beneficiul pacientului timp de câteva săptămâni, controalele ulterioare sunt vitale pentru evaluarea răspunsului terapeutic și pentru urmărirea stării de sănătate pe termen lung.</p>
+
+    <h3>A doua opinie medicală și suportul la distanță</h3>
+    <p>Solicitarea unei a doua opinii medicale este un demers firesc și responsabil în oncologie. Aceasta oferă confirmarea planului ales sau poate aduce clarificări despre tehnologii mai avansate. De asemenea, pentru pacienții care locuiesc departe de clinică, oferim posibilitatea consultațiilor prin apel video sau telefon, facilitând interpretarea analizelor noi fără necesitatea unei deplasări imediate.</p>
+    <blockquote>
+      <p>Fiecare plan de tratament este o promisiune de precizie și siguranță. Rolul nostru este să oferim pacientului certitudinea că beneficiază de cea mai bună strategie medicală disponibilă astăzi.</p>
+    </blockquote>
+
+    <h3>Când este recomandat să programați o consultație?</h3>
+    <ul>
+      <li>Imediat după primirea diagnosticului, pentru a stabili locul radioterapiei în planul de tratament;</li>
+      <li>Înainte de începerea iradierii, pentru a lămuri orice întrebare legată de tehnologia utilizată;</li>
+      <li>Pentru o a doua opinie medicală, în vederea confirmării conduitei terapeutice;</li>
+      <li>După finalizarea curei de tratament, pentru vizitele periodice de monitorizare.</li>
+    </ul>`,
 },
 {
   slug: "radioterapie-moderna",
   category: "Servicii medicale",
-  title: "Radioterapia modernă – precizie, siguranță și eficiență în tratamentul oncologic",
+  title: "Radioterapia de înaltă precizie: Tehnologii și metode de tratament",
   excerpt:
-    "Radioterapia modernă permite tratamente precise, conforme ghidurilor actuale, cu protejarea țesuturilor sănătoase și planuri adaptate fiecărui caz.",
+    "O analiză detaliată a tehnicilor IMRT, VMAT și SBRT, explicând modul în care evoluția tehnologică permite administrarea tratamentului oncologic cu o acuratețe milimetrică.",
   readTime: "5 min",
   date: "29 martie 2026",
   coverImage: "/thumb_blog-radioterapie-moderna.png",
@@ -348,50 +340,35 @@ export const articles: Article[] = [
   coverAlt: "Radioterapie modernă și planificare precisă",
   author: "Dr. Cirimpei Tatiana",
   tags: ["Radioterapie", "IMRT", "VMAT", "SBRT"],
-  contentHtml: `
-    <p>Radioterapia modernă reprezintă una dintre cele mai avansate și eficiente metode de tratament oncologic. Prin tehnologii actuale de planificare și administrare a dozei, tratamentul poate fi direcționat cu mare precizie către zona afectată, cu protejarea cât mai bună a organelor și țesuturilor sănătoase din jur.</p>
+contentHtml: `<p>Radioterapia a evoluat de la o metodă de tratament standardizată către o soluție medicală personalizată, bazată pe o precizie geometrică riguroasă. Această transformare a fost posibilă prin integrarea sistemelor de calcul avansate cu acceleratoarele liniare de ultimă generație, permițând adaptarea fasciculului de radiații la anatomia specifică a fiecărui pacient.</p>
 
-    <p>Fiecare plan terapeutic este individualizat în funcție de tipul tumorii, localizare, obiectivul tratamentului și particularitățile fiecărui pacient. Indicația, tehnica utilizată și doza administrată sunt stabilite conform ghidurilor și protocoalelor internaționale actuale, pentru a oferi un tratament sigur, corect și eficient.</p>
+    <p>Înțelegerea modului în care funcționează aceste tehnologii este esențială pentru a vedea cum reușește medicina actuală să maximizeze doza administrată tumorii, protejând în același timp integritatea țesuturilor sănătoase din vecinătate.</p>
 
-    <h3>Ce înseamnă radioterapie modernă?</h3>
-    <p>Radioterapia actuală nu înseamnă doar administrarea de radiații, ci un proces complex care începe cu evaluarea atentă a cazului, continuă cu simularea și planificarea dosimetrică și se finalizează prin tratament precis, verificat și adaptat permanent dacă este necesar.</p>
+    <h3>Evoluția către conformația tridimensională</h3>
+    <p>În trecut, radioterapia utiliza fascicule plane care nu puteau distinge precis între volumul tumoral și organele vitale din jur. Astăzi, procesul începe cu o simulare CT, care îi permite echipei medicale să vizualizeze tumora în spațiu tridimensional. Pe baza acestei „hărți” digitale, se stabilește tehnica de tratament cea mai potrivită pentru a obține o distribuție optimă a dozei.</p>
 
-    <p>Scopul este de a livra doza optimă în volumul țintă, reducând cât mai mult expunerea structurilor sănătoase din apropiere. Acest lucru permite nu doar eficiență oncologică, ci și o toleranță mai bună a tratamentului.</p>
+    <h3>Radioterapia cu fascicul de electroni</h3>
+    <p>Această metodă este utilizată specific pentru afecțiuni localizate la suprafața corpului sau la o adâncime foarte mică sub piele. Particularitatea fizică a electronilor este că aceștia își eliberează energia rapid și se opresc brusc după ce parcurg câțiva centimetri. Această proprietate asigură tratarea eficientă a leziunilor cutanate, eliminând riscul ca radiațiile să pătrundă către organele profunde.</p>
 
-    <h3>Radioterapie cu fascicul de electroni</h3>
-    <p>Radioterapia cu electroni este utilizată în special pentru leziuni situate superficial, la nivelul pielii sau foarte aproape de suprafața corpului. Avantajul acestei tehnici este că doza este concentrată la adâncime mică, ceea ce permite tratarea eficientă a zonei țintă, cu limitarea iradierii țesuturilor mai profunde.</p>
+    <h3>Radioterapia cu Intensitate Modulată (IMRT)</h3>
+    <p>Tehnica IMRT a reprezentat un salt major în capacitatea de a „sculpta” radiația. În timpul ședinței, acceleratorul liniar se poziționează în mai multe unghiuri fixe în jurul pacientului. Din fiecare unghi, aparatul utilizează un sistem de lamele mobile (colimator multilamelar) care fragmentează fasciculul în sute de segmente mai mici, cu intensități diferite.</p>
+    <p>Rezultatul este o doză care se pliază perfect pe formele complexe sau concave ale tumorilor, fiind o soluție ideală atunci când ținta este situată în imediata apropiere a unor structuri critice, precum măduva spinării sau globii oculari.</p>
 
-    <p>Această metodă poate fi indicată în anumite situații selecționate, în funcție de localizarea și caracteristicile leziunii.</p>
-
-    <h3>Radioterapie cu intensitate modulată (IMRT)</h3>
-    <p>IMRT este o tehnică avansată de radioterapie care permite modelarea intensității fasciculelor de radiații, astfel încât doza să fie distribuită cât mai conform volumului tumoral. Această precizie este utilă mai ales în situațiile în care tumora se află în apropierea unor organe sensibile.</p>
-
-    <p>Prin IMRT se poate obține un echilibru mai bun între eficiența tratamentului și protejarea țesuturilor sănătoase, motiv pentru care această tehnică este frecvent utilizată în tratamentele moderne.</p>
-
-    <h3>Radioterapie cu arc de volum (VMAT)</h3>
-    <p>VMAT este o tehnică modernă prin care tratamentul este administrat continuu, în timp ce aparatul se rotește în jurul pacientului. Această metodă permite livrarea precisă și eficientă a dozei, într-un timp mai scurt comparativ cu alte tehnici.</p>
-
-    <p>Unul dintre avantajele VMAT este reducerea duratei efective a ședinței de tratament, ceea ce poate crește confortul pacientului și poate contribui la reproducerea mai bună a poziției în timpul iradierii.</p>
+    <h3>Radioterapia cu Arc de Volum (VMAT)</h3>
+    <p>VMAT este o formă avansată de administrare a dozei, care optimizează timpul și precizia tratamentului. Spre deosebire de tehnicile statice, brațul aparatului se rotește continuu într-un arc complet în jurul pacientului, fără întreruperi. Pe parcursul acestei mișcări circulare, intensitatea dozei și forma fasciculului sunt modificate în timp real.</p>
+    <p>Această dinamică scurtează durata unei ședințe la doar câteva minute. Reducerea timpului petrecut pe masa de tratament nu reprezintă doar un confort sporit pentru pacient, ci și o garanție a preciziei, deoarece scade probabilitatea apariției mișcărilor involuntare în timpul iradierii.</p>
 
     <h3>Radioterapie stereotactică (SRS / SBRT)</h3>
-    <p>Radioterapia stereotactică este o tehnică de înaltă precizie, utilizată pentru administrarea unor doze mari de radiații într-un număr redus de ședințe, în cazuri atent selecționate. Aceasta poate fi folosită pentru anumite tumori sau metastaze, atunci când indicația medicală este potrivită.</p>
-
-    <p>SRS este utilizată în general pentru tratamente intracraniene, iar SBRT pentru anumite localizări extracraniene. Aceste tehnici necesită o planificare riguroasă, sisteme avansate de imobilizare și verificări foarte precise înainte și în timpul tratamentului.</p>
+    <p>Stereotaxia reprezintă vârful de lance al preciziei în radioterapie, fiind adesea livrată prin tehnica VMAT, dar la o intensitate mult mai mare. Aceasta presupune administrarea unor doze foarte concentrate într-un număr redus de ședințe (de obicei între 1 și 5), comparativ cu tratamentele fracționate clasice.</p>
+    <p>Sistemele de imobilizare sunt extrem de riguroase, asigurând o acuratețe milimetrică. SRS este utilizată pentru localizări intracraniene, în timp ce SBRT vizează tumori sau metastaze din restul corpului (plămân, ficat, coloană). Este o abordare radicală, capabilă să distrugă țesutul tumoral cu un impact minim asupra restului organismului.</p>
 
     <blockquote>
-      <p>Radioterapia modernă înseamnă tratament personalizat, tehnologie avansată și decizii medicale bazate pe dovezi, cu scopul de a obține control oncologic optim și o toleranță cât mai bună pentru pacient.</p>
+   
+      <p>IMPORTANT: <br>Decizia medicală privind alegerea tehnicii potrivite se realizează întotdeauna luând în considerare cele mai actuale ghiduri și protocoale naționale și internaționale, fiind adaptată fiecărui caz clinic pentru a asigura un echilibru perfect între eficiență și siguranță.</p>
     </blockquote>
 
-    <h3>Cum se stabilește tehnica potrivită?</h3>
-    <p>Alegerea tehnicii de radioterapie nu este standard pentru toți pacienții. Ea depinde de localizarea tumorii, dimensiunea acesteia, organele din vecinătate, istoricul medical, tratamentele anterioare și obiectivul terapeutic. De aceea, recomandarea se face întotdeauna individualizat, după evaluarea completă a cazului.</p>
-
-    <p>În cadrul consultației și al procesului de planificare se stabilește cea mai potrivită soluție, astfel încât tratamentul să fie adaptat cât mai bine nevoilor reale ale pacientului.</p>
-
-    <h3>De ce este importantă evaluarea de specialitate?</h3>
-    <p>Radioterapia este un tratament complex, care necesită indicație corectă, planificare atentă și monitorizare permanentă. O evaluare de specialitate permite înțelegerea exactă a opțiunilor disponibile și alegerea unei conduite terapeutice conforme standardelor actuale.</p>
-
-    <p>Dacă există indicație pentru radioterapie, planul de tratament este construit astfel încât să răspundă cât mai bine particularităților bolii și condiției clinice a pacientului.</p>
-  `,
+    <h3>Personalizarea planului terapeutic</h3>
+    <p>Indiferent de tehnologia utilizată, succesul tratamentului depinde de colaborarea dintre medicul radioterapeut și fizicianul medical. Alegerea între IMRT, VMAT sau stereotaxie nu este una arbitrară, ci rezultatul unei analize dosimetrice comparative. Obiectivul final rămâne întotdeauna același: obținerea controlului asupra bolii prin soluții tehnice care să respecte biologia și calitatea vieții fiecărui individ.</p>`,
 },
 {
   slug: "management-reactii-adverse-radioterapie",
@@ -407,54 +384,58 @@ export const articles: Article[] = [
   author: "Dr. Cirimpei Tatiana",
   tags: ["Radioterapie", "Reacții adverse", "Monitorizare"],
   contentHtml: `
-    <p>Radioterapia este, în general, un tratament bine tolerat, însă, ca orice terapie oncologică, poate fi însoțită de reacții adverse. Acestea diferă de la un pacient la altul și depind de mai mulți factori, precum zona tratată, doza administrată, durata tratamentului, eventualele terapii asociate și particularitățile organismului.</p>
+<p>Deși tehnologiile actuale permit o protecție superioară a țesuturilor sănătoase, radioterapia rămâne un tratament intens, care poate genera anumite reacții secundare. Acestea nu sunt semne că tratamentul „nu merge bine”, ci reprezintă modul natural în care organismul răspunde la acțiunea radiațiilor asupra celulelor aflate în proces de regenerare.</p>
 
-    <p>Managementul reacțiilor adverse are un rol esențial în desfășurarea corectă a tratamentului. Evaluarea atentă, intervenția la timp și recomandările adaptate fiecărei situații contribuie la menținerea confortului pacientului, la siguranța tratamentului și la continuitatea acestuia în cele mai bune condiții.</p>
+    <p>Fiecare organism este unic, iar apariția acestor reacții depinde de zona tratată, doza cumulată și starea generală de sănătate. Din fericire, medicina modernă dispune de protocoale clare pentru a preveni și a limita aceste efecte, asigurând continuitatea tratamentului în condiții de confort.</p>
 
-    <h3>De ce este importantă monitorizarea reacțiilor adverse?</h3>
-    <p>Reacțiile adverse nu trebuie privite cu teamă, ci cu atenție și responsabilitate. Multe dintre ele sunt temporare, previzibile și pot fi controlate eficient atunci când sunt recunoscute precoce. Comunicarea constantă cu medicul radioterapeut permite ajustarea recomandărilor și intervenția rapidă atunci când apar simptome noi sau modificări importante.</p>
-
-    <p>Scopul nu este doar tratarea reacțiilor deja apărute, ci și prevenirea agravării lor și menținerea unei calități cât mai bune a vieții pe parcursul și după tratament.</p>
-
-    <h3>Tratamentul toxicităților acute</h3>
-    <p>Toxicitățile acute sunt reacțiile adverse care apar în timpul radioterapiei sau la scurt timp după finalizarea acesteia. Acestea pot include, în funcție de zona tratată, roșeață și sensibilitate cutanată, oboseală, dificultăți la înghițire, greață, tulburări digestive, disconfort urinar sau alte simptome locale.</p>
-
-    <p>În astfel de situații, managementul corect presupune evaluare clinică, recomandări practice și, atunci când este necesar, tratament simptomatic. Pot fi indicate măsuri de îngrijire locală, ajustări alimentare, recomandări privind hidratarea, medicație de susținere sau alte intervenții adaptate simptomelor prezente.</p>
-
-    <p>Identificarea timpurie a toxicităților acute permite controlul mai bun al simptomelor și reduce riscul ca acestea să devină mai intense sau să afecteze desfășurarea tratamentului.</p>
-
-    <h3>Îngrijirea toxicităților tardive</h3>
-    <p>Toxicitățile tardive sunt reacțiile care pot apărea la distanță de tratament, uneori după luni sau mai mult. Nu apar la toți pacienții, însă atunci când există simptome persistente sau noi după încheierea radioterapiei, acestea trebuie evaluate corect și integrate în contextul medical al fiecărui caz.</p>
-
-    <p>Îngrijirea toxicităților tardive presupune monitorizare, recomandări personalizate și, la nevoie, măsuri terapeutice orientate spre ameliorarea simptomelor și menținerea funcționalității. În funcție de situație, pot fi necesare evaluări suplimentare, colaborare multidisciplinară și urmărire periodică.</p>
-
-    <blockquote>
-      <p>Managementul reacțiilor adverse în radioterapie înseamnă intervenție la timp, comunicare clară și îngrijire adaptată, pentru ca tratamentul să fie cât mai bine tolerat și cât mai sigur pentru pacient.</p>
-    </blockquote>
-
-    <h3>Ce simptome ar trebui semnalate?</h3>
+    <h3>Reacțiile acute: Ce se întâmplă în timpul tratamentului?</h3>
+    <p>Efectele acute apar de obicei în primele săptămâni de terapie și sunt, în marea lor majoritate, temporare. Acestea se manifestă local, strict în zona iradiată, deoarece radioterapia nu afectează întregul corp (cu excepția unei stări de oboseală generalizată).</p>
+    
+    <p><b>Principalele manifestări pot include:</b></p>
     <ul>
-      <li>roșeață accentuată, usturime sau modificări importante ale pielii;</li>
-      <li>durere sau disconfort care se accentuează;</li>
-      <li>dificultăți la înghițire sau alimentație;</li>
-      <li>greață, vărsături sau tulburări digestive persistente;</li>
-      <li>modificări urinare sau intestinale noi;</li>
-      <li>oboseală marcată sau simptome care afectează activitățile zilnice;</li>
-      <li>orice simptom nou apărut în timpul tratamentului sau după finalizarea acestuia.</li>
+      <li><b>Modificări cutanate:</b> O reacție similară unei expuneri prelungite la soare (roșeață, uscăciune sau sensibilitate la nivelul pielii).</li>
+      <li><b>Inflamații locale:</b> Dificultăți ușoare la înghițire (pentru zona gâtului) sau tranzit intestinal accelerat (pentru zona abdominală).</li>
+      <li><b>Oboseala (Fatigue):</b> O stare de epuizare care apare pe măsură ce corpul consumă energie pentru a repara celulele sănătoase afectate de radiații.</li>
     </ul>
 
-    <h3>O abordare adaptată fiecărui pacient</h3>
-    <p>Nu există un model unic de reacție la radioterapie și nici o abordare identică pentru toți pacienții. De aceea, recomandările trebuie adaptate în funcție de simptome, de zona tratată și de evoluția clinică. Evaluarea individuală permite alegerea celor mai potrivite măsuri pentru ameliorarea disconfortului și pentru susținerea tratamentului în condiții cât mai bune.</p>
+    <div class=\"vizual-container\">
+      <p class=\"legenda-vizual\"><i>*Notă: Reacțiile adverse sunt întotdeauna localizate. De exemplu, iradierea la nivelul pelvisului nu va cauza niciodată căderea părului de pe cap.</i></p>
+    </div>
 
-    <p>Dacă apar reacții adverse în timpul radioterapiei sau după încheierea acesteia, evaluarea de specialitate este importantă pentru stabilirea conduitei corecte și pentru menținerea confortului și siguranței pacientului.</p>
-  `,
+    <h3>Efectele tardive: Monitorizarea pe termen lung</h3>
+    <p>Toxicitățile tardive pot apărea la luni sau chiar ani după finalizarea tratamentului. Acestea sunt legate de procesul de vindecare al țesuturilor profunde (cum ar fi fibroza sau modificările de elasticitate ale vaselor de sânge). Deși apar mult mai rar datorită tehnicilor moderne de precizie (VMAT/IMRT), monitorizarea periodică după încheierea curei de radioterapie rămâne esențială pentru a interveni rapid dacă funcționalitatea unui organ este afectată.</p>
+
+    <h3>Cum gestionăm aceste simptome în echipa medicală?</h3>
+    <p>Gestionarea reacțiilor adverse nu înseamnă doar prescrierea unor medicamente, ci un ansamblu de măsuri adaptate:</p>
+    <ul>
+      <li><b>Suport dermatologic:</b> Utilizarea unor creme specifice și reguli stricte de igienă locală pentru a preveni leziunile cutante.</li>
+      <li><b>Consiliere nutrițională:</b> Ajustarea dietei pentru a proteja sistemul digestiv sau pentru a ușura deglutiția în timpul iradierii.</li>
+      <li><b>Tratament simptomatic:</b> Medicație antiinflamatoare, antiemetică sau de susținere, administrată preventiv sau la primele semne de disconfort.</li>
+    </ul>
+
+    <blockquote>
+      <p>Comunicarea transparentă cu medicul radioterapeut este cel mai bun instrument de control. Orice modificare apărută, indiferent cât de mică pare, trebuie semnalată imediat pentru a fi gestionată înainte de a deveni un impediment în tratament.</p>
+    </blockquote>
+
+    <h3>Când trebuie să contactați echipa medicală?</h3>
+    <p>Este important să raportați medicului dumneavoastră următoarele simptome dacă devin persistente sau se accentuează:</p>
+    <ul>
+      <li>Roșeață intensă a pielii care provoacă durere sau usturime;</li>
+      <li>Dificultăți de hidratare sau imposibilitatea de a înghiți alimente solide;</li>
+      <li>Greață care nu cedează la recomandările alimentare obișnuite;</li>
+      <li>Tulburări urinare sau digestive noi, apărute în timpul ședințelor;</li>
+      <li>O stare de slăbiciune care vă împiedică să vă desfășurați activitățile zilnice de bază.</li>
+    </ul>
+
+    <h3>Concluzie: Siguranța prin monitorizare activă</h3>
+    <p>Radioterapia modernă este construită pentru a fi suportabilă. Scopul echipei medicale este să echilibreze eficiența oncologică (distrugerea tumorii) cu prezervarea calității vieții. Prin monitorizarea zilnică și ajustarea rapidă a planului de îngrijire, marea majoritate a pacienților reușesc să finalizeze tratamentul fără întreruperi și fără sechele majore.</p>`,
 },
 {
   slug: "radioterapie-pinteni-calcaneeni",
   category: "Servicii medicale",
-  title: "Pinteni calcaneeni – radioterapie pentru reducerea durerii",
+  title: "Radioterapia pentru pintenii calcaneeni: O soluție eficientă împotriva durerii cronice",
   excerpt:
-    "În anumite situații, radioterapia în doze mici poate fi utilizată ca metodă antiinflamatorie pentru reducerea durerii provocate de pintenii calcaneeni.",
+    "Când metodele clasice dau greș, radioterapia antiinflamatorie în doze mici poate reduce semnificativ durerea cauzată de pintenii calcaneeni, redând mobilitatea piciorului.",
   readTime: "4 min",
   date: "29 martie 2026",
   coverImage: "/thumb_blog-pinteni-calcaneeni.png",
@@ -463,51 +444,52 @@ export const articles: Article[] = [
   author: "Dr. Cirimpei Tatiana",
   tags: ["Servicii medicale", "Pinteni calcaneeni", "Radioterapie"],
   contentHtml: `
-    <p>Pintenii calcaneeni pot provoca durere persistentă la nivelul călcâiului și pot afecta semnificativ mersul, activitatea zilnică și calitatea vieții. În majoritatea cazurilor, tratamentul începe cu măsuri conservatoare, precum repausul relativ, medicația antiinflamatoare, fizioterapia, exercițiile de întindere sau recomandările ortopedice.</p>
+<p>Pintenii calcaneeni (depunerile de calciu la nivelul călcâiului) și fasciita plantară pot transforma fiecare pas într-o provocare dureroasă. Deși prima linie de tratament implică de obicei kinetoterapia, talonetele ortopedice sau antiinflamatoarele, există situații în care durerea devine cronică și rezistentă la aceste măsuri convenționale.</p>
 
-    <p>Totuși, în anumite cazuri selectate, atunci când durerea persistă și răspunsul la tratamentele obișnuite este insuficient, radioterapia antiinflamatorie în doze mici poate reprezenta o opțiune terapeutică. Scopul acesteia nu este unul oncologic, ci antiinflamator, având ca obiectiv reducerea durerii și ameliorarea simptomelor.</p>
+    <p>În aceste cazuri, radioterapia de joasă doză intervine ca o metodă terapeutică extrem de eficientă, utilizată de decenii în centrele medicale europene pentru proprietățile sale antiinflamatorii și analgezice remarcabile.</p>
 
     <h3>Ce este radioterapia antiinflamatorie?</h3>
-    <p>Radioterapia utilizată în afecțiunile benigne se administrează în doze mici, diferite de cele folosite în tratamentele oncologice. În acest context, scopul este reducerea procesului inflamator local și scăderea durerii, nu tratarea unei tumori.</p>
+    <p>Este important de înțeles că, deși folosim același accelerator liniar ca în tratamentele oncologice, protocolul este complet diferit. Doza de radiații administrată este de aproximativ 50-100 de ori mai mică decât cea folosită pentru tratarea unei tumori.</p>
 
-    <p>Tratamentul este non-invaziv, bine tolerat și se desfășoară în ședințe scurte, fără durere în timpul administrării.</p>
 
-    <h3>Evaluare și indicație</h3>
-    <p>Indicația pentru radioterapie se stabilește numai după evaluarea clinică și analiza documentelor medicale relevante. Este important ca diagnosticul să fie corect, iar simptomele să fie corelate cu investigațiile și cu istoricul tratamentelor efectuate anterior.</p>
+    <p>La acest nivel minim, radiația nu distruge țesutul, ci acționează asupra celulelor inflamatorii și a terminațiilor nervoase locale, „stingând” focarul de durere din călcâi. Este o procedură non-invazivă, care nu necesită anestezie sau spitalizare.</p>
 
-    <p>Radioterapia pentru pinteni calcaneeni este luată în considerare în special la pacienții cu durere persistentă, cu impact funcțional, la care alte măsuri terapeutice nu au avut efect suficient sau nu au putut fi tolerate. Recomandarea trebuie individualizată și făcută în cazuri selectate, după aprecierea atentă a raportului dintre beneficiul potențial și indicația reală.</p>
-
-    <h3>Protocol scurt</h3>
-    <p>Tratamentul se desfășoară, de regulă, în ședințe scurte și bine tolerate. Fiecare sesiune durează puțin, iar procedura este nedureroasă. Pacientul este poziționat corespunzător, iar zona de tratat este iradiată precis conform planului stabilit.</p>
-
-    <p>Schema recomandată poate varia în funcție de caz și de protocolul ales, însă, în general, este vorba despre un tratament de scurtă durată, comparativ cu alte tipuri de radioterapie. Efectul nu este întotdeauna imediat, iar ameliorarea durerii poate apărea progresiv în săptămânile care urmează.</p>
-
-    <h3>Recomandări de recuperare</h3>
-    <p>Radioterapia antiinflamatorie nu exclude celelalte măsuri de recuperare, ci se poate integra într-o abordare mai largă. În funcție de situație, pot rămâne importante exercițiile de întindere, reducerea suprasolicitării, încălțămintea adecvată, talonetele recomandate și alte măsuri de susținere funcțională.</p>
-
-    <p>Respectarea recomandărilor de recuperare și a măsurilor de protecție locală poate contribui la obținerea unui rezultat mai bun și la reducerea riscului de persistență a durerii.</p>
-
-    <blockquote>
-      <p>În cazuri selectate, radioterapia în doze mici poate fi o opțiune terapeutică utilă pentru pintenii calcaneeni dureroși, cu obiectiv antiinflamator și de reducere a durerii.</p>
-    </blockquote>
-
-    <h3>Când poate fi utilă o evaluare de specialitate?</h3>
+    <h3>Cum se desfășoară tratamentul?</h3>
+    <p>Spre deosebire de curele lungi de radioterapie, protocolul pentru pintenii calcaneeni este unul scurt și simplificat:</p>
     <ul>
-      <li>când durerea de călcâi persistă de mai mult timp și afectează mersul;</li>
-      <li>când tratamentele conservatoare nu au adus ameliorare suficientă;</li>
-      <li>când există recurență sau limitare funcțională importantă;</li>
-      <li>când este necesară clarificarea indicației pentru radioterapie antiinflamatorie.</li>
+      <li><b>Ședințe ultrarapide:</b> Expunerea efectivă durează doar câteva zeci de secunde.</li>
+      <li><b>Frecvență redusă:</b> De regulă, se efectuează un număr mic de ședințe (aproximativ 6), repartizate pe parcursul a două săptămâni.</li>
+      <li><b>Confort total:</b> Pacientul stă întins sau așezat, iar procedura este complet nedureroasă – nu se simte nicio senzație de căldură sau disconfort în timpul iradierii.</li>
     </ul>
 
-    <p>O evaluare de specialitate permite stabilirea corectă a indicației și alegerea unei conduite adaptate fiecărui pacient, în funcție de simptome, evoluție și opțiunile terapeutice deja încercate.</p>
-  `,
+    
+
+    <h3>La ce rezultate să vă așteptați?</h3>
+    <p>Radioterapia nu „topește” pintenul de os (acesta va rămâne vizibil pe radiografie), ci elimină inflamația țesuturilor moi din jurul lui, care este adevărata cauză a durerii. </p>
+    <p>Efectul nu este întotdeauna instantaneu. Deși unii pacienți simt o ameliorare rapidă, beneficiul maxim se instalează progresiv în primele 4-12 săptămâni după finalizarea protocolului. Studiile clinice arată că peste 70-80% dintre pacienți raportează o reducere semnificativă a durerii sau chiar dispariția completă a acesteia pe termen lung.</p>
+
+    <blockquote>
+      <p>Obiectivul meu este redarea mobilității. Radioterapia antiinflamatorie este puntea de legătură între eșecul tratamentelor clasice și evitarea unei intervenții chirurgicale invazive.</p>
+    </blockquote>
+
+    <h3>Când este recomandată această procedură?</h3>
+    <p>Radioterapia devine o opțiune viabilă în următoarele scenarii:</p>
+    <ul>
+      <li>Durerea persistă de mai mult de 6 luni, în ciuda repausului și a fizioterapiei;</li>
+      <li>Administrarea pe termen lung a antiinflamatoarelor este contraindicată sau ineficientă;</li>
+      <li>Durerea de călcâi limitează sever activitățile zilnice sau capacitatea de muncă;</li>
+      <li>Pacientul dorește să evite infiltrațiile dureroase sau intervenția chirurgicală.</li>
+    </ul>
+
+    <h3>O abordare integrată</h3>
+    <p>Pentru rezultate optime, radioterapia trebuie privită ca parte a unui plan de recuperare. Recomandăm în continuare purtarea încălțămintei adecvate și efectuarea exercițiilor de stretching pentru fascia plantară. Această combinație asigură nu doar eliminarea durerii actuale, ci și prevenirea reapariției inflamației în viitor.</p>`,
 },
 {
   slug: "afectiuni-benigne-selectate",
   category: "Servicii medicale",
-  title: "Afecțiuni benigne tratate cu radioterapie",
+  title: "Radioterapia în afecțiuni non-oncologice: Indicații și beneficii",
   excerpt:
-    "În anumite afecțiuni benigne selectate, radioterapia poate fi luată în considerare după evaluare individuală, în funcție de indicație și de beneficiul clinic așteptat.",
+    "Dincolo de oncologie, radioterapia de doză mică este o soluție eficientă pentru controlul proliferării celulare în afecțiuni precum keloizii sau hemangioamele rezistente.",
   readTime: "4 min",
   date: "29 martie 2026",
   coverImage: "/blog-afectiuni-benigne.png",
@@ -516,45 +498,82 @@ export const articles: Article[] = [
   author: "Dr. Cirimpei Tatiana",
   tags: ["Servicii medicale", "Afecțiuni benigne", "Radioterapie"],
   contentHtml: `
-    <p>Deși radioterapia este cunoscută mai ales ca metodă de tratament în oncologie, există și anumite situații non-oncologice în care aceasta poate fi luată în considerare. Este vorba despre cazuri selectate, în care indicația nu este una de rutină, ci se stabilește individual, după evaluare atentă și în funcție de beneficiul clinic estimat.</p>
+    <p>Deși este recunoscută în principal ca pilon central în tratamentul cancerului, radioterapia deține un rol terapeutic valoros și în gestionarea unor afecțiuni non-oncologice (benigne). În aceste situații, nu urmărim distrugerea unei tumori maligne, ci utilizăm energia radiațiilor pentru a modula inflamația, a opri proliferarea celulară excesivă sau a induce regresia unor malformații vasculare.</p>
 
-    <p>În acest context, recomandarea pentru radioterapie trebuie făcută cu prudență, ținând cont de diagnosticul corect, de evoluția afecțiunii, de tratamentele efectuate anterior și de scopul terapeutic urmărit. Decizia nu este una standard, ci adaptată fiecărui pacient.</p>
+    <p>Utilizarea radioterapiei în patologia benignă necesită o selecție riguroasă a pacienților. Decizia terapeutică nu este una de rutină, ci rezultatul unei analize atente a raportului dintre beneficiul clinic și istoricul medical al fiecărui individ.</p>
 
-    <h3>Cum se stabilește indicația?</h3>
-    <p>Indicația pentru radioterapie în afecțiuni benigne se stabilește numai după evaluare medicală și analizarea documentelor relevante. Sunt importante diagnosticul, istoricul local al afecțiunii, tratamentele deja efectuate, riscul de recidivă sau persistență a simptomelor și beneficiul clinic care poate fi obținut.</p>
+    <h3>Mecanismul de acțiune în patologia benignă</h3>
+    <p>Spre deosebire de dozele mari folosite în oncologie, în cazul afecțiunilor benigne se utilizează protocoale cu doze mult mai reduse. Acestea au capacitatea de a inhiba diviziunea accelerată a celulelor care produc colagen în exces sau a celor care formează vase de sânge anormale, fără a afecta integritatea generală a țesutului sănătos.</p>
 
-    <p>Scopul este identificarea acelor situații în care radioterapia poate aduce un avantaj real, fără a extinde inutil indicația către cazuri în care alte opțiuni terapeutice rămân mai potrivite.</p>
+    <h3>Keloizii și cicatricile hipertrofice</h3>
+    <p>Keloizii sunt cicatrici care cresc dincolo de limitele rănii inițiale, fiind adesea dureroase, pruriginoase (provoacă mâncărime) și inestetice. Din cauza ratei mari de recidivă după simpla excizie chirurgicală, radioterapia este utilizată ca tratament adjuvant strategic.</p>
+    
+    
 
-    <h3>Hemangioame (cazuri selectate)</h3>
-    <p>În anumite cazuri selectate, unele hemangioame pot necesita evaluare suplimentară din perspectiva indicației terapeutice. Recomandarea depinde de tipul leziunii, localizare, evoluție, simptomatologie și de tratamentele anterioare sau alternativele disponibile.</p>
+    <p><b>Cum ajută radioterapia:</b> Administrată imediat după intervenția chirurgicală (de regulă în primele 24-48 de ore), radioterapia previne activitatea excesivă a fibroblastelor – celulele responsabile pentru producția de colagen. Astfel, riscul ca cicatricea să se reformeze este redus semnificativ.</p>
 
-    <p>Nu orice hemangiom reprezintă o indicație pentru radioterapie. Tocmai de aceea, aprecierea trebuie făcută individualizat, în contextul clinic concret al fiecărui pacient.</p>
+    <h3>Hemangioamele și malformațiile vasculare</h3>
+    <p>Hemangioamele sunt aglomerări de vase de sânge care pot apărea în diverse zone ale corpului. Deși majoritatea nu necesită tratament, există cazuri complexe unde localizarea (de exemplu, în apropierea ochilor sau a căilor respiratorii) sau evoluția rapidă impun intervenția.</p>
+    <p>În situații specifice, radioterapia poate induce sclerozarea (închiderea) vaselor de sânge anormale, ducând la oprirea creșterii sau chiar la micșorarea leziunii. Indicația se stabilește strict în echipa multidisciplinară, atunci când alte metode (medicamentoase sau laser) nu sunt aplicabile.</p>
 
-    <h3>Keloizi / cicatrici hipertrofice (cazuri selectate)</h3>
-    <p>Keloizii și cicatricile hipertrofice pot avea o evoluție persistentă sau recidivantă și, în anumite situații selectate, pot necesita o abordare terapeutică suplimentară. În unele cazuri, radioterapia poate fi luată în considerare ca parte a unei strategii de control local, în special atunci când există risc crescut de recidivă sau istoric de reapariție după alte tratamente.</p>
-
-    <p>Indicația se stabilește în funcție de particularitățile leziunii, de contextul terapeutic și de raportul dintre beneficiul posibil și necesitatea reală a unei astfel de intervenții.</p>
-
-    <h3>Alte indicații benigne – la recomandare</h3>
-    <p>Există și alte situații benigne în care radioterapia poate fi discutată, însă numai la recomandare și după evaluare medicală atentă. Aceste cazuri nu intră într-o categorie generală aplicabilă tuturor, ci presupun analiză individuală și justificare clară a indicației.</p>
-
-    <p>În astfel de situații, decizia terapeutică trebuie să aibă la bază contextul clinic complet, obiectivul tratamentului și beneficiul așteptat pentru pacient.</p>
+    <h3>Alte aplicații: Prevenirea osificărilor heterotopice</h3>
+    <p>O altă utilizare importantă a radioterapiei benigne este prevenirea formării de os în locuri anormale (osificări heterotopice), frecvent întâlnite după intervenții chirurgicale la nivelul șoldului sau după traumatisme severe. O singură doză de radioterapie administrată perioperator poate bloca transformarea celulelor stem în celule osoase în locuri nedorite.</p>
 
     <blockquote>
-      <p>Radioterapia pentru afecțiuni benigne nu reprezintă o indicație de rutină, ci o opțiune care poate fi luată în considerare doar în cazuri selectate, după evaluare atentă și recomandare medicală.</p>
+      <p>Radioterapia pentru afecțiuni benigne reprezintă o soluție de finețe medicală, unde doza minimă este calculată pentru a obține un impact funcțional maxim, redând confortul pacientului fără intervenții chirurgicale repetate.</p>
     </blockquote>
 
-    <h3>Când este utilă o evaluare de specialitate?</h3>
+    <h3>Criterii pentru evaluarea de specialitate</h3>
+    <p>Radioterapia nu este prima opțiune de tratament în afecțiunile benigne, dar devine o soluție de luat în calcul atunci când:</p>
     <ul>
-      <li>când există o afecțiune benignă cu evoluție persistentă sau recidivantă;</li>
-      <li>când alte tratamente nu au avut rezultatul dorit sau nu sunt suficiente;</li>
-      <li>când este necesară clarificarea indicației și a beneficiului clinic potențial;</li>
-      <li>când se dorește o opinie medicală privind oportunitatea radioterapiei într-un caz selectat.</li>
+      <li>Afecțiunea are un istoric de recidivă după tratamentele convenționale;</li>
+      <li>Simptomele (durere, limitarea mișcării, sângerare) afectează sever calitatea vieții;</li>
+      <li>Alte intervenții sunt contraindicate din cauza localizării leziunii;</li>
+      <li>Există o recomandare clară din partea unui medic specialist (dermatolog, ortoped sau chirurg).</li>
     </ul>
 
-    <p>Evaluarea de specialitate permite stabilirea corectă a indicației și alegerea unei conduite adaptate fiecărui caz, cu prudență, claritate și raportare la beneficiul clinic real așteptat.</p>
-  `,
+    <p>Evaluarea de specialitate în cadrul departamentului de radioterapie permite stabilirea unui plan personalizat, care să ofere siguranță pe termen lung și rezultate estetice sau funcționale optime.</p>`,
 },
+{
+  slug: `colaborare-interdisciplinara-radioterapie`,
+  category: `Colaborare medicală`,
+  title: `Managementul integrat al pacientului oncologic: Precizie, timp și suport interdisciplinar`,
+  excerpt: `Un model de parteneriat medical bazat pe acces rapid la tratament, dialog și utilizarea tehnologiei de top pentru un control tumoral optim.`,
+  readTime: `6 min`,
+  date: `29 martie 2025`,
+  coverImage: `/blog-colaborare-medicala.png`,
+  articleImage: `/blog-colaborare-medicala.png`,
+  coverAlt: `Colaborare multidisciplinară Tumor Board`,
+  author: `Dr. Cirimpei Tatiana`,
+  tags: [`Radioterapie`, `Comunicare`, `Tehnologie`],
+  contentHtml: `<p><i>Acest articol este dedicat colegilor medici, specialiști și primari, care urmăresc integrarea celor mai noi soluții de radioterapie în planul de management al pacienților lor, cu scopul de a asigura un tratament corect, sigur și eficient.</i></p>
+
+    <p>În practica oncologică, succesul depinde de capacitatea noastră, ca medici, de a colabora pentru binele pacientului. Radioterapia este astăzi un instrument de o precizie extraordinară, care vine în sprijinul tuturor specialităților implicate în tratamentul cancerului. Obiectivul meu este ca fiecare pacient să primească indicația cea mai potrivită, beneficiind de tehnologie de top într-un timp cât mai scurt.<br>Iată pilonii pe care se bazează abordarea mea profesională:</p>
+
+    <h3>1. Acces rapid la tratament</h3>
+    <p>Timpul este un factor critic în oncologie. Fluxul de lucru din cadrul clinicii este structurat astfel încât să elimine perioadele de așteptare, asigurând un debut terapeutic prompt imediat ce indicația este validată, iar simularea CT este finalizată.</p>
+    <ul>
+      <li><b>Programare eficientă:</b> Pacientul beneficiază de tratament fără amânări inutile.</li>
+      <li><b>Comunicare medicală:</b> Informarea periodică a medicului trimițător despre evoluția clinică a pacientului.</li>
+      <li><b>Continuitatea îngrijirii:</b> După finalizarea curei de iradiere, pacientul revine sub supravegherea medicului curant, însoțit de un raport medical detaliat.</li>
+    </ul>
+
+    <h3>2. Dialog și expertiză în Comisiile Multidisciplinare (Tumor Board)</h3>
+    <p>Consider că deciziile cele mai bune se iau în echipă. Sunt disponibilă pentru participarea activă în comisiile multidisciplinare sau pentru a oferi o perspectivă tehnică în cadrul discuțiilor pe cazuri complexe. Colaborarea între medici, bazată pe respect și competență, este singura cale prin care îi putem oferi pacientului șansa la un rezultat optim.</p>
+    
+    <h3>3. Colegialitate și sprijin pentru medicii radioterapeuți</h3>
+    <p>Dincolo de colaborarea interdisciplinară, cred în solidaritatea în interiorul specialității noastre. Sunt deschisă să ofer consultanță sau o a doua opinie colegilor mei radioterapeuți pe cazuri punctuale care necesită o planificare dozimetrică complexă. Scopul meu final este ca pacientul, indiferent de locul unde este tratat, să beneficieze de cea mai sigură și eficientă soluție tehnică disponibilă.</p>
+
+    <h3>4. Siguranța și precizia tehnologiei în secvențialitatea tratamentului</h3>
+    <p>Performanța tratamentului este direct dependentă de acuratețea livrării dozei. Acceleratoarele liniare precum <b>TrueBeam STx</b> și <b>Halcyon</b>, utilizate în cadrul unității unde activez, reprezintă standardul actual de excelență în domeniu. Prin intermediul softurilor de planificare de ultimă generație, ne asigurăm că iradierea este strict conformă cu obiectivele clinice, fie că vorbim de pregătirea pentru o intervenție chirurgicală sau de consolidarea rezultatelor după chimioterapie.</p>
+    <p>Această precizie submilimetrică permite o distribuție dozimetrică riguroasă, care protejează țesuturile sănătoase și vascularizația peritumorală. Astfel, putem oferi soluții sigure chiar și în situații anatomice dificile, minimizând toxicitatea pe termen lung și asigurând o recuperare mai ușoară pentru pacient, indiferent de localizarea bolii.</p>
+
+    <blockquote>
+      <p>Dincolo de performanța aparatelor cu care tratăm, esența profesiei noastre rămâne grija față de om. Rolul meu este să mă asigur că pacientul primește tratamentul corect la momentul potrivit, oferind colegilor mei un suport tehnic și profesional pe care se pot baza în orice etapă a tratamentului.</p>
+    </blockquote>
+
+    <h3>Colaborare și comunicare directă</h3>
+    <p>Dacă aveți pacienți care necesită evaluare pentru radioterapie sau doriți să discutăm oportunitatea iradierii într-un caz specific, vă încurajez să stabilim o linie de comunicare directă. Prioritatea mea este ca, împreună, să asigurăm un parcurs medical fluid și corect pentru fiecare pacient.</p>`},
 ];
 
 export const featuredArticleSlugByCategory: Record<string, string> = {
