@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import Servicii from "../../components/Servicii.astro";
+import Despre from "../../components/Despre.astro";
+import Faq from "../../components/Faq.astro";
+import Programare from "../../components/Programare.astro";
+import Footer from "../../components/Footer.astro";
+import { getAlternateLinks } from "../../i18n/paths";
+---
+
+<BaseLayout
+  title="Др. Тетяна Чирімпей - Радіотерапія"
+  description="Медичні консультації та персоналізоване лікування променевою терапією в Клуж-Напоці."
+  locale="uk"
+  canonicalPath="/uk"
+  alternates={getAlternateLinks("/")}
+>
+  <Header locale="uk" currentPath="/" />
+  <Hero locale="uk" />
+  <Servicii locale="uk" />
+  <Despre locale="uk" />
+  <Faq locale="uk" />
+  <Programare locale="uk" />
+  <Footer locale="uk" />
+</BaseLayout>

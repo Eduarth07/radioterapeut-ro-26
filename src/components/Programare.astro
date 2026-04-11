@@ -1,13 +1,27 @@
+---
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { appointmentContent } from "../i18n/home/appointment";
+import { privacyModalContent } from "../i18n/home/privacyModal";
+
+const { locale = DEFAULT_LOCALE } = Astro.props as {
+  locale?: SiteLocale;
+};
+
+const t = appointmentContent[locale];
+const privacyHtml = privacyModalContent[locale];
+---
+
 <section id="programare" aria-labelledby="programare-title" class="border-t border-gray-200 scroll-mt-10 md:scroll-mt-0 py-16 sm:py-24 lg:py-28 dark:border-gray-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto mb-10 max-w-3xl text-center">
       <h2 id="programare-title" class="text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-        Formular de  contact  
+        {t.title}
       </h2>
       <p class="mt-2 text-base text-gray-600 sm:mt-3 sm:text-lg dark:text-gray-300">
-        Programările sau informațiile se pot solicita utilizând formularul de mai jos sau <br> telefonic la
-        <a href="tel:+40754256610" class="font-medium text-gray-900 italic dark:text-white">+40 754 256 610</a>
-      </p>
+  {t.introLead} <br />
+  {t.introPhonePrefix}
+  <a href="tel:+40754256610" class="font-medium text-gray-900 italic dark:text-white"> +40 754 256 610</a>
+</p>
     </div>
 
     <div class="mx-auto w-full max-w-5xl rounded-2xl border border-gray-200 bg-gray-50 px-4 py-8 shadow-sm sm:px-8 sm:py-10 dark:border-gray-700 dark:bg-[#15182B]">
@@ -17,7 +31,7 @@
         action="https://formsubmit.co/programari.cirimpeitatiana@gmail.com"
         method="POST"
       >
-        <input type="hidden" name="_subject" value="Cerere nouă de programare - radioterapeut.ro" />
+        <input type="hidden" name="_subject" value={t.emailSubject} />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value="https://radioterapeut.ro/#programare" />
         <input type="hidden" name="_captcha" value="false" />
@@ -25,49 +39,49 @@
 
         <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
           <label class="block">
-            <span class="sr-only">Nume</span>
-            <input type="text" name="name" placeholder="Nume*" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
+            <span class="sr-only">{t.nameSr}</span>
+            <input type="text" name="name" placeholder={t.namePlaceholder} class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
           </label>
           <label class="block">
-            <span class="sr-only">Prenume</span>
-            <input type="text" name="surname" placeholder="Prenume*" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
+            <span class="sr-only">{t.surnameSr}</span>
+            <input type="text" name="surname" placeholder={t.surnamePlaceholder} class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
           </label>
           <label class="block">
-            <span class="sr-only">Email</span>
-            <input type="email" name="email" placeholder="Email*" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
+            <span class="sr-only">{t.emailSr}</span>
+            <input type="email" name="email" placeholder={t.emailPlaceholder} class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
           </label>
           <label class="block">
-            <span class="sr-only">Telefon</span>
-            <input type="tel" name="phone" placeholder="Telefon*" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
+            <span class="sr-only">{t.phoneSr}</span>
+            <input type="tel" name="phone" placeholder={t.phonePlaceholder} class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required />
           </label>
         </div>
 
         <label class="block">
-          <span class="sr-only">Mesaj</span>
-          <textarea rows="4" name="message" placeholder="Mesaj*" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required></textarea>
+          <span class="sr-only">{t.messageSr}</span>
+          <textarea rows="4" name="message" placeholder={t.messagePlaceholder} class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-gray-900 outline-none ring-cyan-200  placeholder:text-gray-500 focus:border-cyan-500 focus:ring-2 dark:border-gray-600 dark:bg-[#2A2E44] dark:text-white dark:placeholder:text-gray-300" required></textarea>
         </label>
 
         <div class="space-y-4 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-black/20">
           <div class="flex items-center justify-center gap-3 text-center">
             <input id="gdprConsent" name="gdprConsent" type="checkbox" class="h-5 w-5 cursor-pointer rounded border-gray-300 text-cyan-600 focus:ring-cyan-500" />
             <label for="gdprConsent" class="cursor-pointer text-sm text-gray-700 sm:text-base dark:text-gray-200">
-              Sunt de acord cu
+              {t.consentPrefix}
               <button type="button" data-open-gdpr class="ml-1 cursor-pointer text-blue-600 underline hover:text-blue-800 dark:text-blue-300 dark:hover:text-blue-200">
-            politica de confidențialitate
-              </button>.
+                {t.consentLinkText}
+              </button>{t.consentSuffix}
             </label>
           </div>
-          <p id="gdprError" class="hidden text-sm text-red-600">Pentru a continua, trebuie să parcurgi și să accepți termenii și condițiile.</p>
+          <p id="gdprError" class="hidden text-sm text-red-600">{t.gdprError}</p>
 
           <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <div class="g-recaptcha" data-sitekey="6LeSnyArAAAAAFcOhzV_RFcGA5PnjwZXxo_tpxqe"></div>
             <span id="captchaError" class="hidden text-sm text-red-600">
-              Te rugăm să confirmi că nu ești robot.
+              {t.captchaError}
             </span>
           </div>
 
           <p class="text-sm sm:text-base text-center text-gray-600 dark:text-gray-300">
-            După trimiterea formularului veți fi contactat(ă) în cel mai scurt timp pentru stabilirea detaliilor vizitei medicale sau pentru a primi informațiile suplimentare.
+            {t.responseInfo}
           </p>
         </div>
 
@@ -76,7 +90,7 @@
           type="submit"
   class="group inline-flex min-w-[160px] cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border border-gray-600 bg-gradient-to-b from-gray-700 to-gray-900 px-6 py-3 text-lg font-medium text-white shadow-sm transition-all duration-300 ease-out hover:from-gray-600 hover:to-gray-800 hover:border-gray-500 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.98] dark:border-none dark:from-cyan-600 dark:to-cyan-800 dark:hover:from-cyan-500 dark:hover:to-cyan-700"
         >
-  <span>Trimite</span>
+  <span>{t.submitLabel}</span>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +112,7 @@
   type="button"
   data-close-gdpr
   class="absolute right-4 top-3 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-red-600 text-white shadow-sm transition hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:focus:ring-offset-[#1f2937]"
-  aria-label="Închide"
+  aria-label={t.modalCloseAria}
 >
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -106,192 +120,10 @@
 </button>
 
       <div class="border-b border-gray-200 px-6 py-5 dark:border-gray-700">
-        <h3 id="gdpr-title" class="pr-10 text-xl font-semibold text-gray-900 dark:text-white">Termeni și condiții / Politica de confidențialitate</h3>
+        <h3 id="gdpr-title" class="pr-10 text-xl font-semibold text-gray-900 dark:text-white">{t.modalTitle}</h3>
       </div>
 
-      <div id="gdprModalContent" class="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 dark:text-gray-200">
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">POLITICA DE CONFIDENȚIALITATE</h4>
-    <p class="mt-2">
-      Notificare privind confidențialitatea datelor cu caracter personal, inclusiv a datelor speciale (date privind sănătatea). Prezenta informare stabilește baza în care
-      <strong>CIRIMPEI TATIANA RADIOTERAPEUT PFA</strong>, în calitate de operator, prelucrează datele dumneavoastră în conformitate cu Regulamentul (UE) 2016/679 („GDPR”) și Legea nr. 190/2018.
-    </p>
-    <p class="mt-2">
-      Operator: <strong>CIRIMPEI TATIANA RADIOTERAPEUT PFA</strong>, CUI: …, loc. Cluj-Napoca, Bld. Muncii nr. 96-98, jud. Cluj, România. Date de contact: <strong>+40 754 256 610</strong>,
-      <strong>programari.cirimpeitatiana@gmail.com</strong> și/sau <strong>tatianacirimpei@medisprof.ro</strong>.
-    </p>
-    <p class="mt-2">
-      Prelucrăm datele în principal pentru <strong>preluarea solicitării</strong>, <strong>contactarea dumneavoastră</strong> și <strong>organizarea programării</strong> în cadrul clinicii cu care colaborăm,
-      respectiv <strong>MEDISPROF SRL</strong>. Dacă programarea se concretizează și vă prezentați la consultație/investigații/tratament la MEDISPROF SRL, această societate va prelucra datele dumneavoastră
-      în calitate de <strong>operator distinct</strong>, conform informărilor sale.
-    </p>
-    <p class="mt-2">
-      Ne rezervăm dreptul de a actualiza periodic această informare. Versiunea curentă este publicată pe website, iar modificările relevante vor fi reflectate în acest conținut.
-    </p>
-    <p class="mt-2">
-      Scopul documentului este informarea clară cu privire la: scopurile și temeiurile prelucrării, durata de stocare, destinatarii datelor, transferuri (dacă este cazul), măsurile de securitate,
-      drepturile persoanei vizate și modalitatea de exercitare a acestora.
-    </p>
-    <p class="mt-2">
-      Pentru cookie-uri și tehnologii similare (inclusiv reCAPTCHA), consultați <strong>Politica de Cookies</strong> separată.
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">1. Definiții</h4>
-    <ul class="mt-2 list-disc space-y-1 pl-5">
-      <li>Date cu caracter personal – orice informații privind o persoană fizică identificată sau identificabilă (ex.: nume, prenume, telefon, e-mail, IP).</li>
-      <li>Date speciale / date privind sănătatea – informații despre starea de sănătate, investigații, diagnostic, tratament, antecedente medicale (GDPR art. 9).</li>
-      <li>Prelucrare – orice operațiune asupra datelor (colectare, înregistrare, stocare, consultare, utilizare, transmitere, restricționare, ștergere, distrugere).</li>
-      <li>Operator – entitatea care stabilește scopurile și mijloacele prelucrării (în acest caz, CIRIMPEI TATIANA RADIOTERAPEUT PFA).</li>
-      <li>Operator distinct – entitate care prelucrează date în propriile scopuri (ex.: MEDISPROF SRL, pentru acordarea serviciilor medicale și evidențele aferente).</li>
-      <li>Destinatar – persoana/entitatea către care sunt divulgate datele (de ex.: clinică parteneră, furnizori tehnici, autorități, dacă legea impune).</li>
-      <li>Împuternicit – furnizor care prelucrează date în numele operatorului (de ex.: servicii tehnice/hosting/mentenanță, dacă este cazul).</li>
-      <li>Transfer către un stat terț – transmiterea datelor în afara Spațiului Economic European (SEE), în condițiile și cu garanțiile prevăzute de GDPR.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">2. Principii</h4>
-    <ul class="mt-2 list-disc space-y-1 pl-5">
-      <li>Prelucrare legală, echitabilă și transparentă.</li>
-      <li>Colectare în scopuri determinate, explicite și legitime.</li>
-      <li>Date adecvate, relevante și limitate la ceea ce este necesar (minimizarea datelor).</li>
-      <li>Date exacte și actualizate atunci când este necesar.</li>
-      <li>Stocare pe durata necesară scopului declarat.</li>
-      <li>Asigurarea securității datelor prin măsuri tehnice și organizatorice adecvate.</li>
-      <li>Respectarea confidențialității informațiilor medicale, inclusiv conform Legii nr. 46/2003 (art. 21–22).</li>
-    </ul>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">3. Ce date colectăm</h4>
-    <p class="mt-2">
-      Date furnizate de dumneavoastră prin formular sau contact direct: <strong>nume, prenume, e-mail, telefon</strong>, precum și conținutul câmpului <strong>„Mesaj”</strong>.
-      Mesajul poate conține, dacă alegeți să le includeți, <strong>date privind sănătatea</strong> (date speciale).
-    </p>
-    <p class="mt-2">
-      Date tehnice necesare funcționării și securității website-ului: adresă IP, informații despre dispozitiv/browser, date de jurnal (log) privind accesarea/încercările de trimitere,
-      indicatori anti-abuz. Acestea sunt folosite în principal pentru securitate și prevenirea solicitărilor automate/spam.
-    </p>
-    <p class="mt-2">
-      Recomandare: pentru protecția dumneavoastră, vă rugăm să includeți în mesaj doar informațiile necesare pentru a înțelege solicitarea și a organiza programarea. Detaliile medicale complete
-      se colectează, de regulă, în cadrul consultației, conform procedurilor clinice.
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">4. Scopul prelucrării</h4>
-    <ul class="mt-2 list-disc space-y-1 pl-5">
-      <li>Preluarea solicitării și contactarea în vederea unei programări / oferirii de informații.</li>
-      <li>Comunicarea detaliilor privind programarea (confirmare, reprogramare, clarificări).</li>
-      <li>Transmiterea către MEDISPROF SRL a informațiilor strict necesare pentru efectuarea programării în cadrul clinicii.</li>
-      <li>Asigurarea securității website-ului și prevenirea abuzului (spam, solicitări automate, tentative de fraudă).</li>
-      <li>Respectarea obligațiilor legale și deontologice aplicabile și gestionarea eventualelor solicitări ale autorităților, când există obligație legală.</li>
-    </ul>
-    <p class="mt-2">
-      Datele NU sunt folosite în scopuri comerciale, publicitate, profilare sau marketing direct (newsletter, promoții).
-    </p>
-    <p class="mt-2">
-      Temeiuri juridice uzuale: GDPR art. 6 alin. (1) lit. (b) (demersuri la cererea persoanei vizate pentru programare), lit. (c) (obligații legale, unde este cazul) și lit. (f) (interes legitim – securitate).
-      Pentru datele privind sănătatea, prelucrarea are loc, după caz, în condițiile GDPR art. 9 alin. (2) lit. (h) și art. 9 alin. (3) (servicii de îngrijire a sănătății sub obligație de confidențialitate).
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">5. Divulgarea datelor</h4>
-    <p class="mt-2">
-      Datele pot fi transmise către <strong>MEDISPROF SRL</strong> strict în vederea programării consultației/investigației și organizării actului medical. MEDISPROF SRL prelucrează datele ca operator distinct,
-      conform propriilor informări și obligații legale privind documentația medicală.
-    </p>
-    <p class="mt-2">
-      Pentru funcționarea formularului și comunicare, datele sunt transmise tehnic către adresa noastră de e-mail prin intermediul serviciului <strong>FormSubmit (formsubmit.co)</strong>, conform setărilor formularului,
-      și sunt recepționate/stocate în contul de e-mail al Operatorului. Furnizorii acestor servicii pot prelucra date conform propriilor politici (ca operatori independenți sau, după caz, ca furnizori/împreună cu alți operatori),
-      în limita necesară furnizării serviciului.
-    </p>
-    <p class="mt-2">
-      Pentru prevenirea abuzului și protecția website-ului, folosim <strong>Google reCAPTCHA</strong>, care poate implica prelucrarea unor date tehnice (de exemplu IP, identificatori de browser/dispozitiv) și setarea unui cookie necesar
-      atunci când este executat, pentru analiza de risc.
-    </p>
-    <p class="mt-2">
-      Datele pot fi comunicate autorităților competente (instanțe, organe de cercetare penală, autorități de control etc.) numai atunci când există o obligație legală sau o solicitare valabilă potrivit legii.
-    </p>
-    <p class="mt-2">
-      În celelalte situații, divulgarea către terți se face numai dacă este necesară pentru scopurile de mai sus și cu respectarea garanțiilor legale (inclusiv confidențialitate, minimizare, securitate).
-      Nu vindem și nu închiriem datele dumneavoastră către terți.
-    </p>
-    <p class="mt-2">
-      În cazul în care anumite servicii implică transferuri în afara SEE, acestea se realizează numai în condițiile GDPR (decizie de adecvare și/sau clauze contractuale standard și măsuri suplimentare, după caz).
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">6. Durata de stocare</h4>
-    <p class="mt-2">
-      Datele sunt prelucrate inițial pentru programare și păstrate strict pe durata necesară acestui scop, cu respectarea principiului limitării stocării.
-    </p>
-    <p class="mt-2">
-      Dacă programarea nu se concretizează, datele din solicitare (inclusiv mesajul) sunt păstrate, de regulă, <strong>maximum 30 de zile calendaristice</strong>, pentru a putea finaliza comunicarea și eventualele clarificări,
-      după care sunt șterse în mod sigur, cu excepția situațiilor în care păstrarea este necesară pentru apărarea unui drept sau pentru obligații legale.
-    </p>
-    <p class="mt-2">
-      Datele tehnice/jurnalele de securitate pot fi păstrate pe perioade rezonabile, proporționale cu scopul de securitate (de exemplu pentru identificarea tentativelor de abuz), după care sunt șterse sau anonimizate.
-    </p>
-    <p class="mt-2">
-      Dacă pacientul se prezintă la consultație/investigații/tratament la MEDISPROF SRL, datele intră în circuitul legal al documentației medicale gestionate de MEDISPROF SRL, cu termenele de păstrare prevăzute de legislația aplicabilă evidențelor medicale și arhivării.
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">7. Drepturile dumneavoastră</h4>
-    <ul class="mt-2 list-disc space-y-1 pl-5">
-      <li>Dreptul la informare și acces la date.</li>
-      <li>Dreptul la rectificare (corectarea datelor inexacte).</li>
-      <li>Dreptul la ștergere („dreptul de a fi uitat”), în condițiile GDPR.</li>
-      <li>Dreptul la restricționarea prelucrării, în condițiile GDPR.</li>
-      <li>Dreptul la portabilitatea datelor, în condițiile aplicabile.</li>
-      <li>Dreptul de opoziție, în special când prelucrarea se bazează pe interes legitim.</li>
-      <li>Dreptul de a vă adresa ANSPDCP și/sau instanțelor competente.</li>
-    </ul>
-    <p class="mt-2">
-      Pentru exercitarea drepturilor: <strong>programari.cirimpeitatiana@gmail.com</strong> și/sau <strong>tatianacirimpei@medisprof.ro</strong>.
-      Răspunsul se transmite, de regulă, în cel mult <strong>30 de zile calendaristice</strong>, conform GDPR, cu posibilitatea prelungirii în situațiile prevăzute de regulament.
-    </p>
-    <p class="mt-2">
-      Pentru protecția dumneavoastră, putem solicita informații suplimentare pentru verificarea identității, în special când cererea vizează date medicale sau alte date sensibile.
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">8. Securitatea datelor</h4>
-    <p class="mt-2">
-      Sunt implementate măsuri tehnice și organizatorice adecvate, proporționale cu riscurile: transmitere securizată HTTPS, control al accesului la conturile utilizate, limitarea persoanelor care pot accesa solicitările,
-      proceduri de confidențialitate și verificări periodice ale setărilor de securitate.
-    </p>
-    <p class="mt-2">
-      Menționăm că trimiterea de informații prin internet/e-mail poate implica riscuri inerente. Vă recomandăm să evitați includerea în mesaj a unor date medicale excesive sau a documentelor medicale complete, dacă nu este necesar.
-    </p>
-    <p class="mt-2">
-      Pentru întrebări suplimentare: <strong>tatianacirimpei@medisprof.ro</strong> / <strong>programari.cirimpeitatiana@gmail.com</strong>.
-    </p>
-  </section>
-
-  <section>
-    <h4 class="text-base font-semibold text-gray-900 dark:text-white">9. Consimțământ</h4>
-    <p class="mt-2">
-      Prin bifarea căsuței și apăsarea butonului „Confirm și accept”, confirmați că ați citit și ați înțeles prezenta informare.
-      Prelucrarea datelor necesare pentru a răspunde solicitării și a organiza programarea se bazează, de regulă, pe demersurile efectuate la cererea dumneavoastră (GDPR art. 6 alin. (1) lit. b) și pe necesitatea organizării serviciilor de îngrijire a sănătății,
-      iar pentru datele privind sănătatea – în condițiile GDPR art. 9 alin. (2) lit. (h) și art. 9 alin. (3), sub obligația de confidențialitate.
-    </p>
-    <p class="mt-2">
-      Dacă există situații punctuale în care prelucrarea se bazează pe consimțământ (de exemplu, pentru informații suplimentare care nu sunt necesare programării), aveți dreptul să îl retrageți în orice moment,
-      fără a afecta legalitatea prelucrărilor efectuate înainte de retragere.
-    </p>
-    <p class="mt-2">
-      Refuzul furnizării datelor strict necesare (de exemplu nume și un mijloc de contact) poate conduce la imposibilitatea procesării solicitării de programare.
-    </p>
-  </section>
-      </div>
+ <div id="gdprModalContent" class="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 dark:text-gray-200" set:html={privacyHtml} />
 
       <div id="gdprAcceptWrap" class="hidden border-t border-gray-200 px-6 py-4 text-center dark:border-gray-700">
         <button
@@ -299,7 +131,7 @@
         type="button"
         class="inline-flex cursor-pointer justify-center rounded-xl border border-blue-900 bg-blue-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-950 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 active:translate-y-0 active:scale-[0.98] dark:border-cyan-600 dark:bg-cyan-600 dark:text-white dark:hover:bg-cyan-500 dark:focus:ring-cyan-500 dark:focus:ring-offset-[#15182B]"
       >
-        Confirm și accept
+        {t.modalAcceptButton}
       </button>
       </div>
     </div>

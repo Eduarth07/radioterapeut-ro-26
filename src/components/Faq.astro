@@ -1,100 +1,67 @@
+---
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { faqContent } from "../i18n/home/faq";
+
+const { locale = DEFAULT_LOCALE } = Astro.props as {
+  locale?: SiteLocale;
+};
+
+const t = faqContent[locale];
+---
+
 <section id="faqs" aria-labelledby="faqs-title" class="border-t border-gray-200 bg-gray-50 py-16 sm:py-24 lg:py-28 dark:border-gray-800 dark:bg-gray-900">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-3xl text-center lg:text-left lg:mx-0">
       <h2 id="faqs-title" class="text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-        Întrebări frecvente
+        {t.title}
       </h2>
       <p class="mt-3 text-base text-gray-600 sm:text-lg dark:text-gray-300">
-        Dacă mai ai întrebări, mă poți contacta oricând pentru clarificări și informații suplimentare.
+        {t.intro}
       </p>
     </div>
 
     <ul role="list" class="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 sm:mt-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:gap-8">
       <li>
         <ul role="list" class="space-y-4 sm:space-y-5">
-          <li>
-            <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
-              <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
-                <span>Ce trebuie să fac înainte de începerea radioterapiei?</span>
-                <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </summary>
+          {t.leftColumn.map((item) => (
+            <li>
+              <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
+                <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
+                  <span>{item.question}</span>
+                  <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </summary>
                 <div class="px-3 pb-3 sm:px-5 sm:pb-5">
                   <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
-                    Înainte de începerea tratamentului, vei avea o consultație cu medicul radioterapeut, unde vom discuta istoricul tău medical și investigațiile recente. Urmează o etapă esențială numită simulare — o scanare CT specială, care ne ajută să stabilim poziția exactă și planul personalizat de tratament. Nu este nevoie de pregătiri speciale acasă, dar vei primi toate indicațiile necesare înainte de fiecare etapă.
+                    {item.answer}
                   </p>
                 </div>
-            </details>
-          </li>
-
-          <li>
-          <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
-            <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">  
-            <span>Cum decurge o ședință de radioterapie? Este dureroasă?</span>
-                <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </summary>
-              <div class="px-3 pb-3 sm:px-5 sm:pb-5">
-                  <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
-                   Ședința de radioterapie este nedureroasă și durează în general câteva minute. Pacientul stă întins pe masa aparatului, într-o poziție stabilă, iar tratamentul este aplicat cu precizie către zona afectată. Nu se simte nimic în timpul expunerii, iar echipa medicală monitorizează pacientul permanent dintr-o cameră alăturată.
-                 </p>
-              </div>
-            </details>
-          </li>
-
-          <li>
-            <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
-              <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
-                <span>Care sunt efectele secundare ale radioterapiei și cum pot fi gestionate?</span>
-                <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </summary>
-               <div class="px-3 pb-3 sm:px-5 sm:pb-5">
-                <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
-                  Efectele secundare variază în funcție de zona tratată și pot include oboseală, iritații ale pielii sau inflamații locale. Ele apar gradual și sunt de obicei temporare. Fiecare pacient primește recomandări specifice și este urmărit îndeaproape, pentru ca orice reacție să fie controlată din timp. Scopul nostru este să menținem calitatea vieții cât mai bună pe durata tratamentului.
-              </p>
-              </div>
-            </details>
-          </li>
+              </details>
+            </li>
+          ))}
         </ul>
       </li>
 
       <li>
         <ul role="list" class="space-y-4 sm:space-y-5">
-          <li>
-            <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
-              <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
-                <span>Este necesară internarea pe perioada tratamentului?</span>
-                <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </summary>
-              <div class="px-3 pb-3 sm:px-5 sm:pb-5">
-                <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
-                  Nu, radioterapia se face de obicei în regim ambulatoriu, adică vii la ședință și apoi mergi acasă. O ședință durează doar câteva minute, iar tratamentul se administrează zilnic, de luni până vineri, pentru o anumită perioadă stabilită de medic. Internarea este necesară doar în cazuri speciale, rare, când pacientul are nevoie de îngrijiri suplimentare.
-                </p>
-              </div>
-            </details>
-          </li>
-
-          <li>
-            <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
-              <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
-                <span>Pot continua activitățile zilnice în timpul tratamentului cu radioterapie?</span>
-                <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
-                </svg>
-              </summary>
-              <div class="px-3 pb-3 sm:px-5 sm:pb-5">
-                <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
-                  În majoritatea cazurilor, da. Radioterapia nu afectează întregul organism, ci doar zona tratată, iar majoritatea pacienților își pot continua activitățile obișnuite — serviciu, plimbări, viață socială. Este important însă să îți asculți corpul: dacă apare oboseala, e bine să îți acorzi timp de odihnă. Echipa medicală te va ghida pe parcurs și îți va oferi recomandări adaptate nevoilor tale.
-                </p>
-              </div>
-            </details>
-          </li>
+          {t.rightColumn.map((item) => (
+            <li>
+              <details class="faq-item group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md dark:border-gray-700 dark:bg-black/30">
+                <summary class="flex w-full cursor-pointer select-none list-none items-center justify-between gap-4 px-3 py-3 text-base font-semibold text-gray-900 sm:px-5 sm:py-5 sm:text-base lg:text-lg dark:text-white">
+                  <span>{item.question}</span>
+                  <svg class="h-5 w-5 shrink-0 text-gray-500 -transform duration-200 group-open:rotate-180 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.25 4.51a.75.75 0 0 1-1.08 0l-4.25-4.51a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+                  </svg>
+                </summary>
+                <div class="px-3 pb-3 sm:px-5 sm:pb-5">
+                  <p class="text-base text-gray-700 sm:text-base dark:text-gray-300">
+                    {item.answer}
+                  </p>
+                </div>
+              </details>
+            </li>
+          ))}
         </ul>
       </li>
     </ul>

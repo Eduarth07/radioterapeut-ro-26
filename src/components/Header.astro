@@ -1,5 +1,20 @@
 ---
-import { navLinks } from "../data/navLinks";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { getHeaderUi, getNavLinks } from "../data/navLinks";
+
+const {
+  locale = DEFAULT_LOCALE,
+  currentPath = "/",
+  pathByLocale,
+} = Astro.props as {
+  locale?: SiteLocale;
+  currentPath?: string;
+  pathByLocale?: Partial<Record<SiteLocale, string>>;
+};
+
+const navLinks = getNavLinks(locale);
+const headerUi = getHeaderUi(locale);
 ---
 
 <nav
@@ -11,7 +26,7 @@ import { navLinks } from "../data/navLinks";
     <div class="relative z-10 flex items-center gap-6 lg:gap-14">
       <!-- Brand -->
         <!-- Logo simplu (în snippet e SVG; aici e echivalent vizual, curat) -->
-        <a aria-label="Acasă" href="/" class="flex items-center gap-3">
+        <a aria-label={headerUi.homeAriaLabel} href={headerUi.homeHref} class="flex items-center gap-3">
             <img
               src="/logo_white.png"
               alt="Radioterapeut.ro"
@@ -31,8 +46,8 @@ import { navLinks } from "../data/navLinks";
               loading="eager"
             />
           <div class="leading-tight sm:block">
-            <div class="text-base font-semibold text-(--rt-ink)">Dr. Cirimpei Tatiana</div>
-            <div class="text-sm text-gray-600 dark:text-gray-300">Radioterapie</div>
+            <div class="text-base font-semibold text-(--rt-ink)">{headerUi.title}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300">{headerUi.subtitle}</div>
           </div>
         </a>
 
@@ -52,8 +67,9 @@ import { navLinks } from "../data/navLinks";
 
     <!-- RIGHT -->
     <div class="flex items-center gap-4 sm:gap-6">
-      <!-- Mobile actions: theme toggle + hamburger -->
       <div class="flex items-center gap-2 lg:hidden">
+      <!-- Mobile actions: theme toggle + hamburger -->
+      <LanguageSwitcher currentLocale={locale} currentPath={currentPath} pathByLocale={pathByLocale} />
         <button
           id="rt-theme-toggle-mobile"
           type="button"
@@ -72,7 +88,7 @@ import { navLinks } from "../data/navLinks";
         <button
           id="rt-menu-btn"
           class="cursor-pointer relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60 dark:stroke-white dark:hover:bg-gray-600 dark:hover:stroke-gray-100"
-          aria-label="Toggle site navigation"
+          aria-label={headerUi.navigationToggle}
           type="button"
           aria-expanded="false"
           aria-controls="rt-mobile-menu"
@@ -90,12 +106,13 @@ import { navLinks } from "../data/navLinks";
 
       <!-- Desktop buttons only -->
       <div class="flex items-center gap-6 max-lg:hidden">
+        <LanguageSwitcher currentLocale={locale} currentPath={currentPath} pathByLocale={pathByLocale} />
           <!-- Theme toggle -->
           <button
             id="rt-theme-toggle"
             type="button"
             class="inline-flex cursor-pointer h-10 w-10 items-center justify-center rounded-lg text-gray-600 dark:text-gray-300 hover:text-(--rt-ink) focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400/60"
-            aria-label="Comută tema (dark/light)"
+            aria-label={headerUi.themeToggle}
             aria-pressed="false"
           >
             <!-- Moon -->
@@ -108,15 +125,15 @@ import { navLinks } from "../data/navLinks";
               <path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/>
             </svg>
           </button>
-        <a
-          class="inline-flex justify-center py-2 px-3 text-base btn-secundar"
-          href="/#contact"
-        >
-          Contact
-        </a>
+<a
+  class="inline-flex justify-center py-2 px-3 text-base btn-secundar"
+  href={headerUi.contactHref}
+>
+  {headerUi.contact}
+</a>
 
 <a
-  href="/#programare"
+  href={headerUi.appointmentHref}
   class="inline-flex items-center justify-center px-5 py-2 text-base btn-primar"
 >
   <img
@@ -127,7 +144,7 @@ import { navLinks } from "../data/navLinks";
     loading="lazy"
     decoding="async"
   />
-  Programează-te
+  {headerUi.appointment}
 </a>
       </div>
     </div>
@@ -151,15 +168,17 @@ import { navLinks } from "../data/navLinks";
       <div class="mt-4 flex gap-3">
         <a
           class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base btn-secundar"
-          href="/#contact"
+          href={headerUi.contactHref}
+          data-rt-mobile-link
         >
-          Contact
+          {headerUi.contact}
         </a>
         <a
           class="inline-flex w-1/2 justify-center rounded-lg py-2 px-3 text-base font-semibold btn-primar"
-          href="/#programare"
+          href={headerUi.appointmentHref}
+          data-rt-mobile-link
         >
-          Programează-te
+          {headerUi.appointment}
         </a>
       </div>
     </div>
@@ -181,10 +200,10 @@ import { navLinks } from "../data/navLinks";
   ].filter(Boolean);
 
   const key = "rt-theme";
-  // ===== Mobile menu =====
+// ===== Mobile menu =====
   const btn = document.getElementById("rt-menu-btn");
   const menu = document.getElementById("rt-mobile-menu");
-
+  
   if (btn && menu) {
     // Toggle open/close
     btn.addEventListener("click", () => {
@@ -192,7 +211,7 @@ import { navLinks } from "../data/navLinks";
       const nextIsOpen = !isOpen;
       btn.setAttribute("aria-expanded", String(nextIsOpen));
       menu.classList.toggle("hidden", !nextIsOpen);
-      document.body.classList.toggle("overflow-hidden", nextIsOpen);
+      // ȘTEARS: document.body.classList.toggle("overflow-hidden", nextIsOpen);
     });
 
     // Închide la click pe link din meniu
@@ -200,7 +219,7 @@ import { navLinks } from "../data/navLinks";
       a.addEventListener("click", () => {
         btn.setAttribute("aria-expanded", "false");
         menu.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
+        // ȘTEARS: document.body.classList.remove("overflow-hidden");
       });
     });
 
@@ -209,8 +228,8 @@ import { navLinks } from "../data/navLinks";
       if (e.key === "Escape" && !menu.classList.contains("hidden")) {
         btn.setAttribute("aria-expanded", "false");
         menu.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
         btn.focus();
+        // ȘTEARS: document.body.classList.remove("overflow-hidden");
       }
     });
 
@@ -226,7 +245,7 @@ import { navLinks } from "../data/navLinks";
 
       btn.setAttribute("aria-expanded", "false");
       menu.classList.add("hidden");
-            document.body.classList.remove("overflow-hidden");
+      // ȘTEARS: document.body.classList.remove("overflow-hidden");
     });
 
     // dacă userul redimensionează spre desktop, resetăm starea meniului mobil
@@ -235,7 +254,7 @@ import { navLinks } from "../data/navLinks";
       if (!isDesktopNow) return;
       btn.setAttribute("aria-expanded", "false");
       menu.classList.add("hidden");
-      document.body.classList.remove("overflow-hidden");
+      // ȘTEARS: document.body.classList.remove("overflow-hidden");
     });
   }
 

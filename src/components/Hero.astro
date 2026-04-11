@@ -1,3 +1,17 @@
+---
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { heroContent } from "../i18n/home/hero";
+import { getLocalePath } from "../i18n/paths";
+
+const { locale = DEFAULT_LOCALE } = Astro.props as {
+  locale?: SiteLocale;
+};
+
+const t = heroContent[locale];
+const homeHref = getLocalePath(locale, "/");
+const programareHref = `${homeHref}#programare`;
+const serviciiHref = `${homeHref}#servicii`;
+---
 <div class="overflow-hidden py-15 sm:py-32 lg:pb-32 xl:pb-36
             lg:[@media(max-height:820px)]:pt-14
             lg:[@media(max-height:820px)]:pb-24">
@@ -6,18 +20,18 @@
         
       <!-- LEFT (nu atingem) -->
       <div class="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 lg:translate-y-14 xl:col-span-6 text-center lg:text-left">
-        <h1 class="text-4xl font-medium tracking-tight text-gray-900 dark:text-white">Dr. Cirimpei Tatiana</h1>
-        <h1 class="text-2xl font-medium tracking-tight text-gray-800 dark:text-gray-400">Medic radioterapeut</h1>
-        <p class="mt-6 text-base xl:text-lg text-gray-600 dark:text-gray-300">
-          Consultații medicale și tratamente de radioterapie personalizate, realizate conform celor mai noi ghiduri și protocoale internaționale, susținute de expertiză acumulată în Franța și competență în tehnici avansate precum radioterapia stereotactică.
-        </p>
+<h1 class="text-4xl font-medium tracking-tight text-gray-900 dark:text-white">{t.title}</h1>
+<h2 class="text-2xl font-medium tracking-tight text-gray-800 dark:text-gray-400">{t.subtitle}</h2>
+<p class="mt-6 text-base xl:text-lg text-gray-600 dark:text-gray-300">
+  {t.description}
+</p>
 
         <div class="mt-8 flex flex-wrap gap-x-6 gap-y-4 justify-center lg:justify-start">
-          <a
-            aria-label="Formular de contact Dr. Cirimpei Tatiana"
-            class="inline-flex justify-center p-3 text-base rounded-lg btn-primar"
-            href="/#programare"
-          >
+<a
+  aria-label={t.contactAriaLabel}
+  class="inline-flex justify-center rounded-lg p-3 text-base btn-primar"
+  href={programareHref}
+>
           <img
               src="/form.svg"
               alt=""
@@ -26,15 +40,15 @@
               loading="lazy"
               decoding="async"
             />
-           <span>Formular de contact</span>
+           <span>{t.contactCta}</span>
           </a>
 
-          <a
-            class="inline-flex justify-center rounded-lg p-3 text-base text-gray-600 dark:text-gray-300 btn-secundar" 
-            href="#servicii"
-          >
-            <span>Servicii medicale</span>
-          </a>
+<a
+  class="inline-flex justify-center rounded-lg p-3 text-base text-gray-600 dark:text-gray-300 btn-secundar"
+  href={serviciiHref}
+>
+  <span>{t.servicesCta}</span>
+</a>
         </div>
       </div>
 
@@ -99,7 +113,7 @@
 
       <!-- As featured in (identic; poți lăsa așa până ai assets) -->
       <div class="relative lg:col-span-7 xl:col-span-6 lg:translate-y-18 mt-5 lg:mt-0">
-        <p class="text-center text-base font-semibold text-(--rt-muted) lg:text-left">Afilieri profesionale</p>
+        <p class="text-center text-base font-semibold text-(--rt-muted) lg:text-left">{t.affiliationsLabel}</p>
           <ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start items-center">
             <li class="flex">
               <a href="https://www.estro.org/" target="_blank" rel="noopener noreferrer" title="European Society for Radiotherapy and Oncology" class="cursor-default">

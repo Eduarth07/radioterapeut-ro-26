@@ -2,19 +2,72 @@
 import "../styles/global.css";
 import "@fontsource-variable/inter";
 import ScrollToTopButton from "../components/ScrollToTopButton.astro";
+import {
+  DEFAULT_LOCALE,
+  LOCALE_HREFLANG,
+  type SiteLocale,
+} from "../i18n/config";
+import { normalizePath } from "../i18n/paths";
+
+type AlternateLink = {
+  locale: SiteLocale;
+  href: string;
+};
 
 const {
-  title = "Dr. Cirimpei Tatiana - Radioterapie",
+  title = "Dr. Tatiana Cirimpei - Radioterapie",
   description = "Radioterapie modernă, informații pentru pacienți și trimitere către programare.",
+  locale = DEFAULT_LOCALE,
+  canonicalPath = "/",
+  alternates = [] as AlternateLink[],
+  xDefaultHref,
 } = Astro.props;
+
+const normalizedCanonicalPath = normalizePath(canonicalPath);
+const canonicalUrl = new URL(
+  normalizedCanonicalPath === "/" ? "/" : `${normalizedCanonicalPath}/`,
+  Astro.site ?? "https://radioterapeut.ro"
+).toString();
+
+const normalizeAbsoluteUrl = (value: string) => {
+  const url = new URL(value, Astro.site ?? "https://radioterapeut.ro");
+
+  if (url.pathname !== "/") {
+    url.pathname = `${url.pathname.replace(/\/+$/, "")}/`;
+  }
+
+  return url.toString();
+};
+
+const normalizedAlternates = alternates.map((item) => ({
+  ...item,
+  href: normalizeAbsoluteUrl(item.href),
+}));
+
+const resolvedXDefaultHref = normalizeAbsoluteUrl(
+  xDefaultHref ??
+    alternates.find((item) => item.locale === DEFAULT_LOCALE)?.href ??
+    canonicalUrl
+);
 ---
 <!doctype html>
-<html lang="ro" class="scroll-smooth">
+<html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    <link rel="canonical" href={canonicalUrl} />
+{normalizedAlternates.map((item) => (
+  <link
+    rel="alternate"
+    hreflang={LOCALE_HREFLANG[item.locale]}
+    href={item.href}
+  />
+))}
+    <link rel="alternate" hreflang="x-default" href={resolvedXDefaultHref} />
+
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -23,11 +76,12 @@ const {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
+
     <script>
       (() => {
         try {
           const key = "rt-theme";
-          const stored = localStorage.getItem(key); // "dark" | "light" | null
+          const stored = localStorage.getItem(key);
           const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
           const isDark = stored ? stored === "dark" : systemDark;
           document.documentElement.classList.toggle("dark", isDark);

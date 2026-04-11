@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { getArticlesForLocale, getArticleLocalePaths } from "../../data/articles.i18n";
-import type { SiteLocale } from "../../i18n/config";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import { getArticleLocalePaths, getArticlesForLocale } from "../../../data/articles.i18n";
+import type { SiteLocale } from "../../../i18n/config";
 
 export function getStaticPaths() {
-  const articles = getArticlesForLocale("ro");
+  const articles = getArticlesForLocale("uk");
 
   return articles.map((article) => ({
     params: { slug: article.slug },
@@ -15,35 +15,33 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const articlePath = `/articole/${article.slug}`;
+const articlePath = `/uk/articole/${article.slug}`;
 const shareUrl = new URL(articlePath, Astro.site ?? "https://radioterapeut.ro").toString();
 const shareTitle = article.title;
-const categoryLink = `/articole?categorie=${encodeURIComponent(article.category)}`;
-
+const categoryLink = `/uk/articole?categorie=${encodeURIComponent(article.category)}`;
 const articleLocalePaths = getArticleLocalePaths(article.id);
-
 const alternates = articleLocalePaths
-  ? (Object.entries(articleLocalePaths).map(([locale, path]) => ({
+  ? Object.entries(articleLocalePaths).map(([locale, path]) => ({
       locale: locale as SiteLocale,
       href: new URL(path, Astro.site ?? "https://radioterapeut.ro").toString(),
-    })))
+    }))
   : [];
 ---
 
 <BaseLayout
-  title={`${article.title} | Articole`}
+  title={`${article.title} | Статті`}
   description={article.excerpt}
-  locale="ro"
+  locale="uk"
   canonicalPath={articlePath}
   alternates={alternates}
 >
-<Header locale="ro" currentPath={articlePath} pathByLocale={articleLocalePaths} />
+  <Header locale="uk" currentPath={articlePath} pathByLocale={articleLocalePaths} />
 
   <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
     <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted">
-      <a href="/" class=" hover:text-ink">Acasă</a>
+      <a href="/uk/" class="hover:text-ink">Головна</a>
       <span class="mx-2">/</span>
-      <a href="/articole" class=" hover:text-ink">Articole</a>
+      <a href="/uk/articole" class="hover:text-ink">Статті</a>
       <span class="mx-2">/</span>
       <span class="text-gray-700 dark:text-gray-300">{article.title}</span>
     </nav>
@@ -51,7 +49,7 @@ const alternates = articleLocalePaths
     <article class="mx-auto max-w-4xl rounded-2xl border border-(--rt-border) bg-surface dark:border-cyan-900 p-6 shadow-sm sm:p-8 lg:p-10">
       <header class="mb-8">
         <div class="flex flex-col gap-6 md:flex-row md:items-stretch">
-           <div class="h-full w-full overflow-hidden rounded-xl bg-surface-2 md:w-[293px] md:shrink-0 shadow-sm">
+          <div class="h-full w-full overflow-hidden rounded-xl bg-surface-2 md:w-[293px] md:shrink-0 shadow-sm">
             <img
               src={article.articleImage}
               alt={article.coverAlt}
@@ -62,18 +60,18 @@ const alternates = articleLocalePaths
           </div>
 
           <div class="flex flex-1 flex-col justify-center">
-                       <a
+            <a
               href={categoryLink}
-              class="inline-flex w-fit text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700  hover:text-cyan-800 dark:text-cyan-500 dark:hover:text-cyan-300"
+              class="inline-flex w-fit text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700 hover:text-cyan-800 dark:text-cyan-500 dark:hover:text-cyan-300"
             >
               {article.category}
             </a>
             <h1 class="mt-3 text-3xl font-semibold leading-tight text-ink">{article.title}</h1>
-            <p class="mt-4 text-sm text-muted">Redactat: {article.author}</p>
+            <p class="mt-4 text-sm text-muted">Автор: {article.author}</p>
             <div class="mt-2 text-sm text-muted">
               <time>{article.date}</time>
               <span aria-hidden="true" class="mx-2">•</span>
-              <span>{article.readTime} citire</span>
+              <span>{article.readTime} читання</span>
             </div>
           </div>
         </div>
@@ -85,106 +83,97 @@ const alternates = articleLocalePaths
         <div class="flex flex-col gap-6">
           <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="text-sm text-muted">Etichete:</span>
+              <span class="text-sm text-muted">Теги:</span>
               {article.tags.map((tag) => (
-                                <a
-                  href={`/articole?tag=${encodeURIComponent(tag)}`}
-                  class="inline-flex rounded-md border border-(--rt-border) bg-surface-2 px-3 py-1 text-xs font-semibold text-muted  hover:border-cyan-500 hover:text-cyan-700 dark:hover:text-cyan-300"
+                <a
+                  href={`/uk/articole?tag=${encodeURIComponent(tag)}`}
+                  class="inline-flex rounded-md border border-(--rt-border) bg-surface-2 px-3 py-1 text-xs font-semibold text-muted hover:border-cyan-500 hover:text-cyan-700 dark:hover:text-cyan-300"
                 >
                   {tag}
                 </a>
               ))}
             </div>
 
-            <a
-              href="/articole"
-              class="btn-secundar inline-flex w-fit self-start px-3 py-2 shrink-0"
-            >
-              ← Înapoi la articole
+            <a href="/uk/articole" class="btn-secundar px-3 py-2">
+              ← Назад до статей
             </a>
-        </div>
+          </div>
 
           <div>
-            <p class="mb-3 text-sm font-semibold text-ink">Distribuie articolul</p>
+            <p class="mb-3 text-sm font-semibold text-ink">Поділитися статтею</p>
             <div class="flex flex-wrap items-center gap-2">
               <a
-                data-share-link="facebook"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#1877F2]  hover:bg-surface-2 dark:hover:bg-slate-800"
-                aria-label="Distribuie pe Facebook"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#1877F2] hover:bg-surface-2 dark:hover:bg-slate-800"
+                aria-label="Поділитися у Facebook"
                 title="Facebook"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-current">
                   <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.27c-1.26 0-1.65.78-1.65 1.58V12h2.8l-.45 2.89h-2.35v6.99A10 10 0 0 0 22 12Z"/>
                 </svg>
-                <span class="sr-only">Facebook</span>
               </a>
+
               <a
-                data-share-link="linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#0A66C2]  hover:bg-surface-2 dark:hover:bg-slate-800"
-                aria-label="Distribuie pe LinkedIn"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#0A66C2] hover:bg-surface-2 dark:hover:bg-slate-800"
+                aria-label="Поділитися у LinkedIn"
                 title="LinkedIn"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-current">
                   <path d="M6.94 8.5a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44ZM5.5 9.75h2.88V19H5.5V9.75Zm4.57 0h2.76v1.26h.04c.38-.73 1.32-1.5 2.73-1.5 2.92 0 3.46 1.92 3.46 4.41V19h-2.88v-4.49c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.37V19h-2.88V9.75Z"/>
                 </svg>
-                <span class="sr-only">LinkedIn</span>
               </a>
+
               <a
-                data-share-link="x"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`}
-                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-black  hover:bg-surface-2 dark:text-white dark:hover:bg-slate-800"
-                aria-label="Distribuie pe X"
-                title="X (Twitter)"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-black hover:bg-surface-2 dark:text-white dark:hover:bg-slate-800"
+                aria-label="Поділитися в X"
+                title="X"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-current">
                   <path d="M18.9 3H21l-4.58 5.24L22 21h-4.4l-3.45-4.52L10.2 21H8.1l4.9-5.6L2 3h4.51l3.12 4.13L13.2 3h2.1l-4.55 5.2L18.9 3Zm-1.54 16h1.22L6.12 4.9H4.82L17.36 19Z"/>
                 </svg>
-                <span class="sr-only">X (Twitter)</span>
               </a>
+
               <a
-                data-share-link="whatsapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={`https://wa.me/?text=${encodeURIComponent(`${shareTitle} ${shareUrl}`)}`}
-                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#25D366]  hover:bg-surface-2 dark:hover:bg-slate-800"
-                aria-label="Distribuie pe WhatsApp"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[#25D366] hover:bg-surface-2 dark:hover:bg-slate-800"
+                aria-label="Поділитися у WhatsApp"
                 title="WhatsApp"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-current">
                   <path d="M20.5 12a8.47 8.47 0 0 1-12.47 7.47L3.5 21l1.56-4.4A8.5 8.5 0 1 1 20.5 12Zm-8.5-7a7 7 0 0 0-6 10.58l.2.32-.93 2.64 2.71-.89.31.18A7 7 0 1 0 12 5Zm3.84 8.83c-.21-.1-1.25-.61-1.44-.67-.19-.07-.33-.1-.47.1-.14.2-.53.67-.66.8-.12.13-.24.15-.45.05-.21-.1-.9-.33-1.72-1.05a6.42 6.42 0 0 1-1.19-1.47c-.12-.2 0-.32.09-.42.09-.09.2-.24.3-.36.1-.12.14-.2.21-.33.07-.13.03-.24-.02-.34-.05-.1-.47-1.14-.65-1.57-.17-.41-.35-.35-.47-.35h-.4c-.13 0-.34.05-.52.24-.18.2-.69.67-.69 1.63 0 .95.7 1.88.8 2.01.1.13 1.37 2.09 3.32 2.94.46.2.82.32 1.1.4.46.15.87.12 1.2.08.36-.05 1.1-.45 1.25-.88.16-.43.16-.79.11-.88-.04-.08-.17-.13-.38-.24Z"/>
                 </svg>
-                <span class="sr-only">WhatsApp</span>
               </a>
+
               <button
                 id="copy-article-link"
                 type="button"
                 data-fallback-url={shareUrl}
-                class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-muted  hover:bg-surface-2 hover:text-ink dark:hover:bg-slate-800"
-                aria-label="Copiază link articol"
-                title="Copiază link"
+                class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-muted hover:bg-surface-2 hover:text-ink dark:hover:bg-slate-800"
+                aria-label="Скопіювати посилання на статтю"
+                title="Скопіювати посилання"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="h-8 w-8 fill-current">
                   <path d="M16 1H6a2 2 0 0 0-2 2v12h2V3h10V1Zm3 4H10a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H10V7h9v14Z"/>
                 </svg>
-                <span class="sr-only">Copiază link</span>
               </button>
             </div>
           </div>
-
         </div>
       </footer>
     </article>
   </main>
 
-  <Footer locale="ro" />
+  <Footer locale="uk" />
 </BaseLayout>
 
 <script>
@@ -196,15 +185,15 @@ const alternates = articleLocalePaths
 
       if (navigator.clipboard?.writeText) {
         navigator.clipboard.writeText(fallbackUrl).catch(() => {
-          window.prompt("Copiază link-ul articolului:", fallbackUrl);
+          window.prompt("Скопіюйте посилання на статтю:", fallbackUrl);
         });
       } else {
-        window.prompt("Copiază link-ul articolului:", fallbackUrl);
+        window.prompt("Скопіюйте посилання на статтю:", fallbackUrl);
         return;
       }
 
       const previousLabel = copyButton.getAttribute("aria-label");
-      copyButton.setAttribute("aria-label", "Link copiat");
+      copyButton.setAttribute("aria-label", "Посилання скопійовано");
       copyButton.classList.add("text-cyan-600", "dark:text-cyan-300");
       window.setTimeout(() => {
         if (previousLabel) {
@@ -215,7 +204,6 @@ const alternates = articleLocalePaths
     });
   }
 </script>
-
 
 <style>
   .article-content :global(p) {

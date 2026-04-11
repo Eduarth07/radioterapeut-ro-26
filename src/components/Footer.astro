@@ -1,52 +1,72 @@
-<footer id="contact" class=" bg-blue-950 dark:bg-gray-800">
+---
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { getLocalePath } from "../i18n/paths";
+import { footerContent } from "../i18n/home/footer";
+
+const { locale = DEFAULT_LOCALE } = Astro.props as {
+  locale?: SiteLocale;
+};
+
+const t = footerContent[locale];
+const homeHref = getLocalePath(locale, "/");
+const servicesHref = `${homeHref}#servicii`;
+const aboutHref = `${homeHref}#despre`;
+const faqHref = `${homeHref}#faqs`;
+const appointmentHref = `${homeHref}#programare`;
+---
+
+<footer id="contact" class="bg-blue-950 dark:bg-gray-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            
     <div class="flex items-centertext-white pt-5 lg:pt-6">
-          <img src="/logo_dark.png" alt="Radioterapeut.ro" class="h-12 w-auto" loading="lazy" decoding="async" />
-          <div class="ml-4">
-            <p class="text-base font-semibold text-white">Dr. Cirimpei Tatiana</p>
-            <p class="mt-1 text-sm md:text-base text-gray-200">Medic radioterapeut, Cluj-Napoca, România</p>
-          </div>
-          
+      <img src="/logo_dark.png" alt="Radioterapeut.ro" class="h-12 w-auto" loading="lazy" decoding="async" />
+      <div class="ml-4">
+        <p class="text-base font-semibold text-white">{t.brandName}</p>
+        <p class="mt-1 text-sm md:text-base text-gray-200">{t.roleLocation}</p>
+      </div>
     </div>
+
     <p class="mt-5 text-sm md:text-base leading-relaxed text-gray-200">
-          Site-ul oficial al Dr. Cirimpei Tatiana – medic radioterapeut. Informații despre radioterapie,
-          tratamente și servicii medicale personalizate oferite la cele mai înalte standarde.
-        </p>
-    <div class="grid grid-cols-1 gap-10 pb-6 lg:grid-cols-12 lg:items-start lg:py-10 ">
-        
-      <div class="lg:col-span-5 lg:mt-0 mt-5">
-
-
+      {t.description}
+    </p>
+    <div class="grid grid-cols-1 gap-10 pb-6 lg:grid-cols-12 lg:items-start lg:py-10">     
+      <div class="lg:col-span-5 lg:mt-0">
         <div class="overflow-hidden rounded-2xl border border-gray-700 shadow-lg max-h-55 mx-auto">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.9857828370929!2d23.661436369649874!3d46.79705481629521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaeb8c97c86856acb%3A0xf6d558a0d98348af!2sDr.%20Cirimpei%20Tatiana%20%7C%20Radioterapie!5e1!3m2!1sro!2sro!4v1772020379907!5m2!1sro!2sro" width="500" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Locație Dr. Cirimpei Tatiana" class="block w-full"></iframe>
+          
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.9857828370929!2d23.661436369649874!3d46.79705481629521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaeb8c97c86856acb%3A0xf6d558a0d98348af!2sDr.%20Cirimpei%20Tatiana%20%7C%20Radioterapie!5e1!3m2!1sro!2sro!4v1772020379907!5m2!1sro!2sro"
+            width="500"
+            height="340"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={t.mapTitle}
+            class="block w-full"
+          ></iframe>
         </div>
-
-
       </div>
 
       <div class="hidden lg:block lg:col-span-3">
-                <h3 class="text-center md:text-md font-medium text-white">Navigație</h3>
-        <nav class="mt-4 flex flex-col items-center gap-1" aria-label="Footer navigație">
-          <a href="/" class="rounded-lg px-3 py-1 text-md transition  text-gray-200 hover:bg-gray-300/10 hover:text-white">Acasă</a>
-          <a href="#servicii" class="rounded-lg px-3 py-1 text-md transition  text-gray-200 hover:hover:bg-gray-300/10 hover:text-white">Servicii</a>
-          <a href="#despre" class="rounded-lg px-3 py-1 text-md transition  text-gray-200 hover:hover:bg-gray-300/10 hover:text-white">Despre</a>
-          <a href="#faqs" class="rounded-lg px-3 py-1 text-md transition  text-gray-200 hover:hover:bg-gray-300/10 hover:text-white">FAQ</a>
-          <a href="#programare" class="rounded-lg px-3 py-1 text-md transition  text-gray-200 hover:hover:bg-gray-300/10 hover:text-white">Programare</a>
+        <h3 class="text-center md:text-md font-medium text-white">{t.navigationTitle}</h3>
+        <nav class="mt-4 flex flex-col items-center gap-1" aria-label={t.navigationAriaLabel}>
+          <a href={homeHref} class="rounded-lg px-3 py-1 text-md transition text-gray-200 hover:bg-gray-300/10 hover:text-white">{t.navHome}</a>
+          <a href={servicesHref} class="rounded-lg px-3 py-1 text-md transition text-gray-200 hover:bg-gray-300/10 hover:text-white">{t.navServices}</a>
+          <a href={aboutHref} class="rounded-lg px-3 py-1 text-md transition text-gray-200 hover:bg-gray-300/10 hover:text-white">{t.navAbout}</a>
+          <a href={faqHref} class="rounded-lg px-3 py-1 text-md transition text-gray-200 hover:bg-gray-300/10 hover:text-white">{t.navFaq}</a>
+          <a href={appointmentHref} class="rounded-lg px-3 py-1 text-md transition text-gray-200 hover:bg-gray-300/10 hover:text-white">{t.navAppointment}</a>
         </nav>
       </div>
 
-
-      <div class="w-full rounded-2xl border p-4 sm:max-w-md lg:col-span-4 lg:justify-self-end border-gray-700 ">
-        <h3 class="text-sm md:text-md font-semibold text-white">Contact</h3>
+      <div class="w-full rounded-2xl border p-4 sm:max-w-md lg:col-span-4 lg:justify-self-end border-gray-700">
+        <h3 class="text-sm md:text-md font-semibold text-white">{t.contactTitle}</h3>
         <p class="mt-2 text-sm md:text-md text-gray-200">
-          Email: <a href="mailto:programari.cirimpeitatiana@gmail.com" class="underline underline-offset-4">programari.cirimpeitatiana@gmail.com</a>
+          {t.emailLabel}: <a href="mailto:programari.cirimpeitatiana@gmail.com" class="underline underline-offset-4">programari.cirimpeitatiana@gmail.com</a>
         </p>
         <p class="mt-1 text-sm md:text-md text-gray-200">
-          Tel: <a href="tel:+40754256610" class="underline underline-offset-4">+40 754 256 610</a>
+          {t.phoneLabel}: <a href="tel:+40754256610" class="underline underline-offset-4">+40 754 256 610</a>
         </p>
-        <p class="mt-1 text-sm md:text-md text-gray-200">Radioterapie Medisprof Cancer Center</p>
-        <p class="mt-1 text-sm md:text-md text-gray-200">Program: 07:00 - 21:00 (Luni-Vineri)</p>
+        <p class="mt-1 text-sm md:text-md text-gray-200">{t.centerLabel}</p>
+        <p class="mt-1 text-sm md:text-md text-gray-200">{t.scheduleLabel}: {t.scheduleValue}</p>
 
         <div class="mt-4 flex items-center gap-3">
           <a href="https://medisprof.ro/" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-lg border px-3 py-2 transition hover:border-gray-600 border-gray-700 hover:brightness-125 hover:scale-105">
@@ -60,8 +80,10 @@
     </div>
 
     <div class="flex flex-col items-center border-t py-6 text-center md:flex-row md:justify-between md:text-left border-gray-500">
-      <p class="text-sm text-gray-200">© 2026 Dr. Cirimpei Tatiana, Radioterapeut.ro. Toate drepturile rezervate.</p>
-      <a href="#programare" class="mt-3 text-sm  underline-offset-4 hover:underline md:mt-0 text-gray-200">Politica de Confidențialitate. Termeni și Condiții.</a>
+      <p class="text-sm text-gray-200">{t.copyright}</p>
+      <a href={appointmentHref} class="mt-3 text-sm underline-offset-4 hover:underline md:mt-0 text-gray-200">
+        {t.privacyTerms}
+      </a>
     </div>
   </div>
 </footer>

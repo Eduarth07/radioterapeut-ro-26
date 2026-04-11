@@ -1,124 +1,56 @@
 ---
-const memberships =
-  'Medic specialist în radioterapie, cu formare clinică și experiență profesională acumulată în România și Franța. Interesată de abordarea multidisciplinară a pacientului oncologic, cu preocupare constantă pentru dezvoltare profesională continuă, aplicarea practicilor bazate pe dovezi și menținerea unor standarde ridicate de calitate medicală. Activitate profesională desfășurată cu rigoare, implicare, atenție la detalii și orientare către îngrijirea centrată pe pacient.';
+import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
+import { aboutContent } from "../i18n/home/about";
 
-const experience = [
-  {
-    title: "Medic specialist radioterapeut",
-    org: "Medisprof Cancer Center, Cluj-Napoca, România",
-    href: "https://medisprof.ro/",
-  },
-  {
-    title: "Medic rezident - Departamentul de Radioterapie",
-    org: "Institutul de Cancer Sainte-Catherine, Avignon, Franța",
-    href: "https://www.icap84.org/",
-  },
-  {
-    title: "Medic rezident - Secția de Radioterapie",
-    org: 'Institutul oncologic "Prof. Dr. Ion Chiricuta", Cluj-Napoca, România',
-    href: "https://iocn.ro/",
-  },
-  {
-    title: "Student în cadrul programului Erasmus+ - Stagiu clinic de pregătire ",
-    org: "Vinzenz von Paul Kiniken gGmbH Marienhospital, Stuttgart, Germania",
-    href: "https://www.marienhospital-stuttgart.de/ueber-uns/vinzenz-von-paul-kliniken/",
-  },
-];
+const { locale = DEFAULT_LOCALE } = Astro.props as {
+  locale?: SiteLocale;
+};
 
-const volunteering = [
-  {
-    title: "Voluntar - Paramedic SMURD Cluj-Naopoca",
-    href: "https://www.smurd-cluj.ro/",
-  },
-  {
-    title: 'Voluntar - Proiectul "Sport pentru Autism"',
-    href: "https://www.osmcluj.ro/proiecte/",
-  },
-    {
-    title: 'Voluntar - Proiectul „Breaking the Silence”',
-    href: "https://www.osmcluj.ro/proiecte/vad_voci",
-  },
-];
-
-const skills = [
-  { title: "Certificare în domeniul radioterapiei stereotactice", org: "CONFER",
-    href: "https://oncologieiasi.ro/",
-   },
-  { title: "Masterclass in Stereotactic Body Radiotherapy ", 
-    org: "European Society for Radiotherapy and Oncology (ESTRO)",
-    href: "https://www.estro.org/Education",
-   },
-  { title: "Breast Cancer Course: New Horizons, Current Controversies ", 
-    org: "Harvard Medical School", 
-    href: "https://learn.hms.harvard.edu/" },
-];
-const afilieri = [
-  { title: "European Society for Radiotherapy and Oncology (ESTRO)",
-    href: "https://www.estro.org/",
-   },
-  { title: "International Stereotactic Radiosurgery Society (ISRS)",
-    href: "https://isrsy.org/", },
-  { title: "European School of Oncology (ESO)", 
-    href: "https://www.eso.net/", },
-  { title: "Societatea Română de Radioterapie și Oncologie Medicală (SRROM)", 
-    href: "https://srrom.ro/", },
-  { title: "Societatea Națională de Oncologie Medicală din România (SNOMR)", 
-    href: "https://snomr.ro/main/page/home.php", },
-  { title: "Comisia Multidisciplinară de Oncologie organizată de Spitalul Regina Maria - Cluj-Napoca", 
-    href: "https://www.reginamaria.ro/spitale?oras=6953&specialitate=7129", },
-  { title: "Comisia Multidisciplinară de Oncologie organizată la nivel național – Decizie Oncologică", 
-    href: "https://decizieoncologica.ro/", },
-  { title: "Activitate profesională pe platforma Medic Chat, în domeniul informării și comunicării medicale ", 
-    href: "https://www.medic.chat/doctors/AbD4deTXDXGgoyRCN",   },
-];
+const t = aboutContent[locale];
 ---
 
 <section
   id="despre"
-  aria-label="Despre mine"
+  aria-label={t.sectionAriaLabel}
   class="relative scroll-mt-12 md:scroll-mt-0 py-16 sm:py-20 lg:py-24"
 >
-
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
     <div class="mx-auto text-center">
-      <h2 id="servicii-title" class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white lg:pb-2 ">
-        Despre mine
+      <h2 id="despre-title" class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white lg:pb-2">
+        {t.sectionTitle}
       </h2>
     </div>
 
-    <!-- Row 1: imagine stânga (desktop) + text -->
     <div class="mt-6 lg:mt-12 grid gap-6 lg:gap-10 lg:grid-cols-12 lg:items-stretch">
-      <!-- Image (desktop only, ca în site-ul vechi) -->
-      <div class=" lg:col-span-4 lg:block">
+      <div class="lg:col-span-4 lg:block">
         <div class="max-h-[320px] md:max-h-[540px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
           <img
             src="/d1.png"
-            alt="Poza 1 Cirimpei Tatiana"
+            alt={t.image1Alt}
             loading="lazy"
+            width="848" height="1178"
             decoding="async"
             class="h-full w-full object-cover"
           />
         </div>
       </div>
 
-      <!-- Text -->
       <div class="lg:col-span-8">
         <h3 class="text-3xl font-medium tracking-tight text-gray-900 dark:text-gray-100 text-center lg:text-left">
-          Cirimpei Tatiana
+          {t.personName}
         </h3>
 
         <p class="mt-4 text-base xl:text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-          {memberships}
+          {t.intro}
         </p>
 
         <div class="mt-6 lg:mt-8">
           <h4 class="text-xl font-medium text-gray-900 dark:text-cyan-500">
-            Experiență profesională
+            {t.experienceTitle}
           </h4>
 
           <div class="mt-4 space-y-4 border-l border-gray-200 pl-4 dark:border-white/10">
-            {experience.map((item) => (
+            {t.experience.map((item) => (
               <a
                 href={item.href}
                 target="_blank"
@@ -129,9 +61,11 @@ const afilieri = [
                   {item.title}
                 </div>
 
-                <div class="text-base text-gray-700 dark:text-gray-200">
-                  <em>{item.org}</em>
-                </div>
+                {item.org && (
+                  <div class="text-base text-gray-700 dark:text-gray-200">
+                    <em>{item.org}</em>
+                  </div>
+                )}
               </a>
             ))}
           </div>
@@ -139,84 +73,83 @@ const afilieri = [
       </div>
     </div>
 
-    <!-- Row 2: text (voluntariat + competențe) + imagine (dreapta pe desktop, sus pe mobile) -->
     <div class="mt-8 lg:mt-15 grid gap-6 lg:gap-10 lg:grid-cols-12 lg:items-center">
-      <!-- Image: order-first on mobile, last on desktop (ca în vechi) -->
       <div class="order-first lg:order-last lg:col-span-6 lg:pt-5">
         <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
           <img
             src="/about-2-light.webp"
-            alt="Poza 2 Cirimpei Tatiana"
+            alt={t.image2Alt}
             loading="lazy"
+            width="1920" height="1281"
             decoding="async"
             class="h-full w-full object-contain object-right"
           />
         </div>
       </div>
 
-      <!-- Lists -->
       <div class="lg:col-span-6">
         <h4 class="text-xl font-medium text-gray-900 dark:text-cyan-500">
-          Activități de voluntariat
+          {t.volunteeringTitle}
         </h4>
 
         <div class="mt-4 space-y-1 border-l border-gray-200 pl-4 dark:border-white/10">
-          {volunteering.map((item) => (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-          >
-            <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-              {item.title}
-            </div>
-          </a>
+          {t.volunteering.map((item) => (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+            >
+              <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+                {item.title}
+              </div>
+            </a>
           ))}
         </div>
 
         <h4 class="mt-6 lg:mt-10 text-xl font-medium text-gray-900 dark:text-cyan-500">
-          Certificări și competențe
+          {t.skillsTitle}
         </h4>
 
-      <div class="mt-4 space-y-1 border-l border-gray-200 pl-4 dark:border-white/10">
-        {skills.map((item) => (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-          >
-            <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-              {item.title}
-            </div>
-            <div class="text-base text-gray-700 dark:text-gray-200">
-              <em>{item.org}</em>
-            </div>
-          </a>
-        ))}
+        <div class="mt-4 space-y-1 border-l border-gray-200 pl-4 dark:border-white/10">
+          {t.skills.map((item) => (
+            <a
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+            >
+              <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+                {item.title}
+              </div>
+              {item.org && (
+                <div class="text-base text-gray-700 dark:text-gray-200">
+                  <em>{item.org}</em>
+                </div>
+              )}
+            </a>
+          ))}
+        </div>
       </div>
-
-
-      </div>
-      
     </div>
-        <h4 class="mt-6 text-xl font-medium text-gray-900 dark:text-cyan-500">
-          Afilier profesionale și participări active
-        </h4>
-      <div class="mt-4 space-y-3 border-l border-gray-200 pl-4 dark:border-white/10">
-        {afilieri.map((item) => (
-           <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-          > 
-            <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-              {item.title}
-            </div>
-          </a>
-        ))}
-</div>
+
+    <h4 class="mt-6 text-xl font-medium text-gray-900 dark:text-cyan-500">
+      {t.affiliationsTitle}
+    </h4>
+
+    <div class="mt-4 space-y-3 border-l border-gray-200 pl-4 dark:border-white/10">
+      {t.affiliations.map((item) => (
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+        >
+          <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+            {item.title}
+          </div>
+        </a>
+      ))}
+    </div>
   </div>
 </section>
