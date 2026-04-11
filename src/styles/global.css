@@ -1,51 +1,45 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
 
-/* 1) Variabile “semantice” (runtime) — pot fi schimbate ușor și pentru dark mode */
-:root{
+/* Tema light implicită */
+:root {
   --rt-surface: #ffffff;
-  --rt-surface-2: #f8fafc;
-  --rt-ink: #0f172a;
-  --rt-muted: #475569;
-  --rt-border: #e2e8f0;
+  --rt-surface-2: #f3f4f6;
+  --rt-ink: #111827;
+  --rt-muted: #4b5563;
+  --rt-border: #e5e7eb;
 
-  /* Brand (CTA) */
   --rt-brand-500: #2563eb;
   --rt-brand-600: #1d4ed8;
   --rt-brand-700: #1e40af;
 
-  /* Accent (optional) */
   --rt-accent-500: #14b8a6;
 }
 
 @variant dark (&:where(.dark, .dark *));
-/* (opțional, pregătit pentru mai târziu) */
-html.dark{
+
+html.dark {
   color-scheme: dark;
 
-  /* DARK (override) */
   --rt-surface: #0b1220;
   --rt-surface-2: #0f1b2d;
   --rt-ink: #e5e7eb;
   --rt-muted: #a1a1aa;
   --rt-border: #24324a;
-
-}
-.rt-theme-img-dark { display: none; }
-html.dark .rt-theme-img-light { display: none; }
-html.dark .rt-theme-img-dark { display: block; }
-
-html{   /* LIGHT (default) */
-  --rt-surface: #ffffff;
-  --rt-surface-2: #f3f4f6;
-  --rt-ink: #111827;
-  --rt-muted: #4b5563;
-  --rt-border: #e5e7eb; 
-
 }
 
-/* 2) Theme variables (Tailwind v4) — astea generează clasele utilitare (bg-*, text-*, etc.) */
-@theme{
+.rt-theme-img-dark {
+  display: none;
+}
+
+html.dark .rt-theme-img-light {
+  display: none;
+}
+
+html.dark .rt-theme-img-dark {
+  display: block;
+}
+
+@theme {
   --color-surface: var(--rt-surface);
   --color-surface-2: var(--rt-surface-2);
   --color-ink: var(--rt-ink);
@@ -58,48 +52,45 @@ html{   /* LIGHT (default) */
 
   --color-accent-500: var(--rt-accent-500);
 
-  --color-1: #1F1F1F;
-  --color-2: #CCC;
-  --color-3: #BF9079;
-  --color-4: #C3927B;
-  --color-5: #83C4F2;
+  --color-1: #1f1f1f;
+  --color-2: #ccc;
+  --color-3: #bf9079;
+  --color-4: #c3927b;
+  --color-5: #83c4f2;
 
-
-
-  /* mici “building blocks” pentru un look modern, consistent */
   --radius-card: 1rem;
-  --shadow-card: 0 18px 60px -30px rgba(15, 23, 42, .35);
+  --shadow-card: 0 18px 60px -30px rgba(15, 23, 42, 0.35);
 
-  /* dacă vrei clasă separată pentru font (altfel rămâi pe font-sans default) */
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+
   --breakpoint-3xl: 120rem;
 }
 
-/* 3) Base styles */
-@layer base{
-  body{
+@layer base {
+  body {
     @apply bg-surface text-ink font-sans antialiased;
   }
 
-  /* focus vizibil, foarte important pentru accesibilitate */
-  :focus-visible{
+  :focus-visible {
     outline: 2px solid var(--color-brand-500);
     outline-offset: 2px;
   }
 }
 
 @layer utilities {
-  /* clasa exact ca în model */
   .aspect-366\/729 {
     aspect-ratio: 366 / 729;
   }
 
-  /* animațiile din model */
   @keyframes rt-spin {
     to {
       transform: rotate(360deg);
     }
   }
+
   @keyframes rt-spin-reverse {
     to {
       transform: rotate(-360deg);
@@ -108,43 +99,29 @@ html{   /* LIGHT (default) */
 
   .animate-spin-slow {
     animation: rt-spin 4s linear infinite;
+    will-change: transform;
   }
 
   .animate-spin-reverse-slower {
     animation: rt-spin-reverse 6s linear infinite;
+    will-change: transform;
   }
 
   @media (prefers-reduced-motion: reduce) {
-  .animate-spin-slow,
-  .animate-spin-reverse-slower {
-    animation: none !important;
+    .animate-spin-slow,
+    .animate-spin-reverse-slower {
+      animation: none !important;
+    }
   }
-  }
-  .animate-spin-slow,
-  .animate-spin-reverse-slower {
-    will-change: transform;
-  }
-  
 }
 
 @layer components {
-  .rt-btn-ghost {
-        @apply inline-flex items-center justify-center rounded-lg border border-(--rt-border) px-4 py-2 text-sm font-semibold text-(--rt-muted) transition-colors hover:border-gray-400 hover:bg-gray-100 hover:text-(--rt-ink) focus-visible:ring-2 focus-visible:ring-cyan-500/60 dark:border-cyan-800 dark:text-gray-200 dark:hover:border-cyan-600 dark:hover:bg-cyan-600 dark:hover:text-white;
-  }
-
-  .rt-btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg border border-gray-800 bg-gray-800 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-gray-900 hover:bg-gray-900 focus-visible:ring-2 focus-visible:ring-gray-500/60 dark:border-cyan-600 dark:bg-cyan-600 dark:text-white dark:hover:border-cyan-500 dark:hover:bg-cyan-500 dark:focus-visible:ring-cyan-500/60;
-  }
-    .article-content .article-media {
-    width: 100%;
-    margin: 1rem auto 1.5rem;
-  }
   .btn-secundar {
     @apply rounded-lg border border-transparent text-gray-600 shadow-sm shadow-gray-400/60;
     @apply hover:border-gray-200 hover:bg-gray-100;
     @apply active:bg-gray-100;
     @apply dark:border-gray-500 dark:text-gray-200 dark:shadow-none;
-    @apply dark:hover:bg-gray-700 dark:hover:text-white dark:hover:border-gray-500 dark:active:bg-gray-700/80;
+    @apply dark:hover:border-gray-500 dark:hover:bg-gray-700 dark:hover:text-white dark:active:bg-gray-700/80;
   }
 
   .btn-primar {
@@ -153,19 +130,28 @@ html{   /* LIGHT (default) */
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2;
     @apply active:scale-[0.98];
   }
+
   .btn-info-dark {
-    @apply rounded-lg border border-gray-700 bg-gradient-to-b from-gray-700 to-gray-900 text-sm font-semibold text-white shadow-sm ;
-    @apply hover:from-gray-600 hover:to-gray-800 hover:border-gray-500;
+    @apply rounded-lg border border-gray-700 bg-gradient-to-b from-gray-700 to-gray-900 text-sm font-semibold text-white shadow-sm;
+    @apply hover:border-gray-500 hover:from-gray-600 hover:to-gray-800;
     @apply active:from-gray-700 active:to-gray-900 active:text-white/80;
     @apply dark:border-white/10 dark:bg-white/10 dark:bg-none dark:hover:bg-white/20 dark:active:bg-white/25;
   }
 
   .btn-info-cyan {
     @apply relative overflow-hidden rounded-lg bg-gradient-to-b from-cyan-500 to-cyan-600 text-sm font-semibold text-white;
-    @apply hover:from-cyan-500 hover:to-cyan-600 active:from-cyan-600 active:to-cyan-700 active:text-white/80;
-    @apply before:absolute before:inset-0 before:rounded-[inherit] hover:before:bg-white/10 active:before:bg-transparent;
-    @apply dark:from-cyan-700 dark:to-cyan-800 dark:hover:from-cyan-700 dark:hover:to-cyan-800 dark:active:from-cyan-800 dark:active:to-cyan-900  ;
+    @apply hover:from-cyan-500 hover:to-cyan-600;
+    @apply active:from-cyan-600 active:to-cyan-700 active:text-white/80;
+    @apply before:absolute before:inset-0 before:rounded-[inherit];
+    @apply hover:before:bg-white/10 active:before:bg-transparent;
+    @apply dark:from-cyan-700 dark:to-cyan-800 dark:hover:from-cyan-700 dark:hover:to-cyan-800 dark:active:from-cyan-800 dark:active:to-cyan-900;
   }
+
+  .article-content .article-media {
+    width: 100%;
+    margin: 1rem auto 1.5rem;
+  }
+
   .article-content .article-media-sm {
     max-width: 350px;
   }
@@ -186,7 +172,43 @@ html{   /* LIGHT (default) */
   .article-content .article-media-clear {
     clear: both;
   }
+    /* Custom Scrollbar pentru Modal GDPR */
+  #gdprModalContent::-webkit-scrollbar {
+    width: 6px;
+  }
+  #gdprModalContent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #gdprModalContent::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1; /* Gri deschis pentru Light Mode */
+    border-radius: 10px;
+  }
+  .dark #gdprModalContent::-webkit-scrollbar-thumb {
+    background-color: #475569; /* Gri închis, curat pentru Dark Mode */
+  }
 
+  /* --- FIX PENTRU AUTOFILL FORMULAR --- */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #111827 !important; /* Text închis la culoare pt light mode */
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* Adaptarea Autofill-ului pentru Dark Mode */
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark textarea:-webkit-autofill,
+  .dark textarea:-webkit-autofill:hover,
+  .dark textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #2A2E44 inset !important;
+    -webkit-text-fill-color: #ffffff !important; /* Text alb pt dark mode */
+  }
   @media (min-width: 1024px) {
     .article-content .article-media-right {
       float: right;

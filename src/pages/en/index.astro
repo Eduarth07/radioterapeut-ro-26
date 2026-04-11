@@ -8,14 +8,31 @@ import Faq from "../../components/Faq.astro";
 import Programare from "../../components/Programare.astro";
 import Footer from "../../components/Footer.astro";
 import { getAlternateLinks } from "../../i18n/paths";
+
+// MAGIA SEO MEDICALĂ TRADUSĂ
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Radiotherapy Consultations and Treatments in Cluj-Napoca | Dr. Tatiana Cirimpei",
+  "description": "Specialized medical consultations and personalized radiotherapy treatments for oncological and non-oncological conditions, provided by Dr. Tatiana Cirimpei in Cluj-Napoca.",
+  "about": {
+    "@type": "MedicalSpecialty",
+    "name": "RadiationTherapy"
+  },
+  "audience": {
+    "@type": "MedicalAudience",
+    "audienceType": "Patients"
+  }
+};
 ---
 
 <BaseLayout
-  title="Dr. Tatiana Cirimpei - Radiotherapy"
+  title="Dr. Tatiana Cirimpei - Radiation Oncology Specialist"
   description="Medical consultations and personalized radiotherapy treatments in Cluj-Napoca."
   locale="en"
   canonicalPath="/en"
   alternates={getAlternateLinks("/")}
+  structuredData={homepageSchema}
 >
   <Header locale="en" currentPath="/" />
   <Hero locale="en" />

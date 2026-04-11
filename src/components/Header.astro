@@ -2,6 +2,9 @@
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
 import { getHeaderUi, getNavLinks } from "../data/navLinks";
+import { Image } from "astro:assets";
+import logoLight from "../assets/logo_white.png";
+import logoDark from "../assets/logo_dark.png";
 
 const {
   locale = DEFAULT_LOCALE,
@@ -27,23 +30,25 @@ const headerUi = getHeaderUi(locale);
       <!-- Brand -->
         <!-- Logo simplu (în snippet e SVG; aici e echivalent vizual, curat) -->
         <a aria-label={headerUi.homeAriaLabel} href={headerUi.homeHref} class="flex items-center gap-3">
-            <img
-              src="/logo_white.png"
-              alt="Radioterapeut.ro"
+<Image
+              src={logoLight}
+              alt="Logo Dr. Tatiana Cirimpei - Radioterapie"
               width="44"
               height="44"
-              class="h-11 w-11 rounded-full rt-theme-img-light"
+              class="h-11 w-auto rounded-full rt-theme-img-light"
               decoding="async"
               loading="eager"
+              fetchpriority="high"
             />
-            <img
-              src="/logo_dark.png"
-              alt="Radioterapeut.ro"
+            <Image
+              src={logoDark}
+              alt="Logo Dr. Tatiana Cirimpei - Radioterapie"
               width="44"
               height="44"
-              class="h-11 w-11 rounded-full rt-theme-img-dark"
+              class="h-11 w-auto rounded-full rt-theme-img-dark"
               decoding="async"
               loading="eager"
+              fetchpriority="high"
             />
           <div class="leading-tight sm:block">
             <div class="text-base font-semibold text-(--rt-ink)">{headerUi.title}</div>
@@ -141,8 +146,8 @@ const headerUi = getHeaderUi(locale);
     alt=""
     aria-hidden="true"
     class="mr-2 h-5 w-5 shrink-0"
-    loading="lazy"
     decoding="async"
+    fetchpriority="high"
   />
   {headerUi.appointment}
 </a>

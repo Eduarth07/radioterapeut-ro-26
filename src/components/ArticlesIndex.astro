@@ -53,24 +53,7 @@ const ui = {
     categoryParam: "categorie",
     localeTag: "uk-UA",
   },
-} satisfies Record<
-  SiteLocale,
-  {
-    pageTitle: string;
-    pageIntro: string;
-    featuredLabel: string;
-    allArticles: string;
-    filterLabel: string;
-    allCategories: string;
-    reset: string;
-    publishedOn: string;
-    readFull: string;
-    loadMore: string;
-    readSuffix: string;
-    categoryParam: string;
-    localeTag: string;
-  }
->;
+} satisfies Record<SiteLocale, any>;
 
 const t = ui[locale];
 
@@ -81,9 +64,37 @@ const featuredArticle = getFeaturedArticleForLocale(locale) ?? articles[0];
 const latestArticles = articles;
 
 const baseArticlesPath = locale === "ro" ? "/articole" : `/${locale}/articole`;
+
+// MAGIA SEO/GEO: Creăm o arhivă structurată pentru AI
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": t.pageTitle,
+  "description": t.pageIntro,
+  "publisher": {
+    "@type": "Physician",
+    "name": "Dr. Tatiana Cirimpei",
+    "url": "https://radioterapeut.ro"
+  },
+  "blogPost": articles.map(article => ({
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "abstract": article.excerpt,
+    "image": new URL(article.coverImage, "https://radioterapeut.ro").toString(),
+    "author": {
+      "@type": "Person",
+      "name": article.author
+    },
+    // Data ideală e formatată ISO (ex: 2024-03-21). Dacă în data.ts ai string "21 Martie", e OK ca fallback.
+    "datePublished": article.date, 
+    "url": new URL(`${baseArticlesPath}/${article.slug}`, "https://radioterapeut.ro").toString()
+  }))
+};
 ---
 
 <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+
   <section class="mb-4 border-b border-(--rt-border) pb-4 md:mb-10 lg:mb-8 dark:border-cyan-700">
     <h1 class="mt-2 text-center text-3xl font-medium tracking-tight text-gray-900 md:text-4xl lg:text-left dark:text-gray-200">
       {t.pageTitle}
@@ -112,6 +123,7 @@ const baseArticlesPath = locale === "ro" ? "/articole" : `/${locale}/articole`;
             src={featuredArticle.bigImage ?? featuredArticle.coverImage}
             alt={featuredArticle.coverAlt}
             loading="eager"
+            fetchpriority="high" 
             decoding="async"
             class="h-full w-full cursor-pointer object-cover"
           />
@@ -146,7 +158,7 @@ const baseArticlesPath = locale === "ro" ? "/articole" : `/${locale}/articole`;
 
           <a
             href={`${baseArticlesPath}/${featuredArticle.slug}`}
-            class="btn-secundar px-5 py-3 text-base mx-auto md:ml-auto md:mr-0"
+            class="btn-secundar px-5 py-3 text-base mx-auto md:ml-auto md:mr-0 "
           >
             {t.readFull}
           </a>
@@ -184,11 +196,7 @@ const baseArticlesPath = locale === "ro" ? "/articole" : `/${locale}/articole`;
             fill="currentColor"
             aria-hidden="true"
           >
-            <path
-              fill-rule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.51a.75.75 0 01-1.08 0l-4.25-4.51a.75.75 0 01.02-1.06z"
-              clip-rule="evenodd"
-            />
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.51a.75.75 0 01-1.08 0l-4.25-4.51a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
           </svg>
         </div>
 

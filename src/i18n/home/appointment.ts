@@ -25,6 +25,13 @@ type AppointmentContent = {
   modalTitle: string;
   modalCloseAria: string;
   modalAcceptButton: string;
+
+  errorNameReq: string;
+  errorSurnameReq: string;
+  errorEmailReq: string;
+  errorEmailInv: string;
+  errorPhoneReq: string;
+  errorMessageReq: string;
 };
 
 export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
@@ -54,6 +61,13 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Termeni și condiții / Politica de confidențialitate",
     modalCloseAria: "Închide",
     modalAcceptButton: "Confirm și accept",
+
+    errorNameReq: "Te rugăm să introduci numele de familie.",
+    errorSurnameReq: "Te rugăm să introduci prenumele.",
+    errorEmailReq: "Te rugăm să introduci adresa de email.",
+    errorEmailInv: "Adresa de email introdusă nu este validă.",
+    errorPhoneReq: "Te rugăm să introduci numărul de telefon.",
+    errorMessageReq: "Te rugăm să ne scrii un scurt mesaj.",
   },
 
   en: {
@@ -82,6 +96,13 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Terms and conditions / Privacy policy",
     modalCloseAria: "Close",
     modalAcceptButton: "Confirm and accept",
+
+    errorNameReq: "Please enter your last name.",
+    errorSurnameReq: "Please enter your first name.",
+    errorEmailReq: "Please enter your email address.",
+    errorEmailInv: "Please enter a valid email address.",
+    errorPhoneReq: "Please enter your phone number.",
+    errorMessageReq: "Please write a short message.",
   },
 
   uk: {
@@ -110,5 +131,12 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Умови та положення / Політика конфіденційності",
     modalCloseAria: "Закрити",
     modalAcceptButton: "Підтвердити та прийняти",
+
+    errorNameReq: "Будь ласка, введіть своє прізвище.",
+    errorSurnameReq: "Будь ласка, введіть своє ім'я.",
+    errorEmailReq: "Будь ласка, введіть свою електронну адресу.",
+    errorEmailInv: "Будь ласка, введіть дійсну електронну адресу.",
+    errorPhoneReq: "Будь ласка, введіть свій номер телефону.",
+    errorMessageReq: "Будь ласка, введіть повідомлення.",
   },
 };

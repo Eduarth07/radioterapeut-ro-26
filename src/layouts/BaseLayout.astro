@@ -14,23 +14,52 @@ type AlternateLink = {
   href: string;
 };
 
+type JsonLdObject = Record<string, unknown>;
+
+const localeToOgLocale: Record<SiteLocale, string> = {
+  ro: "ro_RO",
+  en: "en_US",
+  uk: "uk_UA",
+};
+
 const {
   title = "Dr. Tatiana Cirimpei - Radioterapie",
   description = "Radioterapie modernă, informații pentru pacienți și trimitere către programare.",
   locale = DEFAULT_LOCALE,
   canonicalPath = "/",
-  alternates = [] as AlternateLink[],
+  alternates = [],
   xDefaultHref,
-} = Astro.props;
+  ogImage = "/preview.jpg",
+  ogImageAlt = "Dr. Tatiana Cirimpei - Radioterapie",
+  ogType = "website",
+  twitterCard = "summary_large_image",
+  noindex = false,
+  structuredData,
+} = Astro.props as {
+  title?: string;
+  description?: string;
+  locale?: SiteLocale;
+  canonicalPath?: string;
+  alternates?: AlternateLink[];
+  xDefaultHref?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article" | "profile";
+  twitterCard?: "summary" | "summary_large_image";
+  noindex?: boolean;
+  structuredData?: JsonLdObject | JsonLdObject[];
+};
+
+const siteUrl = Astro.site ?? new URL("https://radioterapeut.ro");
 
 const normalizedCanonicalPath = normalizePath(canonicalPath);
 const canonicalUrl = new URL(
   normalizedCanonicalPath === "/" ? "/" : `${normalizedCanonicalPath}/`,
-  Astro.site ?? "https://radioterapeut.ro"
+  siteUrl
 ).toString();
 
 const normalizeAbsoluteUrl = (value: string) => {
-  const url = new URL(value, Astro.site ?? "https://radioterapeut.ro");
+  const url = new URL(value, siteUrl);
 
   if (url.pathname !== "/") {
     url.pathname = `${url.pathname.replace(/\/+$/, "")}/`;
@@ -49,24 +78,79 @@ const resolvedXDefaultHref = normalizeAbsoluteUrl(
     alternates.find((item) => item.locale === DEFAULT_LOCALE)?.href ??
     canonicalUrl
 );
+
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
+const robotsContent = noindex ? "noindex, follow" : "index, follow";
+
+const extraStructuredData = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
+
+const baseStructuredData: JsonLdObject = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "@id": `${canonicalUrl}#physician`,
+  name: "Dr. Tatiana Cirimpei",
+  medicalSpecialty: "RadiationTherapy",
+  url: canonicalUrl,
+  image: ogImageUrl,
+  inLanguage: locale,
+};
+
+const mergedStructuredData = [baseStructuredData, ...extraStructuredData];
 ---
+
 <!doctype html>
 <html lang={locale} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#0b1220"
+    />
 
     <link rel="canonical" href={canonicalUrl} />
-{normalizedAlternates.map((item) => (
-  <link
-    rel="alternate"
-    hreflang={LOCALE_HREFLANG[item.locale]}
-    href={item.href}
-  />
-))}
+    {normalizedAlternates.map((item) => (
+      <link
+        rel="alternate"
+        hreflang={LOCALE_HREFLANG[item.locale]}
+        href={item.href}
+      />
+    ))}
     <link rel="alternate" hreflang="x-default" href={resolvedXDefaultHref} />
+
+    <meta property="og:locale" content={localeToOgLocale[locale]} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Radioterapeut.ro" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -75,9 +159,15 @@ const resolvedXDefaultHref = normalizeAbsoluteUrl(
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
 
-    <script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(mergedStructuredData)}
+    />
+
+    <slot name="head" />
+
+    <script is:inline>
       (() => {
         try {
           const key = "rt-theme";
@@ -89,6 +179,7 @@ const resolvedXDefaultHref = normalizeAbsoluteUrl(
       })();
     </script>
   </head>
+
   <body class="min-h-screen antialiased">
     <slot />
     <ScrollToTopButton />

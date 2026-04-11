@@ -1,12 +1,38 @@
 ---
 import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
 import { aboutContent } from "../i18n/home/about";
+import { Image } from "astro:assets";
+
+// Importăm pozele din assets
+import imgProfile from "../assets/d1.png"; 
+import imgSecondary from "../assets/about-2-light.webp";
 
 const { locale = DEFAULT_LOCALE } = Astro.props as {
   locale?: SiteLocale;
 };
 
 const t = aboutContent[locale];
+
+// MAGIA E-E-A-T: Generăm o schemă detaliată pentru medic
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": t.personName,
+  "jobTitle": "Medic Specialist Radioterapie",
+  "description": t.intro,
+  // Spunem AI-ului din ce organizații face parte medicul (ESTRO, ISRS etc.)
+  "memberOf": t.affiliations.map(item => ({
+    "@type": "Organization",
+    "name": item.title,
+    "url": item.href
+  })),
+  // Educație și experiență (Harvard, ESO etc.)
+  "alumniOf": t.experience.map(item => ({
+    "@type": "Organization",
+    "name": item.org || item.title,
+    "url": item.href
+  }))
+};
 ---
 
 <section
@@ -14,6 +40,8 @@ const t = aboutContent[locale];
   aria-label={t.sectionAriaLabel}
   class="relative scroll-mt-12 md:scroll-mt-0 py-16 sm:py-20 lg:py-24"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto text-center">
       <h2 id="despre-title" class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white lg:pb-2">
@@ -24,11 +52,10 @@ const t = aboutContent[locale];
     <div class="mt-6 lg:mt-12 grid gap-6 lg:gap-10 lg:grid-cols-12 lg:items-stretch">
       <div class="lg:col-span-4 lg:block">
         <div class="max-h-[320px] md:max-h-[540px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
-          <img
-            src="/d1.png"
+          <Image
+            src={imgProfile}
             alt={t.image1Alt}
             loading="lazy"
-            width="848" height="1178"
             decoding="async"
             class="h-full w-full object-cover"
           />
@@ -49,26 +76,27 @@ const t = aboutContent[locale];
             {t.experienceTitle}
           </h4>
 
-          <div class="mt-4 space-y-4 border-l border-gray-200 pl-4 dark:border-white/10">
+          <ul role="list" class="mt-4 space-y-4 border-l border-gray-200 pl-0 dark:border-white/10">
             {t.experience.map((item) => (
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-              >
-                <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-400">
-                  {item.title}
-                </div>
-
-                {item.org && (
-                  <div class="text-base text-gray-700 dark:text-gray-200">
-                    <em>{item.org}</em>
+              <li class="block">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+                >
+                  <div class="text-base font-medium text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-400">
+                    {item.title}
                   </div>
-                )}
-              </a>
+                  {item.org && (
+                    <div class="text-base text-gray-700 dark:text-gray-200">
+                      <em>{item.org}</em>
+                    </div>
+                  )}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
@@ -76,11 +104,10 @@ const t = aboutContent[locale];
     <div class="mt-8 lg:mt-15 grid gap-6 lg:gap-10 lg:grid-cols-12 lg:items-center">
       <div class="order-first lg:order-last lg:col-span-6 lg:pt-5">
         <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-white/10 dark:bg-gray-900">
-          <img
-            src="/about-2-light.webp"
+          <Image
+            src={imgSecondary}
             alt={t.image2Alt}
             loading="lazy"
-            width="1920" height="1281"
             decoding="async"
             class="h-full w-full object-contain object-right"
           />
@@ -92,44 +119,48 @@ const t = aboutContent[locale];
           {t.volunteeringTitle}
         </h4>
 
-        <div class="mt-4 space-y-1 border-l border-gray-200 pl-4 dark:border-white/10">
+        <ul role="list" class="mt-4 space-y-1 border-l border-gray-200 pl-0 dark:border-white/10">
           {t.volunteering.map((item) => (
-            <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-            >
-              <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-                {item.title}
-              </div>
-            </a>
+            <li class="block">
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+              >
+                <div class="text-base font-medium text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+                  {item.title}
+                </div>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <h4 class="mt-6 lg:mt-10 text-xl font-medium text-gray-900 dark:text-cyan-500">
           {t.skillsTitle}
         </h4>
 
-        <div class="mt-4 space-y-1 border-l border-gray-200 pl-4 dark:border-white/10">
+        <ul role="list" class="mt-4 space-y-1 border-l border-gray-200 pl-0 dark:border-white/10">
           {t.skills.map((item) => (
-            <a
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-            >
-              <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-                {item.title}
-              </div>
-              {item.org && (
-                <div class="text-base text-gray-700 dark:text-gray-200">
-                  <em>{item.org}</em>
+            <li class="block">
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+              >
+                <div class="text-base font-medium text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+                  {item.title}
                 </div>
-              )}
-            </a>
+                {item.org && (
+                  <div class="text-base text-gray-700 dark:text-gray-200">
+                    <em>{item.org}</em>
+                  </div>
+                )}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
 
@@ -137,19 +168,21 @@ const t = aboutContent[locale];
       {t.affiliationsTitle}
     </h4>
 
-    <div class="mt-4 space-y-3 border-l border-gray-200 pl-4 dark:border-white/10">
+    <ul role="list" class="mt-4 space-y-3 border-l border-gray-200 pl-0 dark:border-white/10">
       {t.affiliations.map((item) => (
-        <a
-          href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
-        >
-          <div class="text-base text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
-            {item.title}
-          </div>
-        </a>
+        <li class="block">
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group block border-l-4 border-transparent pl-3 hover:border-cyan-500"
+          >
+            <div class="text-base font-medium text-gray-900 group-hover:text-cyan-700 dark:text-white dark:group-hover:text-cyan-300 cursor-pointer">
+              {item.title}
+            </div>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   </div>
 </section>

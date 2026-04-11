@@ -8,14 +8,27 @@ import Faq from "../../components/Faq.astro";
 import Programare from "../../components/Programare.astro";
 import Footer from "../../components/Footer.astro";
 import { getAlternateLinks } from "../../i18n/paths";
+
+// SEO Medical Schema tradusă în Ucraineană
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Консультації та лікування променевою терапією в Клуж-Напоці | Др. Тетяна Чирімпей",
+  "description": "Спеціалізовані медичні консультації та персоналізоване лікування променевою терапією онкологічних та неонкологічних захворювань.",
+  "about": {
+    "@type": "MedicalSpecialty",
+    "name": "RadiationTherapy"
+  }
+};
 ---
 
 <BaseLayout
-  title="Др. Тетяна Чирімпей - Радіотерапія"
+  title="Др. Тетяна Чирімпей - Радіотерапія в Клуж-Напоці"
   description="Медичні консультації та персоналізоване лікування променевою терапією в Клуж-Напоці."
   locale="uk"
   canonicalPath="/uk"
   alternates={getAlternateLinks("/")}
+  structuredData={homepageSchema}
 >
   <Header locale="uk" currentPath="/" />
   <Hero locale="uk" />

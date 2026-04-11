@@ -4,6 +4,7 @@ import Header from "../../../components/Header.astro";
 import Footer from "../../../components/Footer.astro";
 import { getArticleLocalePaths, getArticlesForLocale } from "../../../data/articles.i18n";
 import type { SiteLocale } from "../../../i18n/config";
+
 export function getStaticPaths() {
   const articles = getArticlesForLocale("en");
 
@@ -19,12 +20,38 @@ const shareUrl = new URL(articlePath, Astro.site ?? "https://radioterapeut.ro").
 const shareTitle = article.title;
 const categoryLink = `/en/articole?categorie=${encodeURIComponent(article.category)}`;
 const articleLocalePaths = getArticleLocalePaths(article.id);
+
 const alternates = articleLocalePaths
   ? Object.entries(articleLocalePaths).map(([locale, path]) => ({
       locale: locale as SiteLocale,
       href: new URL(path, Astro.site ?? "https://radioterapeut.ro").toString(),
     }))
   : [];
+
+// Schema E-E-A-T tradusă
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Article", "MedicalWebPage"],
+  "headline": article.title,
+  "description": article.excerpt,
+  "inLanguage": "en",
+  "image": new URL(article.articleImage, Astro.site ?? "https://radioterapeut.ro").toString(),
+  "datePublished": article.date,
+  "author": {
+    "@type": "Physician",
+    "name": article.author,
+    "url": "https://radioterapeut.ro/en/#despre" 
+  },
+  "publisher": {
+    "@type": "MedicalClinic",
+    "name": "Medisprof Cancer Center",
+    "url": "https://medisprof.ro/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": shareUrl
+  }
+};
 ---
 
 <BaseLayout
@@ -37,6 +64,8 @@ const alternates = articleLocalePaths
   <Header locale="en" currentPath={articlePath} pathByLocale={articleLocalePaths} />
 
   <main class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
     <nav aria-label="Breadcrumb" class="mb-6 text-sm text-muted">
       <a href="/en/" class="hover:text-ink">Home</a>
       <span class="mx-2">/</span>
@@ -53,6 +82,7 @@ const alternates = articleLocalePaths
               src={article.articleImage}
               alt={article.coverAlt}
               loading="eager"
+              fetchpriority="high"
               decoding="async"
               class="h-[240px] w-full object-cover object-center md:h-full"
             />

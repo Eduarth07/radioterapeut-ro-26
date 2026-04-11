@@ -9,6 +9,35 @@ const { locale = DEFAULT_LOCALE } = Astro.props as {
 const t = servicesContent[locale];
 const oncologicCards = t.oncologicCards;
 const nonOncologicCards = t.nonOncologicCards;
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": t.title,
+  "description": t.description,
+  "itemListElement": [
+    ...oncologicCards.map((card, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "MedicalProcedure",
+        "name": card.title,
+        "description": card.description,
+        "procedureType": "RadiationTherapy"
+      }
+    })),
+    ...nonOncologicCards.map((card, index) => ({
+      "@type": "ListItem",
+      "position": oncologicCards.length + index + 1,
+      "item": {
+        "@type": "MedicalProcedure",
+        "name": card.title,
+        "description": card.description,
+        "procedureType": "NonOncologicTherapy"
+      }
+    }))
+  ]
+};
 ---
 
 <section
@@ -16,6 +45,8 @@ const nonOncologicCards = t.nonOncologicCards;
   aria-labelledby="servicii-title"
   class="border-t border-gray-200 dark:border-gray-800 bg-gray-100 scroll-mt-8 md:scroll-mt-0 py-18 sm:py-32 dark:bg-gray-900"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto text-center">
       <h2 id="servicii-title" class="text-3xl font-medium tracking-tight text-gray-900 dark:text-white lg:pb-2">
@@ -32,7 +63,7 @@ const nonOncologicCards = t.nonOncologicCards;
         <div class="grid grid-cols-2 shadow-lg shadow-gray-900/5" role="radiogroup" aria-label={t.toggleAriaLabel}>
           <button
             type="button"
-            class="cursor-pointer rounded-l-lg border border-gray-300 bg-white px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-base xl:text-base font-medium text-gray-700 shadow-sm shadow-gray-300/40 transition-all duration-300 ease-out hover:border-gray-300 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:shadow-none dark:hover:border-gray-500 dark:hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:focus-visible:outline-gray-300"
+            class="cursor-pointer rounded-l-lg border border-gray-300 bg-white px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-base xl:text-base font-medium text-gray-700 shadow-sm shadow-gray-300/40 ease-out hover:border-gray-300 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:shadow-none dark:hover:border-gray-500 dark:hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:focus-visible:outline-gray-300"
             role="radio"
             aria-checked="true"
             data-mode="oncologic"
@@ -43,7 +74,7 @@ const nonOncologicCards = t.nonOncologicCards;
 
           <button
             type="button"
-            class="cursor-pointer -ml-px rounded-r-lg border border-gray-300 bg-white px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-base xl:text-base font-medium text-gray-700 shadow-sm shadow-gray-300/40 transition-all duration-300 ease-out hover:border-gray-300 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:shadow-none dark:hover:border-gray-500 dark:hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:focus-visible:outline-gray-300"
+            class="cursor-pointer -ml-px rounded-r-lg border border-gray-300 bg-white px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-base xl:text-base font-medium text-gray-700 shadow-sm shadow-gray-300/40 ease-out hover:border-gray-300 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:shadow-none dark:hover:border-gray-500 dark:hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:focus-visible:outline-gray-300"
             role="radio"
             aria-checked="false"
             data-mode="nononcologic"
@@ -67,9 +98,10 @@ const nonOncologicCards = t.nonOncologicCards;
     <div
       class="mx-auto mt-8 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3"
       data-panel="oncologic"
+      role="tabpanel"
     >
       {oncologicCards.map((card, index) => (
-        <section
+        <article
           class:list={[
             "flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5",
             card.featured
@@ -132,16 +164,17 @@ const nonOncologicCards = t.nonOncologicCards;
           >
             {card.cta}
           </a>
-        </section>
+        </article>
       ))}
     </div>
 
     <div
       class="mx-auto mt-8 grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 hidden"
       data-panel="nononcologic"
+      role="tabpanel"
     >
       {nonOncologicCards.map((card) => (
-        <section
+        <article
           class:list={[
             "flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5",
             card.featured
@@ -204,7 +237,7 @@ const nonOncologicCards = t.nonOncologicCards;
           >
             {card.cta}
           </a>
-        </section>
+        </article>
       ))}
     </div>
 

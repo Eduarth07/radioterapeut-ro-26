@@ -3,6 +3,12 @@ import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
 import { getLocalePath } from "../i18n/paths";
 import { footerContent } from "../i18n/home/footer";
 
+// Importăm imaginile pentru Astro Assets
+import { Image } from "astro:assets";
+import logoDark from "../assets/logo_dark.png";
+import imgMedisprof from "../assets/medisprof.png";
+import imgDecizieOnco from "../assets/decizieoncob.svg";
+
 const { locale = DEFAULT_LOCALE } = Astro.props as {
   locale?: SiteLocale;
 };
@@ -13,12 +19,34 @@ const servicesHref = `${homeHref}#servicii`;
 const aboutHref = `${homeHref}#despre`;
 const faqHref = `${homeHref}#faqs`;
 const appointmentHref = `${homeHref}#programare`;
+
+// MAGIA SEO LOCALĂ: Conectăm medicul de clinica Medisprof pentru Google Maps
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Medisprof Cancer Center",
+  "url": "https://medisprof.ro/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cluj-Napoca",
+    "addressRegion": "Cluj",
+    "addressCountry": "RO"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+40-754-256-610",
+    "contactType": "Programări"
+  }
+};
 ---
 
 <footer id="contact" class="bg-blue-950 dark:bg-gray-800">
+  
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex items-centertext-white pt-5 lg:pt-6">
-      <img src="/logo_dark.png" alt="Radioterapeut.ro" class="h-12 w-auto" loading="lazy" decoding="async" />
+    <div class="flex items-center text-white pt-5 lg:pt-6">
+      <Image src={logoDark} alt="Radioterapeut.ro" class="h-12 w-auto" loading="lazy" decoding="async" />
       <div class="ml-4">
         <p class="text-base font-semibold text-white">{t.brandName}</p>
         <p class="mt-1 text-sm md:text-base text-gray-200">{t.roleLocation}</p>
@@ -28,10 +56,10 @@ const appointmentHref = `${homeHref}#programare`;
     <p class="mt-5 text-sm md:text-base leading-relaxed text-gray-200">
       {t.description}
     </p>
+    
     <div class="grid grid-cols-1 gap-10 pb-6 lg:grid-cols-12 lg:items-start lg:py-10">     
       <div class="lg:col-span-5 lg:mt-0">
         <div class="overflow-hidden rounded-2xl border border-gray-700 shadow-lg max-h-55 mx-auto">
-          
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.9857828370929!2d23.661436369649874!3d46.79705481629521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaeb8c97c86856acb%3A0xf6d558a0d98348af!2sDr.%20Cirimpei%20Tatiana%20%7C%20Radioterapie!5e1!3m2!1sro!2sro!4v1772020379907!5m2!1sro!2sro"
             width="500"
@@ -70,10 +98,10 @@ const appointmentHref = `${homeHref}#programare`;
 
         <div class="mt-4 flex items-center gap-3">
           <a href="https://medisprof.ro/" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-lg border px-3 py-2 transition hover:border-gray-600 border-gray-700 hover:brightness-125 hover:scale-105">
-            <img src="/medisprof.png" alt="Medisprof" class="h-8 w-auto" loading="lazy" decoding="async" />
+            <Image src={imgMedisprof} alt="Medisprof" class="h-8 w-auto" loading="lazy" decoding="async" />
           </a>
           <a href="https://decizieoncologica.ro/" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-lg bg-[#004AAD] px-3 py-2 transition hover:scale-105 hover:brightness-125">
-            <img src="/decizieoncob.svg" alt="Decizie Oncologică" class="h-8 w-auto" loading="lazy" decoding="async" />
+            <Image src={imgDecizieOnco} alt="Decizie Oncologică" class="h-8 w-auto" loading="lazy" decoding="async" />
           </a>
         </div>
       </div>

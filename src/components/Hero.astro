@@ -2,6 +2,15 @@
 import { DEFAULT_LOCALE, type SiteLocale } from "../i18n/config";
 import { heroContent } from "../i18n/home/hero";
 import { getLocalePath } from "../i18n/paths";
+import { Image } from 'astro:assets';
+import imgEstro from "../assets/estro.svg"; 
+import imgEso from "../assets/eso3.svg";
+import imgSrrom from "../assets/srrom2.svg";
+import imgSnomr from "../assets/snomr2_clean.svg";
+import imgIsrs from "../assets/isrs2.svg";
+import imgMedisprof from "../assets/medisprof.png";
+import imgDecizieOnco from "../assets/decizieonco.svg";
+import imgMedicChat from "../assets/medicchat.png";
 
 const { locale = DEFAULT_LOCALE } = Astro.props as {
   locale?: SiteLocale;
@@ -114,52 +123,52 @@ const serviciiHref = `${homeHref}#servicii`;
       <!-- As featured in (identic; poți lăsa așa până ai assets) -->
       <div class="relative lg:col-span-7 xl:col-span-6 lg:translate-y-18 mt-5 lg:mt-0">
         <p class="text-center text-base font-semibold text-(--rt-muted) lg:text-left">{t.affiliationsLabel}</p>
-          <ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start items-center">
+<ul role="list" class="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start items-center">
             <li class="flex">
               <a href="https://www.estro.org/" target="_blank" rel="noopener noreferrer" title="European Society for Radiotherapy and Oncology" class="cursor-default">
-                <img alt="Estro" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-50" src="/estro.svg" />
+                <Image alt="Logo partener Estro" loading="eager" fetchpriority="high" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-50" src={imgEstro} />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.eso.net/" target="_blank" rel="noopener noreferrer" title="European School of Oncology" class="cursor-default">
-                <img alt="Eso" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/eso3.svg" />
+                <Image alt="Logo partener Eso" loading="eager" fetchpriority="high" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src={imgEso} />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://srrom.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Română de Radioterapie și Oncologie Medicală" class="cursor-default">
-                <img alt="Srrom" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-0" src="/srrom2.svg" />
+                <Image alt="Logo partener Srrom" loading="eager" fetchpriority="high" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-0" src={imgSrrom} />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://snomr.ro/" target="_blank" rel="noopener noreferrer" title="Societatea Națională de Oncologie Medicală din România" class="cursor-default">
-                <img alt="Snomr" loading="lazy" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/snomr2_clean.svg" />
+                <Image alt="Logo partener Snomr" loading="eager" fetchpriority="high" decoding="async" class="h-11 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src={imgSnomr} />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.isrsy.org/" target="_blank" rel="noopener noreferrer" title="International Stereotactic Radiosurgery Society" class="cursor-default">
-                <img alt="Isrs" loading="lazy" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/isrs2.svg" />
+                <Image alt="Logo partener Isrs" loading="eager" fetchpriority="high" decoding="async" class="h-8 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src={imgIsrs} />
               </a>
             </li>
 
             <li class="flex">
               <a href="https://www.medisprof.ro/" target="_blank" rel="noopener noreferrer" title="Medisprof Cancer Center" class="cursor-default">
-                <img alt="Medisprof" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/medisprof.png" />
+                <Image alt="Logo partener Medisprof" loading="eager" fetchpriority="high" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src={imgMedisprof} />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://decizieoncologica.ro/" target="_blank" rel="noopener noreferrer" title="Decizie Oncologică" class="cursor-default">
-                <img alt="Decizie Oncologică" loading="lazy" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src="/decizieonco.svg" />
+                <Image alt="Logo partener Decizie Oncologică" loading="eager" fetchpriority="high" decoding="async" class="h-10 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-150" src={imgDecizieOnco} />
               </a>
             </li>
 
             <li class="flex hidden xl:block">
               <a href="https://medic.chat/" target="_blank" rel="noopener noreferrer" title="Medic Chat" class="cursor-default">
-                <img alt="Medic Chat" loading="lazy" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-70" src="/medicchat.png" />
+                <Image alt="Logo partener Medic Chat" loading="eager" fetchpriority="high" decoding="async" class="h-7 w-auto shrink-0 grayscale brightness-75 contrast-125 filter dark:invert dark:brightness-110 dark:contrast-70" src={imgMedicChat} />
               </a>
             </li>
           </ul>
