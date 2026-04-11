@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { privacyModalContent } from "../../i18n/home/privacyModal";
+
+const locale = "uk" as const;
+const contentHtml = privacyModalContent[locale];
+---
+
+<BaseLayout
+  title="Політика конфіденційності | Др. Тетяна Чирімпей"
+  description="Політика конфіденційності щодо обробки персональних даних для запитів на запис."
+  locale={locale}
+  canonicalPath="/uk/polityka-konfidentsiynosti"
+  alternates={[
+    { locale: "ro", href: "https://radioterapeut.ro/politica-confidentialitate/" },
+    { locale: "en", href: "https://radioterapeut.ro/en/privacy-policy/" },
+    { locale: "uk", href: "https://radioterapeut.ro/uk/polityka-konfidentsiynosti/" },
+  ]}
+>
+  <Header
+    locale={locale}
+    currentPath="/polityka-konfidentsiynosti"
+    pathByLocale={{
+      ro: "/politica-confidentialitate/",
+      en: "/en/privacy-policy/",
+      uk: "/uk/polityka-konfidentsiynosti/",
+    }}
+  />
+  <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <section class="rounded-2xl border border-(--rt-border) bg-surface p-6 shadow-sm sm:p-8">
+      <h1 class="text-3xl font-semibold tracking-tight text-ink">Політика конфіденційності</h1>
+      <div
+        class="article-content mt-6 space-y-4 text-base leading-relaxed text-ink"
+        set:html={contentHtml}
+      />
+    </section>
+  </main>
+  <Footer locale={locale} />
+</BaseLayout>

@@ -219,14 +219,14 @@ const blogSchema = {
         >
           <a
             href={`${baseArticlesPath}/${article.slug}`}
-            class="h-47 w-32 shrink-0 overflow-hidden rounded-xl bg-surface-2 shadow-sm sm:w-52"
+            class="h-47 max-w-47 shrink-0 overflow-hidden rounded-xl bg-surface-2 shadow-sm sm:w-52"
           >
             <img
               src={article.coverImage}
               alt={article.coverAlt}
               loading="lazy"
               decoding="async"
-              class="h-full min-h-[190px] w-full bg-surface-2 object-cover object-center"
+              class="h-full min-h-[190px] bg-surface-2 object-cover"
             />
           </a>
 

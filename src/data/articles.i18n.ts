@@ -25,7 +25,7 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "importanta-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/blog-01.webp",
+    coverImage: "/blog-01.png",
     articleImage: "/blog-detail1.webp",
     translations: {
       ro: {
@@ -881,7 +881,7 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "radioterapie-moderna",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-radioterapie-moderna.png",
+    coverImage: "/thum_blog-radioterapie-moderna.png",
     articleImage: "/blog-radioterapie-moderna.png",
     translations: {
         ro: {
@@ -1334,8 +1334,8 @@ export const articlesI18n: ArticleEntry[] = [
     {
         id: "afectiuni-benigne-selectate",
         author: "Dr. Tatiana Cirimpei",
-        coverImage: "/blog-afectiuni-benigne.png",
-        articleImage: "/blog-afectiuni-benigne.png",
+        coverImage: "/thumb_blog-afectiuni-benigne.png",
+        articleImage: "/blog-afectiuni-benigne-c.png",
         translations:{
             ro:{
                   slug: "afectiuni-benigne-selectate",

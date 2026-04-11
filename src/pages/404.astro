@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const locale = "ro" as const;
+---
+
+<BaseLayout
+  title="404 - Pagina nu a fost găsită | Radioterapeut.ro"
+  description="Pagina pe care o cauți nu există sau a fost mutată."
+  locale={locale}
+  canonicalPath="/404"
+  noindex={true}
+>
+  <main class="mx-auto flex min-h-[70vh] w-full max-w-3xl flex-col items-center justify-center px-4 py-16 text-center">
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-400">Eroare 404</p>
+    <h1 class="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">Pagina nu a fost găsită</h1>
+    <p class="mt-4 text-base text-muted sm:text-lg">
+      Link-ul accesat este invalid sau pagina a fost mutată.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="/" class="btn-primar inline-flex items-center justify-center px-5 py-2 text-base">
+        Înapoi la homepage
+      </a>
+      <a href="/articole/" class="btn-secundar inline-flex items-center justify-center px-5 py-2 text-base">
+        Vezi articolele
+      </a>
+    </div>
+  </main>
+</BaseLayout>
