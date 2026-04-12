@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# 🔒 Protecție pentru send.php — doar cereri POST
+<Files "send.php">
+  Order deny,allow
+  Deny from all
+  Allow from env=ALLOW_SEND
+</Files>
+SetEnvIf Request_Method POST ALLOW_SEND
+
+# 🔁 Redirecționează cirimpeitatiana.ro către radioterapeut.ro (HTTPS, non-www)
+RewriteCond %{HTTP_HOST} ^(www\.)?cirimpeitatiana\.ro$ [NC]
+RewriteRule ^(.*)$ https://radioterapeut.ro/$1 [R=301,L]
+
+# 🔁 Redirecționează www.radioterapeut.ro → radioterapeut.ro
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.radioterapeut\.ro$ [NC]
+RewriteRule ^(.*)$ https://radioterapeut.ro/$1 [R=301,L]
+
+# 🔁 Redirecționează /index.html → /
+RewriteCond %{THE_REQUEST} /index\.html [NC]
+RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
+
+# 📄 Setăm index.html ca fișier implicit
+DirectoryIndex index.html
+
+# ❌ Pagina 404 personalizată
+ErrorDocument 404 /404.html

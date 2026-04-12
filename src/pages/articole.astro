@@ -13,7 +13,15 @@ import { getAlternateLinks } from "../i18n/paths";
   canonicalPath="/articole"
   alternates={getAlternateLinks("/articole")}
 >
-  <Header locale="ro" currentPath="/articole" />
+  <Header 
+    locale="ro" 
+    currentPath="/articole" 
+    pathByLocale={{
+      ro: "/articole",
+      en: "/en/articole",
+      uk: "/uk/articole"
+    }} 
+  />
   <ArticlesIndex locale="ro" />
   <Footer locale="ro" />
 </BaseLayout>

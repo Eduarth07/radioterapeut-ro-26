@@ -1,6 +1,7 @@
 ---
 import { getArticlesForLocale, getFeaturedArticleForLocale } from "../data/articles.i18n";
 import type { SiteLocale } from "../i18n/config";
+import { Image } from "astro:assets";
 
 const { locale } = Astro.props as { locale: SiteLocale };
 
@@ -80,13 +81,13 @@ const blogSchema = {
     "@type": "BlogPosting",
     "headline": article.title,
     "abstract": article.excerpt,
-    "image": new URL(article.coverImage, "https://radioterapeut.ro").toString(),
+    "image": new URL(article.coverImage.src, "https://radioterapeut.ro").toString(),
     "author": {
       "@type": "Person",
       "name": article.author
     },
     // Data ideală e formatată ISO (ex: 2024-03-21). Dacă în data.ts ai string "21 Martie", e OK ca fallback.
-    "datePublished": article.date, 
+    "datePublished": article.isoDate,
     "url": new URL(`${baseArticlesPath}/${article.slug}`, "https://radioterapeut.ro").toString()
   }))
 };
@@ -119,14 +120,16 @@ const blogSchema = {
     <div class="grid gap-0 md:grid-cols-2">
       <div class="relative min-h-[150px] md:min-h-[420px]">
         <a href={`${baseArticlesPath}/${featuredArticle.slug}`}>
-          <img
-            src={featuredArticle.bigImage ?? featuredArticle.coverImage}
-            alt={featuredArticle.coverAlt}
-            loading="eager"
-            fetchpriority="high" 
-            decoding="async"
-            class="h-full w-full cursor-pointer object-cover"
-          />
+        <Image
+          src={featuredArticle.bigImage ?? featuredArticle.coverImage}
+          alt={featuredArticle.coverAlt}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          format="webp"
+          class="h-full w-full cursor-pointer object-cover"
+        />
+
         </a>
       </div>
 
@@ -153,7 +156,10 @@ const blogSchema = {
             <p class="text-base font-semibold text-gray-600 dark:text-gray-300">
               {featuredArticle.author}
             </p>
-            <p class="text-sm text-muted">{t.publishedOn} {featuredArticle.date}</p>
+            <p class="text-sm text-muted">
+              {t.publishedOn} 
+              {new Date(featuredArticle.isoDate).toLocaleDateString(t.localeTag, { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
           </div>
 
           <a
@@ -221,13 +227,14 @@ const blogSchema = {
             href={`${baseArticlesPath}/${article.slug}`}
             class="h-47 max-w-47 shrink-0 overflow-hidden rounded-xl bg-surface-2 shadow-sm sm:w-52"
           >
-            <img
-              src={article.coverImage}
-              alt={article.coverAlt}
-              loading="lazy"
-              decoding="async"
-              class="h-full min-h-[190px] bg-surface-2 object-cover"
-            />
+          <Image
+            src={article.coverImage}
+            alt={article.coverAlt}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            class="h-full min-h-[190px] bg-surface-2 object-cover"
+          />
           </a>
 
           <div class="flex min-h-[190px] flex-1 flex-col">
@@ -252,7 +259,9 @@ const blogSchema = {
             </p>
 
             <div class="mt-auto text-xs text-muted">
-              <span class="font-semibold text-gray-600 dark:text-gray-300">{article.date}</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-300">
+                {new Date(article.isoDate).toLocaleDateString(t.localeTag, { year: 'numeric', month: 'long', day: 'numeric' })}
+              </span>
               <span aria-hidden="true" class="mx-2">•</span>
               <span>{article.readTime} {t.readSuffix}</span>
             </div>

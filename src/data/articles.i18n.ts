@@ -1,12 +1,47 @@
 import type { SiteLocale } from "../i18n/config";
 
+import { ImageMetadata } from "astro";
+
+import imgImportantaRadioterapieCover from "../assets/blog-01.png";
+import imgImportantaRadioterapieArticle from "../assets/blog-detail1.webp";
+
+import imgMituriRadioterapieCover from "../assets/thumb_blog-02.png";
+import imgMituriRadioterapieArticle from "../assets/blog-02.webp";
+
+import imgPregatireRadioterapieCover from "../assets/thumb_blog-detail3.png";
+import imgPregatireRadioterapieArticle from "../assets/blog-detail3.webp";
+
+import imgRadioterapiaPeIntelesulTuturorCover from "../assets/thumb_blog-04.png";
+import imgRadioterapiaPeIntelesulTuturorArticle from "../assets/blog-04.png";
+import imgRadioterapiaPeIntelesulTuturorBig from "../assets/blog-04.png";
+
+import imgConsultatiiRadioterapieCover from "../assets/thumb_blog-consultatii.png";
+import imgConsultatiiRadioterapieArticle from "../assets/blog-consultatii.png";
+
+import imgRadioterapieModernaCover from "../assets/thum_blog-radioterapie-moderna.png";
+import imgRadioterapieModernaArticle from "../assets/blog-radioterapie-moderna.png";
+
+import imgManagementReactiiAdverseRadioterapieCover from "../assets/thumb_blog-reactii-adverse.png";
+import imgManagementReactiiAdverseRadioterapieArticle from "../assets/blog-reactii-adverse.png";
+
+import imgRadioterapiePinteniCalcaneeniCover from "../assets/thumb_blog-pinteni-calcaneeni.png";
+import imgRadioterapiePinteniCalcaneeniArticle from "../assets/blog-pinteni-calcaneeni.png";
+
+import imgAfectiuniBenigneSelectateCover from "../assets/thumb_blog-afectiuni-benigne.png";
+import imgAfectiuniBenigneSelectateArticle from "../assets/blog-afectiuni-benigne-c.png";
+
+import imgColaborareInterdisciplinaraRadioterapieCover from "../assets/blog-colaborare-medicala.png";
+
+import imgInlineCt from "../assets/ct.webp";
+import imgInlineTruebeam from "../assets/truebeam.webp";
+import imgInlineHalcyon from "../assets/halcyon.webp";
+
 export type LocalizedArticleContent = {
     slug: string;
     category: string;
     title: string;
     excerpt: string;
     readTime: string;
-    date: string;
     coverAlt: string;
     tags: string[];
     contentHtml: string;
@@ -15,9 +50,10 @@ export type LocalizedArticleContent = {
 export type ArticleEntry = {
     id: string;
     author: string;
-    coverImage: string;
-    articleImage?: string;
-    bigImage?: string;
+    isoDate: string;
+    coverImage: ImageMetadata;
+    articleImage?: ImageMetadata;
+    bigImage?: ImageMetadata;
     translations: Record<SiteLocale, LocalizedArticleContent>;
 };
 
@@ -25,8 +61,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "importanta-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/blog-01.png",
-    articleImage: "/blog-detail1.webp",
+    isoDate: "2026-01-10",
+    coverImage: imgImportantaRadioterapieCover,
+    articleImage: imgImportantaRadioterapieArticle,
     translations: {
       ro: {
         slug: "importanta-radioterapie",
@@ -35,7 +72,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Radioterapia este o metodă esențială, precisă și modernă, cu rol major în distrugerea celulelor tumorale și protejarea țesuturilor sănătoase.",
         readTime: "8 min",
-        date: "10 ianuarie 2026",
         coverAlt: "Imagine reprezentativă radioterapie",
         tags: ["Pacient", "Tratament", "Consultație"],
         contentHtml: `
@@ -67,7 +103,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Radiotherapy is an essential, precise, and modern treatment method that plays a major role in destroying tumor cells while protecting healthy tissues.",
         readTime: "8 min",
-        date: "10 January 2026",
         coverAlt: "Representative radiotherapy image",
         tags: ["Patient", "Treatment", "Consultation"],
         contentHtml: `
@@ -111,7 +146,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Променева терапія є важливим, точним і сучасним методом лікування, який відіграє значну роль у знищенні пухлинних клітин і захисті здорових тканин.",
         readTime: "8 хв",
-        date: "10 січня 2026",
         coverAlt: "Ілюстративне зображення променевої терапії",
         tags: ["Пацієнт", "Лікування", "Консультація"],
         contentHtml: ` <p>Загалом променева терапія є важливим методом лікування раку, який застосовується для знищення пухлинних клітин. За допомогою високоенергетичного випромінювання, точно спрямованого на уражену ділянку, можна зупинити розвиток пухлини або навіть повністю усунути злоякісні клітини, водночас захищаючи навколишні здорові тканини.</p> <p>Ця форма лікування є локальною, тобто діє безпосередньо на ділянку, де розташована пухлина. Променева терапія може використовуватися як основний метод лікування при певних видах раку, але часто поєднується з іншими методами, такими як хірургія або хіміотерапія, щоб підвищити загальну ефективність терапії. Іноді її також призначають із паліативною метою — для зменшення симптомів і покращення якості життя пацієнта.</p> <h3>Переваги сучасної променевої терапії</h3> <p>Сучасна променева терапія дуже відрізняється від того, що ви могли чути раніше. Завдяки технологічному прогресу сьогоднішнє лікування є:</p> <ul> <li>Набагато точнішим — випромінювання спрямовується безпосередньо на пухлину;</li> <li>Краще переносимим — побічні ефекти значно зменшені;</li> <li>Неінвазивним — не потребує розрізів чи госпіталізації;</li> <li>Швидким — сеанси тривають лише кілька хвилин, а повний курс лікування може бути відносно коротким, залежно від конкретного випадку.</li> </ul> <h3>Що відчуває пацієнт під час лікування?</h3> <p>Саме лікування є безболісним. Пацієнт лежить на спеціальному столі, а апарат рухається навколо нього, не торкаючись тіла. Випромінювання неможливо відчути, побачити чи відчути на запах. Увесь процес контролюється та постійно відстежується спеціалізованою медичною командою, до складу якої входять лікарі, фізики та радіотерапевтичні техніки.</p> <blockquote> <p>Променева терапія — це не просто медична технологія, а реальний шанс на одужання або покращення якості життя. Якщо ви або хтось із ваших близьких стикається з цією хворобою, я заохочую вас зв’язатися зі мною. Відкрита розмова та ретельна оцінка можуть відкрити новий шлях до лікування та відновлення рівноваги.</p> </blockquote> <h3>Які види раку можна лікувати променевою терапією?</h3> <p>Променева терапія є ефективною при лікуванні багатьох форм раку, включно з раком молочної залози, легені, простати, гінекологічними та колоректальними пухлинами. Однак кожен випадок є унікальним. Саме тому перед початком лікування необхідна консультація спеціаліста. Під час такої консультації вивчається медична документація, обговорюються варіанти лікування і складається індивідуальний план, адаптований до кожного пацієнта.</p> <p>Такий план враховує як локалізацію пухлини, так і стадію захворювання, вік пацієнта та його загальний стан здоров’я. Саме тому первинна оцінка є надзвичайно важливою і не повинна відкладатися. Іноді навіть кілька днів можуть мати значення.</p> <p>Променева терапія — це не просто одна з можливостей, а один із найважливіших інструментів, які ми маємо сьогодні в лікуванні раку. Коли вона призначена правильно і проводиться з високою точністю, вона може суттєво змінити перебіг хвороби та дати реальний шанс на одужання. Саме тому надзвичайно важливо, щоб кожного пацієнта уважно оцінили та надали рекомендацію, адаптовану до його ситуації. Якщо ви отримали онкологічний діагноз або шукаєте найкращий терапевтичний підхід, я заохочую вас записатися на консультацію. Променева терапія, застосована вчасно і правильно, може стати саме тим, що поверне надію та контроль над власним життям.</p> `,
@@ -121,8 +155,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "mituri-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-02.png",
-    articleImage: "/blog-02.webp",
+    isoDate: "2025-12-20",
+coverImage: imgMituriRadioterapieCover,
+articleImage: imgMituriRadioterapieArticle,
     translations: {
       ro: {
         slug: "mituri-radioterapie",
@@ -131,7 +166,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Clarificăm cele mai comune mituri despre radioterapie, astfel încât pacienții să înceapă tratamentul cu încredere și informații corecte.",
         readTime: "7 min",
-        date: "24 ianuarie 2026",
         coverAlt: "Mituri si adevaruri despre radioterapie",
         tags: ["Pacient", "Tratament", "Mituri"],
         contentHtml: `
@@ -166,7 +200,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "We clarify the most common myths about radiotherapy so that patients can begin treatment with confidence and accurate information.",
         readTime: "7 min",
-        date: "24 January 2026",
         coverAlt: "Myths and facts about radiotherapy",
         tags: ["Patient", "Treatment", "Myths"],
         contentHtml: ` <p>Radiotherapy is one of the most widely used and effective treatment methods in oncology. Even so, many fears and misunderstandings still surround it. This is understandable – words such as “radiation” can create anxiety. That is exactly why it is important to clarify some of the most common myths that patients hear or read, and to offer you a correct and realistic perspective.</p> <h3>❌ Myth: Radiotherapy is painful</h3> <p>✔️ <strong>Fact</strong>: One of the most reassuring things patients learn on the very first day of treatment is that… it does not hurt. Radiotherapy is a non-invasive procedure. During the session, nothing is felt – there are no needles, cuts, or unpleasant sensations. The patient remains still, in a stable position, while the radiation beam is directed precisely toward the affected area.</p> <h3>❌ Myth: Radiotherapy burns the skin</h3> <p>✔️ <strong>Fact</strong>: In some cases, mild skin reactions may appear in the treated area – redness, dryness, or slight irritation. However, these effects are temporary, carefully monitored by the medical team, and managed with special dermatologic products when needed. This is not the same as a “burn” in the usual sense, and in most cases patients do not experience significant discomfort.</p> <h3>❌ Myth: After radiotherapy you become radioactive</h3> <p>✔️ <strong>Fact</strong>: This is a common and completely false myth. In the case of external radiotherapy (the most commonly used form), the patient does NOT become radioactive and does not pose any danger to others. You can interact normally with family members, children, or colleagues, without restrictions. Radiation acts only during the treatment session, and once it is finished, nothing remains in the body.</p> <h3>❌ Myth: Radiotherapy causes severe side effects</h3> <p>✔️ <strong>Fact</strong>: Side effects are possible, as with any type of treatment, but most of them are mild and temporary. Fatigue, changes in appetite, or minor local discomfort may occur, but they are manageable and gradually disappear after treatment is completed. Modern radiotherapy is designed to be as well tolerated as possible and adapted to each patient individually.</p> <h3>❌ Myth: If you undergo radiotherapy, you can no longer have other treatments</h3> <p>✔️ <strong>Fact</strong>: Radiotherapy does not exclude other therapeutic options. On the contrary, it is often part of a complex treatment plan that may also include surgery, chemotherapy, or targeted therapies. The medical oncologist and the radiation oncologist work together to determine the best combination and sequence of treatments, depending on the specifics of your case.</p> <h3>❌ Myth: Radiation seriously damages healthy organs</h3> <p>✔️ <strong>Fact</strong>: Modern radiotherapy relies on advanced technologies that allow the radiation dose to be delivered with great precision. This means the dose is concentrated exactly on the affected area, while healthy tissues are protected as much as possible. In addition, treatment is planned using simulation and sophisticated algorithms precisely to achieve maximum effectiveness with minimal risk.</p> <h3>Conclusion</h3> <p>Radiotherapy is a safe, controlled, and extremely important treatment in the fight against cancer. A correct understanding of the procedure helps eliminate unnecessary anxiety and gives you greater peace of mind. If you have questions, uncertainties, or concerns, do not hesitate to speak openly with your radiation oncologist. Accurate information is always a step forward toward confidence and healing.</p> `,
@@ -178,7 +211,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Ми пояснюємо найпоширеніші міфи про променеву терапію, щоб пацієнти могли розпочати лікування з упевненістю та правильною інформацією.",
         readTime: "7 хв",
-        date: "24 січня 2026",
         coverAlt: "Міфи та факти про променеву терапію",
         tags: ["Пацієнт", "Лікування", "Міфи"],
         contentHtml: ` <p>Променева терапія є одним із найпоширеніших і найефективніших методів лікування в онкології. Проте навколо неї й досі існує багато страхів і непорозумінь. Це цілком зрозуміло — слова на кшталт «радіація» можуть викликати тривогу. Саме тому важливо пояснити кілька найпоширеніших міфів, які пацієнти чують або читають, і дати вам правильне та реалістичне уявлення.</p> <h3>❌ Міф: Променева терапія є болючою</h3> <p>✔️ <strong>Правда</strong>: Одне з найзаспокійливіших відкриттів, яке пацієнти роблять у перший день лікування, полягає в тому, що… це не болить. Променева терапія є неінвазивною процедурою. Під час сеансу нічого не відчувається — немає уколів, розрізів чи неприємних відчуттів. Пацієнт лежить нерухомо в стабільному положенні, а пучок випромінювання точно спрямовується на уражену ділянку.</p> <h3>❌ Міф: Променева терапія «спалює» шкіру</h3> <p>✔️ <strong>Правда</strong>: У деяких випадках у зоні лікування можуть з’явитися легкі шкірні реакції — почервоніння, сухість або незначне подразнення. Однак ці ефекти є тимчасовими, перебувають під ретельним контролем медичної команди та, за потреби, коригуються спеціальними дерматологічними засобами. Це не «опіки» у звичайному розумінні, і в більшості випадків пацієнти не мають значного дискомфорту.</p> <h3>❌ Міф: Після променевої терапії людина стає радіоактивною</h3> <p>✔️ <strong>Правда</strong>: Це поширений і повністю хибний міф. У випадку зовнішньої променевої терапії (найбільш уживаної форми) пацієнт НЕ стає радіоактивним і не становить жодної небезпеки для оточення. Ви можете нормально контактувати з родиною, дітьми чи колегами без будь-яких обмежень. Випромінювання діє лише під час сеансу, а після його завершення в організмі нічого не залишається.</p> <h3>❌ Міф: Променева терапія має тяжкі побічні ефекти</h3> <p>✔️ <strong>Правда</strong>: Побічні ефекти можливі, як і при будь-якому виді лікування, але більшість із них є легкими та тимчасовими. Може з’явитися втома, зміни апетиту або незначний локальний дискомфорт, але ці прояви контрольовані й поступово зникають після завершення лікування. Сучасна променева терапія розроблена так, щоб переноситися якомога краще та бути адаптованою до кожного пацієнта індивідуально.</p> <h3>❌ Міф: Якщо проходиш променеву терапію, інші види лікування вже неможливі</h3> <p>✔️ <strong>Правда</strong>: Променева терапія не виключає інших терапевтичних можливостей. Навпаки, вона часто є частиною комплексного плану лікування, який може також включати хірургію, хіміотерапію або таргетну терапію. Медичний онколог і лікар-радіотерапевт співпрацюють, щоб визначити найкраще поєднання та послідовність лікування залежно від особливостей вашого випадку.</p> <h3>❌ Міф: Випромінювання серйозно ушкоджує здорові органи</h3> <p>✔️ <strong>Правда</strong>: Сучасна променева терапія базується на передових технологіях, які дозволяють подавати дозу випромінювання з максимальною точністю. Це означає, що доза концентрується саме в ураженій ділянці, тоді як здорові тканини максимально захищаються. Крім того, лікування планується за допомогою симуляцій і складних алгоритмів саме для того, щоб досягти максимальної ефективності з мінімальним ризиком.</p> <h3>Висновок</h3> <p>Променева терапія — це безпечний, контрольований і надзвичайно важливий метод лікування в боротьбі з раком. Правильне розуміння процедури допомагає усунути зайву тривогу й знайти більше внутрішнього спокою. Якщо у вас є запитання, сумніви чи занепокоєння, не вагайтеся відкрито поговорити зі своїм лікарем-радіотерапевтом. Правдива інформація завжди є кроком уперед до впевненості та одужання.</p> `,
@@ -188,8 +220,10 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "pregatire-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-detail3.png",
-    articleImage: "/blog-detail3.webp",
+    isoDate: "2025-11-05",
+coverImage: imgPregatireRadioterapieCover,
+articleImage: imgPregatireRadioterapieArticle,
+
     translations: {
       ro: {
         slug: "pregatire-radioterapie",
@@ -198,7 +232,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Pregătirea corectă reduce efectele secundare și îmbunătățește eficiența tratamentului. Iată pașii practici, explicați clar.",
         readTime: "12 min",
-        date: "5 februarie 2026",
         coverAlt: "Pregătirea pacientului pentru radioterapie",
         tags: ["Pacient", "Tratament", "Pregătire"],
         contentHtml: ` <p>Pregătirea corectă pentru radioterapie poate reduce efectele secundare și îmbunătăți eficacitatea tratamentului, oferindu-vă mai mult confort și siguranță pe parcursul terapiei. Deși fiecare plan de tratament este personalizat, există câteva recomandări generale care pot face diferența.</p>
@@ -210,7 +243,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Procesul de simulare al tratamentului</h4>
 
     <figure class="article-media article-media-right article-media-sm">
-      <img src="/ct.webp" alt="Simulator CT" class="article-media-img" />
+      <img src="${imgInlineCt.src}" alt="Simulator CT" class="article-media-img" />
     </figure>
 
     <p>Primul pas este ședința de simulare, care are loc înainte de începerea propriu-zisă a tratamentului. Simularea, numită și centrare sau reperaj, este prima etapă a tratamentului pe care urmează să îl primiți. Tratamentul dumneavoastră este pregătit cu ajutorul unui scanner de simulare (computer tomograf simulator), numit și scanner dosimetric. Acesta ajută la stabilirea exactă a zonei din corp care trebuie tratată și la trasarea precisă a limitelor. Aceste limite sunt marcate fie cu o vopsea specială numită fucsină, fie cu mici puncte de tatuaj. Fiind o etapă esențială pentru desfășurarea corectă a tratamentului, în general, durează între 30 de minute și o oră.</p>
@@ -240,7 +273,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Familiarizarea cu aparatele de tratament</h4>
 
     <figure class="article-media article-media-right article-media-md">
-      <img src="/truebeam.webp" alt="Accelerator TrueBeam STx" class="article-media-img" />
+      <img src="${imgInlineTruebeam.src}" alt="Accelerator TrueBeam STx" class="article-media-img" />
     </figure>
 
     <p>Acceleratorul TrueBeam STx permite livrarea tratamentului cu o precizie extrem de mare, în special pentru tumori aflate în zone dificile. În timpul ședinței, veți fi poziționat la fel ca la simulare, iar aparatul se va roti în jurul dumneavoastră, fără a atinge corpul.</p>
@@ -250,7 +283,7 @@ export const articlesI18n: ArticleEntry[] = [
     <div class="article-media-clear"></div>
 
     <figure class="article-media article-media-left article-media-md">
-      <img src="/halcyon.webp" alt="Accelerator Halcyon" class="article-media-img" />
+      <img src="${imgInlineHalcyon.src}" alt="Accelerator Halcyon" class="article-media-img" />
     </figure>
 
     <p class="pt-5">Halcyon este un accelerator liniar de ultimă generație, rapid și silențios. Datorită vitezei sale, timpul petrecut de dumneavoastră pe masă este mai redus, fără a compromite calitatea tratamentului.</p>
@@ -298,7 +331,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Proper preparation can reduce side effects and improve treatment effectiveness. Here are the practical steps, explained clearly.",
         readTime: "12 min",
-        date: "February 5, 2026",
         coverAlt: "Patient preparation for radiotherapy",
         tags: ["Patient", "Treatment", "Preparation"],
         contentHtml: `
@@ -311,7 +343,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Treatment simulation process</h4>
 
     <figure class="article-media article-media-right article-media-sm">
-      <img src="/ct.webp" alt="CT simulator" class="article-media-img" />
+      <img src="${imgInlineCt}" alt="Simulator CT" class="article-media-img" />
     </figure>
 
     <p>The first step is the simulation session, which takes place before the actual treatment begins. Simulation, also called positioning or treatment planning setup, is the first stage of the treatment you are about to receive. Your treatment is prepared using a simulation scanner (a CT simulator), also called a dosimetric scanner. This helps define the exact area of the body that needs to be treated and allows the treatment boundaries to be mapped with precision. These boundaries are marked either with a special dye or with tiny tattoo dots. Because this is an essential stage for the correct delivery of treatment, it generally lasts between 30 minutes and one hour.</p>
@@ -341,7 +373,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Getting familiar with the treatment machines</h4>
 
     <figure class="article-media article-media-right article-media-md">
-      <img src="/truebeam.webp" alt="TrueBeam STx linear accelerator" class="article-media-img" />
+      <img src="${imgInlineTruebeam.src}" alt="Accelerator TrueBeam STx" class="article-media-img" />
     </figure>
 
     <p>The TrueBeam STx linear accelerator allows treatment to be delivered with extremely high precision, especially for tumors located in difficult areas. During the session, you will be positioned exactly as you were during simulation, and the machine will rotate around you without touching your body.</p>
@@ -351,7 +383,7 @@ export const articlesI18n: ArticleEntry[] = [
     <div class="article-media-clear"></div>
 
     <figure class="article-media article-media-left article-media-md">
-      <img src="/halcyon.webp" alt="Halcyon linear accelerator" class="article-media-img" />
+      <img src="${imgInlineHalcyon.src}" alt="Accelerator Halcyon" class="article-media-img" />
     </figure>
 
     <p class="pt-5">Halcyon is a next-generation linear accelerator that is fast and quiet. Thanks to its speed, the time you spend on the treatment table is shorter, without compromising the quality of treatment.</p>
@@ -399,7 +431,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Правильна підготовка може зменшити побічні ефекти та підвищити ефективність лікування. Ось практичні кроки, пояснені просто і зрозуміло.",
         readTime: "12 хв",
-        date: "5 лютого 2026",
         coverAlt: "Підготовка пацієнта до променевої терапії",
         tags: ["Пацієнт", "Лікування", "Підготовка"],
         contentHtml: `
@@ -412,7 +443,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Процес симуляції лікування</h4>
 
     <figure class="article-media article-media-right article-media-sm">
-      <img src="/ct.webp" alt="КТ-симулятор" class="article-media-img" />
+      <img src="${imgInlineCt.src}" alt="Simulator CT" class="article-media-img" />
     </figure>
 
     <p>Першим етапом є сеанс симуляції, який проводиться перед фактичним початком лікування. Симуляція, яку також називають центруванням або розміткою, є першим етапом лікування, яке ви маєте отримати. Ваше лікування готується за допомогою симуляційного сканера (комп’ютерного томографа-симулятора), який також називають дозиметричним сканером. Він допомагає точно визначити ділянку тіла, яка потребує лікування, і дуже точно окреслити її межі. Ці межі позначаються або спеціальною фарбою, або маленькими точками татуювання. Оскільки це надзвичайно важливий етап для правильного проведення лікування, зазвичай він триває від 30 хвилин до однієї години.</p>
@@ -442,7 +473,7 @@ export const articlesI18n: ArticleEntry[] = [
     <h4>Ознайомлення з апаратами для лікування</h4>
 
     <figure class="article-media article-media-right article-media-md">
-      <img src="/truebeam.webp" alt="Лінійний прискорювач TrueBeam STx" class="article-media-img" />
+      <img src="${imgInlineTruebeam.src}" alt="Accelerator TrueBeam STx" class="article-media-img" />
     </figure>
 
     <p>Лінійний прискорювач TrueBeam STx дозволяє проводити лікування з надзвичайно високою точністю, особливо для пухлин, розташованих у складних зонах. Під час сеансу вас розмістять так само, як і під час симуляції, а апарат обертатиметься навколо вас, не торкаючись тіла.</p>
@@ -452,7 +483,7 @@ export const articlesI18n: ArticleEntry[] = [
     <div class="article-media-clear"></div>
 
     <figure class="article-media article-media-left article-media-md">
-      <img src="/halcyon.webp" alt="Лінійний прискорювач Halcyon" class="article-media-img" />
+      <img src="${imgInlineHalcyon.src}" alt="Accelerator Halcyon" class="article-media-img" />
     </figure>
 
     <p class="pt-5">Halcyon — це лінійний прискорювач нового покоління, швидкий і тихий. Завдяки його швидкості час, який ви проводите на столі для лікування, є коротшим, без жодного компромісу щодо якості лікування.</p>
@@ -497,9 +528,10 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "radioterapia-pe-intelesul-tuturor",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-04.png",
-    articleImage: "/blog-04.png",
-    bigImage: "/blog-04.png",
+    isoDate: "2026-03-10",
+    coverImage: imgRadioterapiaPeIntelesulTuturorCover,
+    articleImage: imgRadioterapiaPeIntelesulTuturorArticle,
+    bigImage: imgRadioterapiaPeIntelesulTuturorBig,
     translations: {
       ro: {
         slug: "radioterapia-pe-intelesul-tuturor",
@@ -508,7 +540,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Un ghid amplu și accesibil: când se recomandă radioterapia, cum se desfășoară, ce efecte secundare pot apărea și cum le gestionăm.",
         readTime: "15 min",
-        date: "28 iulie 2025",
         coverAlt: "Discuție despre planul terapeutic",
         tags: ["Pacient", "Tratament", "Consultație"],
         contentHtml: `
@@ -579,7 +610,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "A comprehensive and accessible guide: when radiotherapy is recommended, how it works, what side effects may occur, and how we manage them.",
         readTime: "15 min",
-        date: "July 28, 2025",
         coverAlt: "Discussion about the treatment plan",
         tags: ["Patient", "Treatment", "Consultation"],
         contentHtml: `
@@ -657,7 +687,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Розгорнутий і доступний гід: коли рекомендується променева терапія, як вона проходить, які побічні ефекти можуть виникати та як ми з ними справляємося.",
         readTime: "15 хв",
-        date: "28 липня 2025",
         coverAlt: "Обговорення плану лікування",
         tags: ["Пацієнт", "Лікування", "Консультація"],
         contentHtml: `
@@ -731,9 +760,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "consultatii-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-consultatii.png",
-    articleImage: "/blog-consultatii.png",
-    bigImage: "/blog-consultatii-big.png",
+    isoDate: "2025-10-04",
+    coverImage: imgConsultatiiRadioterapieCover,
+    articleImage: imgConsultatiiRadioterapieArticle,
     translations: {
       ro: {
         slug: "consultatii-radioterapie",
@@ -742,7 +771,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "De la prima evaluare la monitorizarea post-tratament, aflați ce presupune fiecare etapă a consultului medical și cum vă pregătiți pentru un plan terapeutic corect.",
         readTime: "4 min",
-        date: "29 martie 2026",
         coverAlt: "Consultație de specialitate în radioterapie",
         tags: ["Consultație", "Radioterapie", "Second opinion"],
         contentHtml: `
@@ -787,7 +815,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "From the first evaluation to post-treatment follow-up, learn what each stage of the medical consultation involves and how to prepare for a proper treatment plan.",
         readTime: "4 min",
-        date: "March 29, 2026",
         coverAlt: "Specialist radiotherapy consultation",
         tags: ["Consultation", "Radiotherapy", "Second opinion"],
         contentHtml: `
@@ -835,7 +862,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
           "Від первинної оцінки до спостереження після лікування — дізнайтеся, що включає кожен етап медичної консультації та як підготуватися до правильного терапевтичного плану.",
         readTime: "4 хв",
-        date: "29 березня 2026",
         coverAlt: "Спеціалізована консультація з променевої терапії",
         tags: ["Консультація", "Променева терапія", "Second opinion"],
         contentHtml: `
@@ -881,8 +907,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "radioterapie-moderna",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thum_blog-radioterapie-moderna.png",
-    articleImage: "/blog-radioterapie-moderna.png",
+    isoDate: "2025-08-05",
+coverImage: imgRadioterapieModernaCover,
+articleImage: imgRadioterapieModernaArticle,
     translations: {
         ro: {
             slug: "radioterapie-moderna",
@@ -891,7 +918,6 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "O analiză detaliată a tehnicilor IMRT, VMAT și SBRT, explicând modul în care evoluția tehnologică permite administrarea tratamentului oncologic cu o acuratețe milimetrică.",
             readTime: "5 min",
-            date: "29 martie 2026",
             coverAlt: "Radioterapie modernă și planificare precisă",
             tags: ["Radioterapie", "IMRT", "VMAT", "SBRT"],
             contentHtml: `<p>Radioterapia a evoluat de la o metodă de tratament standardizată către o soluție medicală personalizată, bazată pe o precizie geometrică riguroasă. Această transformare a fost posibilă prin integrarea sistemelor de calcul avansate cu acceleratoarele liniare de ultimă generație, permițând adaptarea fasciculului de radiații la anatomia specifică a fiecărui pacient.</p>
@@ -931,7 +957,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "A detailed analysis of IMRT, VMAT and SBRT techniques, explaining how technological progress allows cancer treatment to be delivered with millimetric accuracy.",
         readTime: "5 min",
-        date: "March 29, 2026",
         coverAlt: "Modern radiotherapy and precise planning",
         tags: ["Radiotherapy", "IMRT", "VMAT", "SBRT"],
         contentHtml: `<p>Radiotherapy has evolved from a standardized treatment method into a personalized medical solution based on rigorous geometric precision. This transformation has been made possible by the integration of advanced computing systems with next-generation linear accelerators, allowing the radiation beam to be adapted to each patient’s specific anatomy.</p>
@@ -970,7 +995,6 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "Детальний аналіз технік IMRT, VMAT і SBRT, що пояснює, як технологічний прогрес дозволяє проводити онкологічне лікування з міліметровою точністю.",
         readTime: "5 хв",
-        date: "29 березня 2026",
         coverAlt: "Сучасна променева терапія та точне планування",
         tags: ["Променева терапія", "IMRT", "VMAT", "SBRT"],
         contentHtml: `<p>Променева терапія пройшла шлях від стандартизованого методу лікування до персоналізованого медичного рішення, заснованого на суворій геометричній точності. Ця трансформація стала можливою завдяки інтеграції сучасних обчислювальних систем із лінійними прискорювачами нового покоління, що дозволяє адаптувати пучок випромінювання до індивідуальної анатомії кожного пацієнта.</p>
@@ -1007,8 +1031,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "management-reactii-adverse-radioterapie",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-reactii-adverse.png",
-    articleImage: "/blog-reactii-adverse.png",
+    isoDate: "2025-08-01",
+coverImage: imgManagementReactiiAdverseRadioterapieCover,
+articleImage: imgManagementReactiiAdverseRadioterapieArticle,
     translations: {
         ro: {
         slug: "management-reactii-adverse-radioterapie",
@@ -1017,7 +1042,7 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "Reacțiile adverse apărute în timpul sau după radioterapie necesită evaluare atentă, recomandări practice și ajustări rapide pentru confort și siguranță.",
         readTime: "4 min",
-        date: "29 martie 2026",
+
         coverAlt: "Monitorizarea reacțiilor adverse în radioterapie",
         tags: ["Radioterapie", "Reacții adverse", "Monitorizare"],
         contentHtml: `
@@ -1074,7 +1099,7 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "Side effects that occur during or after radiotherapy require careful evaluation, practical recommendations and prompt adjustments for comfort and safety.",
         readTime: "4 min read",
-        date: "March 29, 2026",
+
         coverAlt: "Monitoring side effects in radiotherapy",
         tags: ["Radiotherapy", "Side effects", "Monitoring"],
         contentHtml: `
@@ -1131,7 +1156,7 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "Побічні реакції, що виникають під час або після променевої терапії, потребують уважної оцінки, практичних рекомендацій і швидкого коригування для комфорту та безпеки.",
         readTime: "4 хв читання",
-        date: "29 березня 2026",
+
         coverAlt: "Моніторинг побічних реакцій під час променевої терапії",
         tags: ["Променева терапія", "Побічні реакції", "Моніторинг"],
         contentHtml: `
@@ -1186,8 +1211,9 @@ export const articlesI18n: ArticleEntry[] = [
   {
     id: "radioterapie-pinteni-calcaneeni",
     author: "Dr. Tatiana Cirimpei",
-    coverImage: "/thumb_blog-pinteni-calcaneeni.png",
-    articleImage: "/blog-pinteni-calcaneeni.png",
+    isoDate: "2025-08-01",
+coverImage: imgRadioterapiePinteniCalcaneeniCover,
+articleImage: imgRadioterapiePinteniCalcaneeniArticle,
     translations:{
         ro: {
         slug: "radioterapie-pinteni-calcaneeni",
@@ -1196,7 +1222,7 @@ export const articlesI18n: ArticleEntry[] = [
         excerpt:
             "Când metodele clasice dau greș, radioterapia antiinflamatorie în doze mici poate reduce semnificativ durerea cauzată de pintenii calcaneeni, redând mobilitatea piciorului.",
         readTime: "4 min",
-        date: "29 martie 2026",
+
         coverAlt: "Evaluarea durerii de călcâi și radioterapie antiinflamatorie",
         tags: ["Servicii medicale", "Pinteni calcaneeni", "Radioterapie"],
         contentHtml: `
@@ -1240,7 +1266,7 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "When conventional methods fail, low-dose anti-inflammatory radiotherapy can significantly reduce pain caused by heel spurs and help restore foot mobility.",
             readTime: "4 min",
-            date: "March 29, 2026",
+   
             coverAlt: "Assessment of heel pain and anti-inflammatory radiotherapy",
             tags: ["Medical services", "Heel spurs", "Radiotherapy"],
             contentHtml: `
@@ -1288,7 +1314,7 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "Коли класичні методи не допомагають, низькодозова протизапальна променева терапія може суттєво зменшити біль, спричинений п’ятковими шпорами, і відновити рухливість стопи.",
             readTime: "4 хв",
-            date: "29 березня 2026",
+  
             coverAlt: "Оцінка болю в п’яті та протизапальна променева терапія",
             tags: ["Медичні послуги", "П’яткові шпори", "Променева терапія"],
             contentHtml: `
@@ -1334,8 +1360,9 @@ export const articlesI18n: ArticleEntry[] = [
     {
         id: "afectiuni-benigne-selectate",
         author: "Dr. Tatiana Cirimpei",
-        coverImage: "/thumb_blog-afectiuni-benigne.png",
-        articleImage: "/blog-afectiuni-benigne-c.png",
+        isoDate: "2025-08-01",
+coverImage: imgAfectiuniBenigneSelectateCover,
+articleImage: imgAfectiuniBenigneSelectateArticle,
         translations:{
             ro:{
                   slug: "afectiuni-benigne-selectate",
@@ -1344,7 +1371,7 @@ export const articlesI18n: ArticleEntry[] = [
                     excerpt:
                         "Dincolo de oncologie, radioterapia de doză mică este o soluție eficientă pentru controlul proliferării celulare în afecțiuni precum keloizii sau hemangioamele rezistente.",
                     readTime: "4 min",
-                    date: "29 martie 2026",
+                    
                     coverAlt: "Evaluarea indicațiilor de radioterapie în afecțiuni benigne selectate",
                     tags: ["Servicii medicale", "Afecțiuni benigne", "Radioterapie"],
                     contentHtml: `
@@ -1391,7 +1418,7 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "Beyond oncology, low-dose radiotherapy is an effective solution for controlling cellular proliferation in conditions such as keloids or resistant hemangiomas.",
             readTime: "4 min",
-            date: "March 29, 2026",
+     
             coverAlt: "Assessment of radiotherapy indications in selected benign conditions",
             tags: ["Medical services", "Benign conditions", "Radiotherapy"],
             contentHtml: `
@@ -1436,7 +1463,7 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "Окрім онкології, низькодозова променева терапія є ефективним рішенням для контролю клітинної проліферації при таких станах, як келоїди або резистентні гемангіоми.",
             readTime: "4 хв",
-            date: "29 березня 2026",
+
             coverAlt: "Оцінка показань до променевої терапії при вибраних доброякісних захворюваннях",
             tags: ["Медичні послуги", "Доброякісні захворювання", "Променева терапія"],
             contentHtml: `
@@ -1479,8 +1506,9 @@ export const articlesI18n: ArticleEntry[] = [
     {
         id: "colaborare-interdisciplinara-radioterapie",
         author: "Dr. Tatiana Cirimpei",
-        coverImage: "/blog-colaborare-medicala.png",
-        articleImage: "/blog-colaborare-medicala.png",
+        isoDate: "2025-07-12",
+        coverImage: imgColaborareInterdisciplinaraRadioterapieCover,
+        articleImage: imgColaborareInterdisciplinaraRadioterapieCover,
         translations:{
             ro: {
             slug: "colaborare-interdisciplinara-radioterapie",
@@ -1489,7 +1517,6 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "Un model de parteneriat medical bazat pe acces rapid la tratament, dialog și utilizarea tehnologiei de top pentru un control tumoral optim.",
             readTime: "6 min",
-            date: "29 martie 2025",
             coverAlt: "Colaborare multidisciplinară Tumor Board",
             tags: ["Radioterapie", "Comunicare", "Tehnologie"],
             contentHtml: `<p><i>Acest articol este dedicat colegilor medici, specialiști și primari, care urmăresc integrarea celor mai noi soluții de radioterapie în planul de management al pacienților lor, cu scopul de a asigura un tratament corect, sigur și eficient.</i></p>
@@ -1527,7 +1554,6 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "A medical partnership model built on rapid access to treatment, dialogue, and the use of advanced technology for optimal tumor control.",
             readTime: "6 min read",
-            date: "March 29, 2025",
             coverAlt: "Multidisciplinary Tumor Board collaboration",
             tags: ["Radiotherapy", "Communication", "Technology"],
             contentHtml: `<p><i>This article is dedicated to fellow physicians, specialists and senior consultants who seek to integrate the latest radiotherapy solutions into the management plan of their patients, with the goal of ensuring treatment that is accurate, safe and effective.</i></p>
@@ -1566,7 +1592,6 @@ export const articlesI18n: ArticleEntry[] = [
             excerpt:
                 "Модель медичного партнерства, заснована на швидкому доступі до лікування, діалозі та використанні передових технологій для оптимального контролю пухлини.",
             readTime: "6 хв читання",
-            date: "29 березня 2025",
             coverAlt: "Мультидисциплінарна співпраця в межах Tumor Board",
             tags: ["Променева терапія", "Комунікація", "Технологія"],
             contentHtml: `<p><i>Ця стаття присвячена колегам-лікарям, спеціалістам і старшим консультантам, які прагнуть інтегрувати найновіші рішення променевої терапії в план ведення своїх пацієнтів, щоб забезпечити точне, безпечне та ефективне лікування.</i></p>
@@ -1621,6 +1646,7 @@ export function getFeaturedArticleForLocale(locale: SiteLocale, category?: strin
   return {
     id: article.id,
     author: article.author,
+    isoDate: article.isoDate,
     coverImage: article.coverImage,
     articleImage: article.articleImage,
     bigImage: article.bigImage,
@@ -1632,6 +1658,7 @@ export function getArticlesForLocale(locale: SiteLocale) {
     return articlesI18n.map((article) => ({
         id: article.id,
         author: article.author,
+        isoDate: article.isoDate,
         coverImage: article.coverImage,
         articleImage: article.articleImage,
         bigImage: article.bigImage,
@@ -1649,6 +1676,7 @@ export function getArticleBySlug(locale: SiteLocale, slug: string) {
     return {
         id: article.id,
         author: article.author,
+        isoDate: article.isoDate,
         coverImage: article.coverImage,
         articleImage: article.articleImage,
         bigImage: article.bigImage,

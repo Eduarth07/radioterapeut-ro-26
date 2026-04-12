@@ -23,7 +23,8 @@ const servicesSchema = {
         "@type": "MedicalProcedure",
         "name": card.title,
         "description": card.description,
-        "procedureType": "RadiationTherapy"
+        "procedureType": "RadiationTherapy",
+        "provider": { "@id": "https://radioterapeut.ro/#physician" },
       }
     })),
     ...nonOncologicCards.map((card, index) => ({
@@ -33,7 +34,8 @@ const servicesSchema = {
         "@type": "MedicalProcedure",
         "name": card.title,
         "description": card.description,
-        "procedureType": "NonOncologicTherapy"
+        "procedureType": "NonOncologicTherapy",
+        "provider": { "@id": "https://radioterapeut.ro/#physician" },
       }
     }))
   ]

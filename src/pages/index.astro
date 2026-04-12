@@ -12,17 +12,43 @@ import { getAlternateLinks } from "../i18n/paths";
 
 const homepageSchema = {
   "@context": "https://schema.org",
-  "@type": "MedicalWebPage",
-  "name": "Consultații și Tratamente de Radioterapie în Cluj-Napoca | Dr. Tatiana Cirimpei",
-  "description": "Consultații medicale de specialitate și tratamente de radioterapie personalizate pentru afecțiuni oncologice și non-oncologice, oferite de Dr. Tatiana Cirimpei în Cluj-Napoca.",
-  "about": {
-    "@type": "MedicalSpecialty",
-    "name": "RadiationTherapy"
-  },
-  "audience": {
-    "@type": "MedicalAudience",
-    "audienceType": "Pacienți"
-  }
+  "@graph": [
+    {
+      // Entitatea 1: Pagina web în sine
+      "@type": "MedicalWebPage",
+      "@id": "https://radioterapeut.ro/#webpage",
+      "url": "https://radioterapeut.ro/",
+      "name": "Consultații și Tratamente de Radioterapie în Cluj-Napoca | Dr. Tatiana Cirimpei",
+      "description": "Consultații medicale de specialitate și tratamente de radioterapie personalizate pentru afecțiuni oncologice și non-oncologice, oferite de Dr. Tatiana Cirimpei în Cluj-Napoca.",
+      "inLanguage": "ro-RO",
+      "about": { "@id": "https://radioterapeut.ro/#physician" }, // Spune clar că pagina este despre TINE
+      "author": { "@id": "https://radioterapeut.ro/#physician" }
+    },
+    {
+      // Entitatea 2: Tu (Medicul ca Afacere/PFA) - Asta trebuie să bată 1 la 1 cu Google Business Profile
+      "@type": "Physician",
+      "@id": "https://radioterapeut.ro/#physician",
+      "name": "Dr. Tatiana Cirimpei",
+      "medicalSpecialty": "RadiationTherapy",
+      "description": "Medic specialist radioterapie în Cluj-Napoca.",
+      "url": "https://radioterapeut.ro/",
+      "telephone": "+40754256610",
+      "email": "contact@radioterapeut.ro", // Opțional, dacă ai
+      "image": "https://radioterapeut.ro/webpreview.png", // Un portret profesional cu tine ar fi ideal aici
+      // Adresa unde îți desfășori activitatea PFA-ului / unde primesc pacienții
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cluj-Napoca",
+        "addressRegion": "Cluj",
+        "addressCountry": "RO"
+        // Poți adăuga "streetAddress": "Adresa exactă" dacă o ai și pe Google Maps
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Cluj-Napoca"
+      }
+    }
+  ]
 };
 ---
 <BaseLayout

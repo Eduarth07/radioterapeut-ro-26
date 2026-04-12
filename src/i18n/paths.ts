@@ -6,24 +6,24 @@ import {
 } from "./config";
 
 export function normalizePath(path = "/") {
-  if (!path) return "/";
-
-  const clean = path.startsWith("/") ? path : `/${path}`;
-  return clean === "/" ? "/" : clean.replace(/\/+$/, "");
+  if (!path || path === "/") return "/";
+  // Elimină orice slash de la început și final, apoi pune unul singur la început
+  const clean = path.replace(/^\/+|\/+$/g, "");
+  return `/${clean}`;
 }
 
 export function getLocalePath(locale: SiteLocale, path = "/") {
   const normalized = normalizePath(path);
 
   if (locale === DEFAULT_LOCALE) {
-    return normalized === "/" ? "/" : `${normalized}/`;
+    return normalized; // ex: /articole
   }
 
   if (normalized === "/") {
-    return `/${locale}/`;
+    return `/${locale}`; // ex: /en
   }
 
-  return `/${locale}${normalized}/`;
+  return `/${locale}${normalized}`; // ex: /en/articole
 }
 
 export function getAbsoluteLocaleUrl(locale: SiteLocale, path = "/") {
