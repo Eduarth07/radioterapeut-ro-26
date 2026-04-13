@@ -13,9 +13,9 @@ export const LOCALE_LABELS: Record<SiteLocale, string> = {
 };
 
 export const LOCALE_HREFLANG: Record<SiteLocale, string> = {
-  ro: "ro",
-  en: "en",
-  uk: "uk",
+  ro: "ro-RO",
+  en: "en-US",
+  uk: "uk-UA",
 };
 
 export const LOCALE_LABELS_BY_UI_LOCALE: Record<

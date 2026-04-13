@@ -343,7 +343,7 @@ articleImage: imgPregatireRadioterapieArticle,
     <h4>Treatment simulation process</h4>
 
     <figure class="article-media article-media-right article-media-sm">
-      <img src="${imgInlineCt}" alt="Simulator CT" class="article-media-img" />
+      <img src="${imgInlineCt.src}" alt="Simulator CT" class="article-media-img" />
     </figure>
 
     <p>The first step is the simulation session, which takes place before the actual treatment begins. Simulation, also called positioning or treatment planning setup, is the first stage of the treatment you are about to receive. Your treatment is prepared using a simulation scanner (a CT simulator), also called a dosimetric scanner. This helps define the exact area of the body that needs to be treated and allows the treatment boundaries to be mapped with precision. These boundaries are marked either with a special dye or with tiny tattoo dots. Because this is an essential stage for the correct delivery of treatment, it generally lasts between 30 minutes and one hour.</p>

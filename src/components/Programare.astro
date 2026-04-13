@@ -10,16 +10,17 @@ const { locale = DEFAULT_LOCALE } = Astro.props as {
 const t = appointmentContent[locale];
 const privacyHtml = privacyModalContent[locale];
 
-// MAGIA PENTRU AI/GEO: Îi explicăm robotului că aici se fac programările
+const appointmentUrl = `https://radioterapeut.ro${locale === "ro" ? "" : `/${locale}`}#programare`;
+
 const appointmentSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": "https://radioterapeut.ro/#programare",
+  "@id": appointmentUrl,
   "potentialAction": {
     "@type": "ReserveAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://radioterapeut.ro/#programare",
+      "urlTemplate": appointmentUrl,
       "inLanguage": locale,
       "actionPlatform": [
         "http://schema.org/DesktopWebPlatform",
@@ -50,6 +51,17 @@ const appointmentSchema = {
     </div>
 
     <div class="mx-auto w-full max-w-5xl rounded-2xl border border-gray-200 bg-gray-50 px-4 py-8 shadow-sm sm:px-8 sm:py-10 dark:border-gray-700 dark:bg-[#15182B]">
+      {
+        Astro.url.searchParams.get("trimis") === "1" && (
+          <p
+            id="submitSuccessMessage"
+            class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-center text-sm text-green-700 dark:border-green-800 dark:bg-green-950/30 dark:text-green-300"
+            aria-live="polite"
+          >
+            {t.submitSuccessMessage}
+          </p>
+        )
+      }
       <form
         id="programareForm"
         class="space-y-5"
@@ -58,7 +70,7 @@ const appointmentSchema = {
       >
         <input type="hidden" name="_subject" value={t.emailSubject} />
         <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://radioterapeut.ro/#programare" />
+        <input type="hidden" name="_next" value={`https://radioterapeut.ro${locale === "ro" ? "" : `/${locale}`}?trimis=1#programare`} />
         <input type="hidden" name="_captcha" value="false" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -323,62 +335,22 @@ const revealAcceptButton = () => {
     });
   }
 
-  form.addEventListener('submit', async function(e) {
-  e.preventDefault();
+  const successBanner = document.getElementById('submitSuccessMessage');
 
-  // 1. Verificare GDPR
-  const gdprConsent = document.querySelector('#gdprConsent');
-  const gdprError = document.querySelector('#gdprError');
-  if (!gdprConsent || !gdprConsent.checked) {
-    gdprError?.classList.remove('hidden');
-    // Aici apelezi funcția ta openModal('consent') dacă e nevoie
-    return;
-  }
-  gdprError?.classList.add('hidden');
+  if (successBanner) {
+    const currentUrl = new URL(window.location.href);
+    const wasSent = currentUrl.searchParams.get('trimis');
 
-  // 2. Verificare reCAPTCHA
-  const captchaResponse = typeof window.grecaptcha !== 'undefined' ? window.grecaptcha.getResponse() : '';
-  const captchaError = document.querySelector('#captchaError');
-  
-  if (!captchaResponse) {
-    captchaError?.classList.remove('hidden');
-    return;
-  }
-  captchaError?.classList.add('hidden');
+    if (wasSent === '1') {
+      successBanner.classList.remove('hidden');
 
-  // 3. Trimiterea datelor către send.php
-  const submitButton = form.querySelector('button[type="submit"]');
-  const originalButtonText = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.innerHTML = "Se trimite..."; // Oferim feedback vizual UX
+      currentUrl.searchParams.delete('trimis');
+      const cleanUrl =
+        currentUrl.pathname +
+        (currentUrl.search ? currentUrl.search : '') +
+        currentUrl.hash;
 
-  try {
-    const response = await fetch('/send.php', {
-      method: 'POST',
-      body: new FormData(form),
-    });
-
-    if (response.ok) {
-      // Afișăm mesajul de succes
-      const successMessage = document.getElementById('successMessage'); // Asigură-te că ai un div cu id-ul ăsta în HTML
-      if (successMessage) successMessage.classList.remove('hidden');
-      
-      form.reset();
-      window.grecaptcha.reset(); // Resetăm captcha-ul
-
-      setTimeout(() => {
-        if (successMessage) successMessage.classList.add('hidden');
-      }, 5000);
-    } else {
-      console.error("Eroare de la server:", response.statusText);
-      alert("A apărut o eroare la trimitere. Te rugăm să încerci din nou sau să ne contactezi telefonic.");
+      window.history.replaceState({}, '', cleanUrl);
     }
-  } catch (error) {
-    console.error("Eroare la trimitere:", error);
-    alert("Nu s-a putut conecta la server. Verifică conexiunea la internet.");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalButtonText;
   }
-});
 </script>

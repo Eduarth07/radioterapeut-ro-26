@@ -18,8 +18,8 @@ const ui = {
     publishedOn: "Publicat pe",
     readFull: "Citește articolul complet",
     loadMore: "Încarcă mai multe articole",
-    readSuffix: "citire",
     categoryParam: "categorie",
+    tagParam: "tag",
     localeTag: "ro-RO",
   },
   en: {
@@ -34,8 +34,8 @@ const ui = {
     publishedOn: "Published on",
     readFull: "Read full article",
     loadMore: "Load more articles",
-    readSuffix: "read",
     categoryParam: "categorie",
+    tagParam: "tag",
     localeTag: "en-US",
   },
   uk: {
@@ -50,8 +50,8 @@ const ui = {
     publishedOn: "Опубліковано",
     readFull: "Читати повну статтю",
     loadMore: "Завантажити більше статей",
-    readSuffix: "читання",
     categoryParam: "categorie",
+    tagParam: "tag",
     localeTag: "uk-UA",
   },
 } satisfies Record<SiteLocale, any>;
@@ -221,6 +221,7 @@ const blogSchema = {
           data-article-card
           data-article-category={article.category}
           data-article-slug={article.slug}
+          data-article-tags={article.tags.join("||")}
           class="flex gap-6"
         >
           <a
@@ -263,7 +264,7 @@ const blogSchema = {
                 {new Date(article.isoDate).toLocaleDateString(t.localeTag, { year: 'numeric', month: 'long', day: 'numeric' })}
               </span>
               <span aria-hidden="true" class="mx-2">•</span>
-              <span>{article.readTime} {t.readSuffix}</span>
+              <span>{article.readTime}</span>
             </div>
           </div>
         </article>
@@ -282,7 +283,7 @@ const blogSchema = {
   </section>
 </main>
 
-<script define:vars={{ categoryParam: t.categoryParam, localeTag: t.localeTag }}>
+<script define:vars={{ categoryParam: t.categoryParam, tagParam: t.tagParam, localeTag: t.localeTag }}>
   const cards = Array.from(document.querySelectorAll("[data-article-card]"));
   const button = document.getElementById("load-more-articles");
   const categoryFilter = document.getElementById("category-filter");
@@ -295,12 +296,20 @@ const blogSchema = {
   const step = 4;
   let visible = initialVisible;
 
+  const normalizeValue = (value) =>
+    value ? value.toLocaleLowerCase(localeTag).trim() : "";
+
   const getSelectedCategory = () => {
     const value = new URLSearchParams(window.location.search).get(categoryParam);
     return value ? value.trim() : "";
   };
 
-  const updateUrl = (category) => {
+  const getSelectedTag = () => {
+    const value = new URLSearchParams(window.location.search).get(tagParam);
+    return value ? value.trim() : "";
+  };
+
+  const updateUrlForCategory = (category) => {
     const url = new URL(window.location.href);
 
     if (category) {
@@ -309,30 +318,40 @@ const blogSchema = {
       url.searchParams.delete(categoryParam);
     }
 
+    url.searchParams.delete(tagParam);
     window.history.replaceState({}, "", url);
   };
 
-  const getFilteredCards = (category) => {
-    const normalizedSelectedCategory = category
-      ? category.toLocaleLowerCase(localeTag).trim()
-      : "";
+  const getFilteredCards = (category, tag) => {
+    const normalizedSelectedCategory = normalizeValue(category);
+    const normalizedSelectedTag = normalizeValue(tag);
 
     return cards.filter((card) => {
       const cardCategory = card.getAttribute("data-article-category") ?? "";
       const cardSlug = card.getAttribute("data-article-slug") ?? "";
-      const normalizedCardCategory = cardCategory.toLocaleLowerCase(localeTag).trim();
+      const cardTagsRaw = card.getAttribute("data-article-tags") ?? "";
 
-      if (!normalizedSelectedCategory) {
+      const normalizedCardCategory = normalizeValue(cardCategory);
+      const normalizedCardTags = cardTagsRaw
+        .split("||")
+        .map((item) => normalizeValue(item))
+        .filter(Boolean);
+
+      const matchesCategory = !normalizedSelectedCategory || normalizedCardCategory === normalizedSelectedCategory;
+      const matchesTag = !normalizedSelectedTag || normalizedCardTags.includes(normalizedSelectedTag);
+
+      if (!normalizedSelectedCategory && !normalizedSelectedTag) {
         return cardSlug !== featuredSlug;
       }
 
-      return normalizedCardCategory === normalizedSelectedCategory;
+      return matchesCategory && matchesTag;
     });
   };
 
   const render = () => {
     const selectedCategory = getSelectedCategory();
-    const filteredCards = getFilteredCards(selectedCategory);
+    const selectedTag = getSelectedTag();
+    const filteredCards = getFilteredCards(selectedCategory, selectedTag);
 
     cards.forEach((card) => {
       const index = filteredCards.indexOf(card);
@@ -343,14 +362,14 @@ const blogSchema = {
       button.classList.toggle("hidden", visible >= filteredCards.length);
     }
 
-    const hasCategoryFilter = Boolean(selectedCategory);
+    const hasAnyFilter = Boolean(selectedCategory || selectedTag);
 
     if (featuredSection) {
-      featuredSection.classList.toggle("hidden", hasCategoryFilter);
+      featuredSection.classList.toggle("hidden", hasAnyFilter);
     }
 
     if (featuredLabel) {
-      featuredLabel.classList.toggle("hidden", hasCategoryFilter);
+      featuredLabel.classList.toggle("hidden", hasAnyFilter);
     }
 
     if (categoryFilter instanceof HTMLSelectElement) {
@@ -361,7 +380,7 @@ const blogSchema = {
   if (categoryFilter instanceof HTMLSelectElement) {
     categoryFilter.addEventListener("change", () => {
       visible = initialVisible;
-      updateUrl(categoryFilter.value);
+      updateUrlForCategory(categoryFilter.value);
       render();
     });
   }

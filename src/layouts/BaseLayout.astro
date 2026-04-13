@@ -5,6 +5,7 @@ import ScrollToTopButton from "../components/ScrollToTopButton.astro";
 import {
   DEFAULT_LOCALE,
   LOCALE_HREFLANG,
+  SITE_URL,
   type SiteLocale,
 } from "../i18n/config";
 import { normalizePath } from "../i18n/paths";
@@ -50,23 +51,20 @@ const {
   structuredData?: JsonLdObject | JsonLdObject[];
 };
 
-const siteUrl = Astro.site ?? new URL("https://radioterapeut.ro");
-
-const normalizedCanonicalPath = normalizePath(canonicalPath);
-const canonicalUrl = new URL(
-  normalizedCanonicalPath === "/" ? "/" : `${normalizedCanonicalPath}/`,
-  siteUrl
-).toString();
+const siteUrl = Astro.site ?? new URL(SITE_URL);
 
 const normalizeAbsoluteUrl = (value: string) => {
   const url = new URL(value, siteUrl);
 
   if (url.pathname !== "/") {
-    url.pathname = `${url.pathname.replace(/\/+$/, "")}/`;
+    url.pathname = url.pathname.replace(/\/+$/, "");
   }
 
   return url.toString();
 };
+
+const normalizedCanonicalPath = normalizePath(canonicalPath);
+const canonicalUrl = normalizeAbsoluteUrl(normalizedCanonicalPath);
 
 const normalizedAlternates = alternates.map((item) => ({
   ...item,
@@ -75,7 +73,7 @@ const normalizedAlternates = alternates.map((item) => ({
 
 const resolvedXDefaultHref = normalizeAbsoluteUrl(
   xDefaultHref ??
-    alternates.find((item) => item.locale === DEFAULT_LOCALE)?.href ??
+    normalizedAlternates.find((item) => item.locale === DEFAULT_LOCALE)?.href ??
     canonicalUrl
 );
 
@@ -88,15 +86,17 @@ const extraStructuredData = Array.isArray(structuredData)
     ? [structuredData]
     : [];
 
+const physicianId = new URL("/#physician", siteUrl).toString();
+const homepageUrl = new URL("/", siteUrl).toString();
+
 const baseStructuredData: JsonLdObject = {
   "@context": "https://schema.org",
   "@type": "Physician",
-  "@id": `${canonicalUrl}#physician`,
+  "@id": physicianId,
   name: "Dr. Tatiana Cirimpei",
   medicalSpecialty: "RadiationTherapy",
-  url: canonicalUrl,
+  url: homepageUrl,
   image: ogImageUrl,
-  inLanguage: locale,
 };
 
 const mergedStructuredData = [baseStructuredData, ...extraStructuredData];

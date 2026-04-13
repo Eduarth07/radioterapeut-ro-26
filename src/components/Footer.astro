@@ -26,29 +26,30 @@ const privacyHref =
       ? "/en/privacy-policy"
       : "/uk/polityka-konfidentsiynosti";
 
-// MAGIA SEO LOCALĂ: Conectăm medicul de clinica Medisprof pentru Google Maps
-const localBusinessSchema = {
+const physicianSchema = {
   "@context": "https://schema.org",
-  "@type": "MedicalClinic",
-  "name": "Medisprof Cancer Center",
-  "url": "https://medisprof.ro/",
+  "@type": "Physician",
+  "@id": "https://radioterapeut.ro/#physician",
+  "name": "Dr. Tatiana Cirimpei",
+  "medicalSpecialty": "RadiationTherapy",
+  "url": "https://radioterapeut.ro/",
+  "telephone": "+40-754-256-610",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Cluj-Napoca",
     "addressRegion": "Cluj",
     "addressCountry": "RO"
   },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+40-754-256-610",
-    "contactType": "Programări"
+  "areaServed": {
+    "@type": "City",
+    "name": "Cluj-Napoca"
   }
 };
 ---
 
 <footer id="contact" class="bg-blue-950 dark:bg-gray-800">
   
-  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(physicianSchema)} />
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-center text-white pt-5 lg:pt-6">

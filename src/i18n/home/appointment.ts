@@ -25,6 +25,7 @@ type AppointmentContent = {
   modalTitle: string;
   modalCloseAria: string;
   modalAcceptButton: string;
+  submitSuccessMessage: string;
 
   errorNameReq: string;
   errorSurnameReq: string;
@@ -61,6 +62,7 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Termeni și condiții / Politica de confidențialitate",
     modalCloseAria: "Închide",
     modalAcceptButton: "Confirm și accept",
+    submitSuccessMessage: "Mesajul a fost trimis cu succes. ",
 
     errorNameReq: "Te rugăm să introduci numele de familie.",
     errorSurnameReq: "Te rugăm să introduci prenumele.",
@@ -96,6 +98,7 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Terms and conditions / Privacy policy",
     modalCloseAria: "Close",
     modalAcceptButton: "Confirm and accept",
+    submitSuccessMessage: "Your message was sent successfully.",
 
     errorNameReq: "Please enter your last name.",
     errorSurnameReq: "Please enter your first name.",
@@ -131,6 +134,7 @@ export const appointmentContent: Record<SiteLocale, AppointmentContent> = {
     modalTitle: "Умови та положення / Політика конфіденційності",
     modalCloseAria: "Закрити",
     modalAcceptButton: "Підтвердити та прийняти",
+    submitSuccessMessage: "Повідомлення успішно надіслано.",
 
     errorNameReq: "Будь ласка, введіть своє прізвище.",
     errorSurnameReq: "Будь ласка, введіть своє ім'я.",
