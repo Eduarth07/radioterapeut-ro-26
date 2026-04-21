@@ -36,7 +36,7 @@ const appointmentSchema = {
 
 <section id="programare" aria-labelledby="programare-title" class="border-t border-gray-200 scroll-mt-10 md:scroll-mt-0 py-16 sm:py-24 lg:py-28 dark:border-gray-800">
   
-  <script type="application/ld+json" set:html={JSON.stringify(appointmentSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(appointmentSchema)} />
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mx-auto mb-10 max-w-3xl text-center">
@@ -51,29 +51,16 @@ const appointmentSchema = {
     </div>
 
     <div class="mx-auto w-full max-w-5xl rounded-2xl border border-gray-200 bg-gray-50 px-4 py-8 shadow-sm sm:px-8 sm:py-10 dark:border-gray-700 dark:bg-[#15182B]">
-      {
-        Astro.url.searchParams.get("trimis") === "1" && (
-          <p
-            id="submitSuccessMessage"
-            class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-center text-sm text-green-700 dark:border-green-800 dark:bg-green-950/30 dark:text-green-300"
-            aria-live="polite"
-          >
-            {t.submitSuccessMessage}
-          </p>
-        )
-      }
-      <form
-        id="programareForm"
-        class="space-y-5"
-        action="https://formsubmit.co/programari.cirimpeitatiana@gmail.com"
-        method="POST"
+      
+      <p
+        id="submitSuccessMessage"
+        class="hidden mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-center text-sm text-green-700 dark:border-green-800 dark:bg-green-950/30 dark:text-green-300"
+        aria-live="polite"
       >
-        <input type="hidden" name="_subject" value={t.emailSubject} />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value={`https://radioterapeut.ro${locale === "ro" ? "" : `/${locale}`}?trimis=1#programare`} />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-
+        {t.submitSuccessMessage}
+      </p>
+        
+      <form id="programareForm" class="space-y-5">
         <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
           <label class="block">
             <span class="sr-only">{t.nameSr}</span>
@@ -99,7 +86,6 @@ const appointmentSchema = {
         </label>
 
         <div class="space-y-4 rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-black/20">
-          
           <div class="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-center text-sm text-gray-700 sm:text-base dark:text-gray-200">
             <div class="flex items-center gap-2">
               <input id="gdprConsent" name="gdprConsent" type="checkbox" class="h-5 w-5 cursor-pointer rounded border-gray-300 text-cyan-600 focus:ring-cyan-500" />
@@ -130,10 +116,12 @@ const appointmentSchema = {
         <div class="text-center">
         <button
           type="submit"
-          class="group inline-flex min-w-[160px] cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border border-gray-600 bg-gradient-to-b from-gray-700 to-gray-900 px-6 py-3 text-lg font-medium text-white shadow-sm transition-all duration-300 ease-out hover:from-gray-600 hover:to-gray-800 hover:border-gray-500 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.98] dark:border-none dark:from-cyan-600 dark:to-cyan-800 dark:hover:from-cyan-500 dark:hover:to-cyan-700"
+          id="submitBtn"
+          class="group inline-flex min-w-[160px] cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border border-gray-600 bg-gradient-to-b from-gray-700 to-gray-900 px-6 py-3 text-lg font-medium text-white shadow-sm transition-all duration-300 ease-out hover:from-gray-600 hover:to-gray-800 hover:border-gray-500 hover:shadow-md focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed dark:border-none dark:from-cyan-600 dark:to-cyan-800 dark:hover:from-cyan-500 dark:hover:to-cyan-700"
         >
-          <span>{t.submitLabel}</span>
+          <span id="btnText">{t.submitLabel}</span>
           <svg
+            id="btnIcon"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 -960 960 960"
             aria-hidden="true"
@@ -149,76 +137,69 @@ const appointmentSchema = {
 
   <div id="gdprModal" class="fixed inset-0 z-50 hidden items-end bg-black/70 p-4 sm:items-center sm:justify-center" role="dialog" aria-modal="true" aria-labelledby="gdpr-title">
     <div class="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-700 dark:bg-[#1f2937]">
-<button
-  type="button"
-  data-close-gdpr
-  class="absolute right-4 top-3 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-red-600 text-white shadow-sm transition hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 dark:focus:ring-offset-[#1f2937]"
-  aria-label={t.modalCloseAria}
->
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-  </svg>
-</button>
+      <button type="button" data-close-gdpr class="absolute right-4 top-3 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg bg-red-600 text-white shadow-sm transition hover:bg-red-500 focus:outline-none" aria-label={t.modalCloseAria}>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
 
       <div class="border-b border-gray-200 px-6 py-5 dark:border-gray-700">
         <h3 id="gdpr-title" class="pr-10 text-xl font-semibold text-gray-900 dark:text-white">{t.modalTitle}</h3>
       </div>
 
- <div id="gdprModalContent" class="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 dark:text-gray-200" set:html={privacyHtml} />
+      <div id="gdprModalContent" class="space-y-6 overflow-y-auto px-6 py-6 text-sm leading-relaxed text-gray-700 dark:text-gray-200" set:html={privacyHtml} />
 
       <div id="gdprAcceptWrap" class="hidden border-t border-gray-200 px-6 py-4 text-center dark:border-gray-700">
-        <button
-        id="gdprAcceptBtn"
-        type="button"
-        class="inline-flex cursor-pointer justify-center rounded-xl border border-blue-900 bg-blue-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-950 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 active:translate-y-0 active:scale-[0.98] dark:border-cyan-600 dark:bg-cyan-600 dark:text-white dark:hover:bg-cyan-500 dark:focus:ring-cyan-500 dark:focus:ring-offset-[#15182B]"
-      >
-        {t.modalAcceptButton}
-      </button>
+        <button id="gdprAcceptBtn" type="button" class="inline-flex cursor-pointer justify-center rounded-xl border border-blue-900 bg-blue-900 px-5 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-950 hover:shadow-md focus:outline-none dark:border-cyan-600 dark:bg-cyan-600 dark:text-white dark:hover:bg-cyan-500">
+          {t.modalAcceptButton}
+        </button>
       </div>
     </div>
   </div>
 </section>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script is:inline src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
   const modal = document.querySelector('#gdprModal');
   const openButton = document.querySelector('[data-open-gdpr]');
   const closeButton = document.querySelector('[data-close-gdpr]');
   const acceptButton = document.querySelector('#gdprAcceptBtn');
-  const gdprConsent = document.querySelector('#gdprConsent');
+  const gdprConsent = document.querySelector('#gdprConsent') as HTMLInputElement | null;
   const gdprError = document.querySelector('#gdprError');
   const captchaError = document.querySelector('#captchaError');
-  const form = document.querySelector('#programareForm');
+  const form = document.querySelector('#programareForm') as HTMLFormElement | null;
   const modalContent = document.querySelector('#gdprModalContent');
   const acceptWrap = document.querySelector('#gdprAcceptWrap');
+  const successMessage = document.getElementById('submitSuccessMessage');
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+  const btnText = document.getElementById('btnText');
+  const btnIcon = document.getElementById('btnIcon');
 
-let gdprAccepted = false;
-let modalMode = 'view';
-let acceptUnlocked = false;
+  let gdprAccepted = false;
+  let modalMode = 'view';
+  let acceptUnlocked = false;
 
-const openModal = (mode = 'view') => {
-  if (!modal) return;
+  const openModal = (mode = 'view') => {
+    if (!modal) return;
+    modalMode = mode;
+    const requireAcceptance = mode === 'consent';
 
-  modalMode = mode;
-  const requireAcceptance = mode === 'consent';
+    if (requireAcceptance) {
+      acceptUnlocked = false;
+      acceptWrap?.classList.add('hidden');
+    } else {
+      acceptWrap?.classList.add('hidden');
+    }
 
-  if (requireAcceptance) {
-    acceptUnlocked = false;
-    acceptWrap?.classList.add('hidden');
-  } else {
-    acceptWrap?.classList.add('hidden');
-  }
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.classList.add('overflow-hidden');
 
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  document.body.classList.add('overflow-hidden');
-
-  // FIX PENTRU SCROLL: Îi dăm browserului 10 milisecunde să randeze modalul
-  setTimeout(() => {
-    if (modalContent) modalContent.scrollTop = 0;
-  }, 10);
-};
+    setTimeout(() => {
+      if (modalContent) modalContent.scrollTop = 0;
+    }, 10);
+  };
 
   const closeModal = () => {
     if (!modal) return;
@@ -232,13 +213,8 @@ const openModal = (mode = 'view') => {
 
   const acceptTerms = () => {
     if (modalMode !== 'consent') return;
-
     gdprAccepted = true;
-
-    if (gdprConsent) {
-      gdprConsent.checked = true;
-    }
-
+    if (gdprConsent) gdprConsent.checked = true;
     gdprError?.classList.add('hidden');
     closeModal();
   };
@@ -249,38 +225,30 @@ const openModal = (mode = 'view') => {
 
   gdprConsent?.addEventListener('click', (event) => {
     if (gdprAccepted) return;
-
     event.preventDefault();
     openModal('consent');
   });
 
-
-const revealAcceptButton = () => {
-  if (modalMode !== 'consent' || !modalContent || acceptUnlocked) return;
-
-  const scrollTop = modalContent.scrollTop;
-  const scrollableHeight = modalContent.scrollHeight - modalContent.clientHeight;
-
-  if (scrollableHeight <= 0) {
-    acceptUnlocked = true;
-    acceptWrap?.classList.remove('hidden');
-    return;
-  }
-
-  const progress = scrollTop / scrollableHeight;
-
-  if (progress >= 0.3) {
-    acceptUnlocked = true;
-    acceptWrap?.classList.remove('hidden');
-  }
-};
+  const revealAcceptButton = () => {
+    if (modalMode !== 'consent' || !modalContent || acceptUnlocked) return;
+    const scrollTop = modalContent.scrollTop;
+    const scrollableHeight = modalContent.scrollHeight - modalContent.clientHeight;
+    if (scrollableHeight <= 0) {
+      acceptUnlocked = true;
+      acceptWrap?.classList.remove('hidden');
+      return;
+    }
+    const progress = scrollTop / scrollableHeight;
+    if (progress >= 0.3) {
+      acceptUnlocked = true;
+      acceptWrap?.classList.remove('hidden');
+    }
+  };
 
   modalContent?.addEventListener('scroll', revealAcceptButton);
 
   modal?.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
+    if (event.target === modal) closeModal();
   });
 
   document.addEventListener('keydown', (event) => {
@@ -289,68 +257,93 @@ const revealAcceptButton = () => {
     }
   });
 
-  form?.addEventListener('submit', (event) => {
+  // LOGICA NOUĂ DE TRIMITERE CU FETCH (CĂTRE SEND.PHP)
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Oprim trimiterea clasică (refresh-ul de pagină)
+
+    // Validare GDPR
     if (!gdprAccepted || !gdprConsent?.checked) {
-      event.preventDefault();
       gdprError?.classList.remove('hidden');
       openModal('consent');
       return;
     }
 
-    const captchaResponse = typeof window.grecaptcha !== 'undefined'
-      ? window.grecaptcha.getResponse()
+    // Validare CAPTCHA
+    const captchaResponse = typeof window !== 'undefined' && (window as any).grecaptcha
+      ? (window as any).grecaptcha.getResponse()
       : '';
 
     if (!captchaResponse) {
-      event.preventDefault();
       captchaError?.classList.remove('hidden');
       return;
     }
-
     captchaError?.classList.add('hidden');
+
+    // UI Feedback (Schimbăm butonul pe "Se trimite...")
+    if (submitBtn && btnText && btnIcon) {
+      submitBtn.disabled = true;
+      btnText.innerText = "Se trimite...";
+      btnIcon.classList.add('hidden');
+    }
+
+    try {
+      // Colectăm datele (inclusiv captcha invizibil extras automat de FormData)
+      const formData = new FormData(form);
+
+      const response = await fetch('/send.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        // Succes! Arătăm mesajul verde și resetăm formularul
+        successMessage?.classList.remove('hidden');
+        form.reset();
+        gdprAccepted = false; // resetăm și GDPR-ul intern
+        if (typeof window !== 'undefined' && (window as any).grecaptcha) {
+          (window as any).grecaptcha.reset();
+        }
+        
+        // Ascundem mesajul automat după 8 secunde
+        setTimeout(() => {
+          successMessage?.classList.add('hidden');
+        }, 8000);
+      } else {
+        alert('A apărut o eroare la server. Vă rugăm să ne contactați telefonic.');
+      }
+    } catch (error) {
+      console.error("Eroare la trimitere:", error);
+      alert('Eroare de conexiune. Verificați internetul și încercați din nou.');
+    } finally {
+      // Revenim la starea normală a butonului
+      if (submitBtn && btnText && btnIcon) {
+        submitBtn.disabled = false;
+        btnText.innerText = submitBtn.getAttribute('data-original-text') || "Trimite programarea";
+        btnIcon.classList.remove('hidden');
+      }
+    }
   });
 
-  const progForm = document.querySelector('#programareForm');
-  if (progForm) {
-    const inputs = progForm.querySelectorAll('input[required], textarea[required]');
-    
-    inputs.forEach(input => {
-      input.addEventListener('invalid', function(e) {
-        // Dacă e gol
-        if (this.validity.valueMissing) {
-          const reqMsg = this.getAttribute('data-error-required') || 'Câmp obligatoriu';
-          this.setCustomValidity(reqMsg);
-        } 
-        // Dacă e un email, e completat, dar nu are format corect (ex: lipsește @)
-        else if (this.type === 'email' && this.validity.typeMismatch) {
-          const invMsg = this.getAttribute('data-error-invalid') || 'Format invalid';
-          this.setCustomValidity(invMsg);
-        }
-      });
-      
-      // Ștergem eroarea când userul începe să scrie (pentru a-i permite să trimită form-ul)
-      input.addEventListener('input', function(e) {
-        this.setCustomValidity('');
-      });
-    });
+  // Salvează textul original al butonului pentru a-l restaura după trimitere
+  if (submitBtn && btnText) {
+    submitBtn.setAttribute('data-original-text', btnText.innerText);
   }
 
-  const successBanner = document.getElementById('submitSuccessMessage');
-
-  if (successBanner) {
-    const currentUrl = new URL(window.location.href);
-    const wasSent = currentUrl.searchParams.get('trimis');
-
-    if (wasSent === '1') {
-      successBanner.classList.remove('hidden');
-
-      currentUrl.searchParams.delete('trimis');
-      const cleanUrl =
-        currentUrl.pathname +
-        (currentUrl.search ? currentUrl.search : '') +
-        currentUrl.hash;
-
-      window.history.replaceState({}, '', cleanUrl);
-    }
+  // Validare live pentru input-uri
+  if (form) {
+    const inputs = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]');
+    inputs.forEach(input => {
+      input.addEventListener('invalid', (e) => {
+        const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+        if (target.validity.valueMissing) {
+          target.setCustomValidity(target.getAttribute('data-error-required') || 'Câmp obligatoriu');
+        } else if (target.type === 'email' && target.validity.typeMismatch) {
+          target.setCustomValidity(target.getAttribute('data-error-invalid') || 'Format invalid');
+        }
+      });
+      input.addEventListener('input', (e) => {
+        (e.target as HTMLInputElement | HTMLTextAreaElement).setCustomValidity('');
+      });
+    });
   }
 </script>

@@ -6,8 +6,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://radioterapeut.ro',
-  trailingSlash: 'never', 
-  
+  // Îi spunem lui Astro: PUNE SLASH și fă FOLDERE cu index.html
+  trailingSlash: 'always',
+  build: {
+    format: 'directory'
+  },
   i18n: {
     defaultLocale: 'ro',
     locales: ['ro', 'en', 'uk'],
@@ -17,7 +20,7 @@ export default defineConfig({
   },
   
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [/** @type {any} */ (tailwindcss())]
   },
   
   integrations: [

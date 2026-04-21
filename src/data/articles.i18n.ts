@@ -1,6 +1,6 @@
 import type { SiteLocale } from "../i18n/config";
 
-import { ImageMetadata } from "astro";
+import type { ImageMetadata } from "astro";
 
 import imgImportantaRadioterapieCover from "../assets/blog-01.png";
 import imgImportantaRadioterapieArticle from "../assets/blog-detail1.webp";
